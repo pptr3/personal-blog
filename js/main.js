@@ -10,7 +10,7 @@ $(document).ready(function() {
     $(".fullscreen").css("height", window_height)
     $(".fitscreen").css("height", fitscreen);
 
-    //------- Niceselect  js --------//  
+    //------- Niceselect  js --------//
 
     if (document.getElementById("default-select")) {
         $('select').niceSelect();
@@ -19,7 +19,7 @@ $(document).ready(function() {
         $('select').niceSelect();
     };
 
-    //------- Lightbox  js --------//  
+    //------- Lightbox  js --------//
 
     $('.img-gal').magnificPopup({
         type: 'image',
@@ -36,7 +36,7 @@ $(document).ready(function() {
         fixedContentPos: false
     });
 
-    //------- Datepicker  js --------//  
+    //------- Datepicker  js --------//
 
       $( function() {
         $( "#datepicker" ).datepicker();
@@ -44,7 +44,7 @@ $(document).ready(function() {
       } );
 
 
-    //------- Superfist nav menu  js --------//  
+    //------- Superfist nav menu  js --------//
 
     $('.nav-menu').superfish({
         animation: {
@@ -54,7 +54,7 @@ $(document).ready(function() {
     });
 
 
-    //------- Accordion  js --------//  
+    //------- Accordion  js --------//
 
     jQuery(document).ready(function($) {
 
@@ -67,15 +67,15 @@ $(document).ready(function() {
         }
     });
 
-    //------- Owl Carusel  js --------//  
+    //------- Owl Carusel  js --------//
 
     $('.active-gallery-carusel').owlCarousel({
         items:1,
         loop:true,
         nav:true,
         navText: ["<span class='lnr lnr-arrow-left'></span>",
-        "<span class='lnr lnr-arrow-right'></span>"],  
-        smartSpeed:650,           
+        "<span class='lnr lnr-arrow-right'></span>"],
+        smartSpeed:650,
     });
 
     $('.active-testimonial').owlCarousel({
@@ -105,8 +105,8 @@ $(document).ready(function() {
         loop: true,
         margin: 30,
         autoplayHoverPause: true,
-        smartSpeed:650,         
-        autoplay:true, 
+        smartSpeed:650,
+        autoplay:true,
         responsive: {
             0: {
                 items: 2
@@ -120,7 +120,7 @@ $(document).ready(function() {
         }
     });
 
-    //------- Search Form  js --------//  
+    //------- Search Form  js --------//
 
     $(document).ready(function(){
       $('#search').on("click",(function(e){
@@ -142,7 +142,7 @@ $(document).ready(function() {
       })
     })
 
-    //------- Mobile Nav  js --------//  
+    //------- Mobile Nav  js --------//
 
     if ($('#nav-menu-container').length) {
         var $mobile_nav = $('#nav-menu-container').clone().prop({
@@ -184,9 +184,9 @@ $(document).ready(function() {
     }
 
 
-    //------- Sticky Main Menu js --------//  
+    //------- Sticky Main Menu js --------//
 
-
+/*
     window.onscroll = function() {stickFunction()};
 
     var navbar = document.getElementById("main-menu");
@@ -198,9 +198,9 @@ $(document).ready(function() {
         navbar.classList.remove("sticky");
       }
     }
+*/
 
-
-    //------- Smooth Scroll  js --------//  
+    //------- Smooth Scroll  js --------//
 
     $('.nav-menu a, #mobile-nav a, .scrollto').on('click', function() {
         if (location.pathname.replace(/^\//, '') == this.pathname.replace(/^\//, '') && location.hostname == this.hostname) {
@@ -262,7 +262,7 @@ $(document).ready(function() {
     });
 
 
-    //------- Google Map  js --------//  
+    //------- Google Map  js --------//
 
     if (document.getElementById("map")) {
         google.maps.event.addDomListener(window, 'load', init);
@@ -398,7 +398,7 @@ $(document).ready(function() {
         }
     }
 
-    //------- Mailchimp js --------//  
+    //------- Mailchimp js --------//
 
     $(document).ready(function() {
         $('#mc_embed_signup').find('form').ajaxChimp();
@@ -451,4 +451,3 @@ $(document).ready(function() {
         $("#thumbnail_container").hide();
         player.playVideo();
     });
-
