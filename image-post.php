@@ -31,62 +31,7 @@
 	</head>
 	<body>
 
-		<header>
-
-
-			<div class="container main-menu" id="main-menu">
-				<div class="row align-items-center justify-content-between">
-					<nav id="nav-menu-container">
-						<ul class="nav-menu">
-							<li class="menu-active"><a href="index.html">Home</a></li>
-							<li><a href="index.html">About Me</a></li>
-							<li><a href="contact.html">Contact</a></li>
-						<!--	<li class="menu-has-children"><a href="">Post Types</a>
-							<ul>
-								<li><a href="standard-post.html">Standard Post</a></li>
-								<li><a href="image-post.html">Image Post</a></li>
-								<li><a href="gallery-post.html">Gallery Post</a></li>
-								<li><a href="video-post.html">Video Post</a></li>
-								<li><a href="audio-post.html">Audio Post</a></li>
-							</ul>
-						</li> -->
-						<li><a href="index.html">Hire Me</a></li>
-					</ul>
-					</nav><!-- #nav-menu-container -->
-					<div class="navbar-right">
-						<form class="Search">
-							<input type="text" class="form-control Search-box" name="Search-box" id="Search-box" placeholder="Search">
-							<label for="Search-box" class="Search-box-label">
-								<span class="lnr lnr-magnifier"></span>
-							</label>
-							<span class="Search-close">
-								<span class="lnr lnr-cross"></span>
-							</span>
-						</form>
-					</div>
-				</div>
-			</div>
-		</header>
-
-		<div class="site-main-container">
-			<!-- Start top-post Area -->
-			<section class="top-post-area pt-10">
-				<div class="container no-padding">
-					<div class="row">
-						<div class="col-lg-12">
-							<div class="hero-nav-area">
-								<h1 class="text-white">Image Post</h1>
-								<p class="text-white link-nav"><a href="index.html">Home </a>  <span class="lnr lnr-arrow-right"></span><a href="#">Post Types </a><span class="lnr lnr-arrow-right"></span><a href="image-post.html">Image Post </a></p>
-							</div>
-						</div>
-						<div class="col-lg-12">
-							<div class="news-tracker-wrap">
-								<h6><span>Breaking News:</span>   <a href="#">This blog is work in progress</a></h6>
-							</div>
-						</div>
-					</div>
-				</div>
-			</section>
+	<?php require 'header.php'?>
 			<!-- End top-post Area -->
 			<!-- Start latest-post Area -->
 			<section class="latest-post-area pb-120">
@@ -119,7 +64,11 @@
 									</p>
 								<blockquote>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</blockquote>
 
-								<div class="navigation-wrap justify-content-between d-flex">
+
+
+								<!--section for show comments of other users-->
+
+								<!-- <div class="navigation-wrap justify-content-between d-flex">
 									<a class="prev" href="#"><span class="lnr lnr-arrow-left"></span>Prev Post</a>
 									<a class="next" href="#">Next Post<span class="lnr lnr-arrow-right"></span></a>
 								</div>
@@ -187,9 +136,13 @@
 											</div>
 										</div>
 									</div>
-								</div>
+								</div> -->
 							</div>
-							<div class="comment-form">
+
+
+							<!--section for leave a comment to the post-->
+
+							<!-- <div class="comment-form">
 								<h4>Post Comment</h4>
 								<form>
 									<div class="form-group form-inline">
@@ -208,173 +161,19 @@
 									</div>
 									<a href="#" class="primary-btn text-uppercase">Post Comment</a>
 								</form>
-							</div>
+							</div> -->
 						</div>
 						<!-- End single-post Area -->
 					</div>
 
-
-					<div class="col-lg-4">
-						<div class="sidebars-area">
-							<!-- Most Popular -->
-							<div class="single-sidebar-widget most-popular-widget">
-								<h6 class="title">Most Popular</h6>
-								<div class="single-list flex-row d-flex">
-									<div class="thumb">
-										<img src="img/m1.jpg" alt="">
-									</div>
-									<div class="details">
-										<a href="image-post.html">
-											<h6>Help Finding Information
-											Online is so easy</h6>
-										</a>
-										<ul class="meta">
-											<li><a href="#"><span class="lnr lnr-calendar-full"></span>03 April, 2018</a></li>
-											<li><a href="#"><span class="lnr lnr-bubble"></span>06</a></li>
-										</ul>
-									</div>
-								</div>
-								<div class="single-list flex-row d-flex">
-									<div class="thumb">
-										<img src="img/m2.jpg" alt="">
-									</div>
-									<div class="details">
-										<a href="image-post.html">
-											<h6>Compatible Inkjet Cartr
-											world famous</h6>
-										</a>
-										<ul class="meta">
-											<li><a href="#"><span class="lnr lnr-calendar-full"></span>03 April, 2018</a></li>
-											<li><a href="#"><span class="lnr lnr-bubble"></span>06</a></li>
-										</ul>
-									</div>
-								</div>
-								<div class="single-list flex-row d-flex">
-									<div class="thumb">
-										<img src="img/m3.jpg" alt="">
-									</div>
-									<div class="details">
-										<a href="image-post.html">
-											<h6>5 Tips For Offshore Soft
-											Development </h6>
-										</a>
-										<ul class="meta">
-											<li><a href="#"><span class="lnr lnr-calendar-full"></span>03 April, 2018</a></li>
-											<li><a href="#"><span class="lnr lnr-bubble"></span>06</a></li>
-										</ul>
-									</div>
-								</div>
-								<div class="single-list flex-row d-flex">
-									<div class="thumb">
-										<img src="img/m4.jpg" alt="">
-									</div>
-									<div class="details">
-										<a href="image-post.html">
-											<h6>5 Tips For Offshore Soft
-											Development </h6>
-										</a>
-										<ul class="meta">
-											<li><a href="#"><span class="lnr lnr-calendar-full"></span>03 April, 2018</a></li>
-											<li><a href="#"><span class="lnr lnr-bubble"></span>06</a></li>
-										</ul>
-									</div>
-								</div>
-							</div>
-
-
-
-
-
-
-
-
-							<!-- Social Networks -->
-							<div class="single-sidebar-widget social-network-widget">
-								<h6 class="title">Social Networks</h6>
-								<ul class="social-list">
-									<button type="button" class="btn btn-li"><i class="fa fa-linkedin"></i></button>
-									<button type="button" class="btn btn-fb"><i class="fa fa-facebook"></i></button>
-									<button type="button" class="btn btn-git"><i class="fa fa-github"></i></button>
-									<button type="button" class="btn btn-ins"><i class="fa fa-instagram"></i></button>
-
-								</ul>
-							</div>
-						</div>
-					</div>
+		<?php require 'most_popular.php'?>
 				</div>
 			</div>
 		</section>
 		<!-- End latest-post Area -->
 	</div>
+<?php require 'footer.php'?>
 
-	<!-- start footer Area -->
-	<footer class="footer-area section-gap">
-		<div class="container">
-			<div class="row">
-				<div class="col-lg-3 col-md-6 single-footer-widget">
-					<h4>Top Products</h4>
-					<ul>
-						<li><a href="#">Managed Website</a></li>
-						<li><a href="#">Manage Reputation</a></li>
-						<li><a href="#">Power Tools</a></li>
-						<li><a href="#">Marketing Service</a></li>
-					</ul>
-				</div>
-				<div class="col-lg-2 col-md-6 single-footer-widget">
-					<h4>Quick Links</h4>
-					<ul>
-						<li><a href="#">Jobs</a></li>
-						<li><a href="#">Brand Assets</a></li>
-						<li><a href="#">Investor Relations</a></li>
-						<li><a href="#">Terms of Service</a></li>
-					</ul>
-				</div>
-				<div class="col-lg-2 col-md-6 single-footer-widget">
-					<h4>Features</h4>
-					<ul>
-						<li><a href="#">Jobs</a></li>
-						<li><a href="#">Brand Assets</a></li>
-						<li><a href="#">Investor Relations</a></li>
-						<li><a href="#">Terms of Service</a></li>
-					</ul>
-				</div>
-				<div class="col-lg-2 col-md-6 single-footer-widget">
-					<h4>Resources</h4>
-					<ul>
-						<li><a href="#">Guides</a></li>
-						<li><a href="#">Research</a></li>
-						<li><a href="#">Experts</a></li>
-						<li><a href="#">Agencies</a></li>
-					</ul>
-				</div>
-				<div class="col-lg-3 col-md-6 single-footer-widget">
-					<h4>Instragram Feed</h4>
-					<ul class="instafeed d-flex flex-wrap">
-						<li><img src="img/i1.jpg" alt=""></li>
-						<li><img src="img/i2.jpg" alt=""></li>
-						<li><img src="img/i3.jpg" alt=""></li>
-						<li><img src="img/i4.jpg" alt=""></li>
-						<li><img src="img/i5.jpg" alt=""></li>
-						<li><img src="img/i6.jpg" alt=""></li>
-						<li><img src="img/i7.jpg" alt=""></li>
-						<li><img src="img/i8.jpg" alt=""></li>
-					</ul>
-				</div>
-			</div>
-			<div class="footer-bottom row align-items-center">
-				<p class="footer-text m-0 col-lg-8 col-md-12"><!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="fa fa-heart-o" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a>
-<!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. --></p>
-				<div class="col-lg-4 col-md-12 footer-social">
-					<a href="#"><i class="fa fa-facebook"></i></a>
-					<a href="#"><i class="fa fa-twitter"></i></a>
-					<a href="#"><i class="fa fa-dribbble"></i></a>
-					<a href="#"><i class="fa fa-behance"></i></a>
-				</div>
-			</div>
-		</div>
-	</footer>
-	<!-- End footer Area -->
 	<script src="js/vendor/jquery-2.2.4.min.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
 	<script src="js/vendor/bootstrap.min.js"></script>
