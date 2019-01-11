@@ -60,15 +60,15 @@
 																echo '</ul>';
 															echo '</div>';
 															echo '<div class="col-lg-7 post-right">';
-																echo '<a href="image-post.php">';
-																	echo '<h4>'.$row['Title'].'</h4>';
+																echo '<a hre="image-post.php">';
+																	echo '<h4 onclick="goToArticle('.$row['IdArticle'].')" >'.$row['Title'].'</h4>';
 																echo '</a>';
 																echo '<ul class="meta">';
 																//	echo '<li><a href="#"><span class="lnr lnr-user"></span>Mark wiens</a></li>';
 																	echo '<li><a href="#"><span class="lnr lnr-calendar-full"></span>'.$row['Date'].'</a></li>';
 																	//echo '<li><a href="#"><span class="lnr lnr-bubble"></span>06 Comments</a></li>';
 																echo '</ul>';
-																echo '<p>'.$row['Intro'].'</p>';
+																echo '<p onclick="goToArticle('.$row['IdArticle'].')" >'.$row['Intro'].'</p>';
 														echo '</div>';
 											echo '</div>';
 									  }
