@@ -53,7 +53,7 @@
 											echo '<div class="single-latest-post row align-items-center">';
 														echo '<div class="col-lg-5 post-left">';
 																echo '<div ">';
-																	echo '<img src="'.$row['PhotoArticle'].'" width="238" height="150" alt="article photo">';
+																	echo '<img onclick="goToArticle('.$row['IdArticle'].')" src="'.$row['PhotoArticle'].'" width="238" height="150" alt="article photo">';
 																echo '</div>';
 																echo '<ul class="tags">';
 																	echo '<li><a href="#">'.$row['Name'].'</a></li>';
@@ -104,7 +104,11 @@
 
 
 
-
+<script type="text/javascript">
+	function goToArticle(id) {
+		  window.location.href ="image-post.php?" + "id=" + id;
+	}
+</script>
 
 
 
