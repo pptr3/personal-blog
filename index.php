@@ -45,7 +45,7 @@
 							<div class="latest-post-wrap">
 								<h4 class="cat-title">Latest News</h4>
 								<?php
-									$query_sql="SELECT * FROM Article";
+									$query_sql="SELECT * FROM Article a, Badge b WHERE a.IdBadge = b.IdBadge";
 									$article = $conn->query($query_sql);
 
 									if ($article->num_rows > 0) {
@@ -56,7 +56,7 @@
 																	echo '<img src="'.$row['PhotoArticle'].'" width="238" height="150" alt="article photo">';
 																echo '</div>';
 																echo '<ul class="tags">';
-																	echo '<li><a href="#">'.$row['IdBadge'].'</a></li>';
+																	echo '<li><a href="#">'.$row['Name'].'</a></li>';
 																echo '</ul>';
 															echo '</div>';
 															echo '<div class="col-lg-7 post-right">';
