@@ -1,0 +1,21 @@
+
+create table Article (
+     IdArticle int not null AUTO_INCREMENT,
+     IdBadge int not null,
+     Body TEXT not null,
+     Date DATE not null,
+     Title TEXT not null,
+     Intro TEXT not null,
+     PhotoArticle TEXT not null,
+     constraint IDArticle primary key (IdArticle));
+
+create table Badge (
+     IdBadge int not null AUTO_INCREMENT,
+     Name TEXT not null,
+     constraint IDBadge primary key (IdBadge));
+
+
+alter table Article add constraint Article_Badge
+     foreign key (IdBadge)
+     references Badge (IdBadge);
+

@@ -186,7 +186,7 @@ $(document).ready(function() {
 
     //------- Sticky Main Menu js --------//
 
-/*
+
     window.onscroll = function() {stickFunction()};
 
     var navbar = document.getElementById("main-menu");
@@ -198,7 +198,7 @@ $(document).ready(function() {
         navbar.classList.remove("sticky");
       }
     }
-*/
+
 
     //------- Smooth Scroll  js --------//
 

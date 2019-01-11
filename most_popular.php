@@ -29,7 +29,7 @@
       <h6 class="title">Most Popular</h6>
       <div class="single-list flex-row d-flex">
         <div class="thumb">
-          <img src="img/m1.jpg" alt="">
+          <img src="img/m1.jpg" width="80" height="60" alt="">
         </div>
         <div class="details">
           <a href="image-post.php">

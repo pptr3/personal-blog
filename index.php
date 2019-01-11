@@ -31,7 +31,9 @@
 	</head>
 	<body>
 
-<?php require 'header.php'?>
+<?php require 'header.php';
+			require_once 'dbconnection.php';
+?>
 
 			<!-- End top-post Area -->
 			<!-- Start latest-post Area -->
@@ -42,61 +44,37 @@
 							<!-- Start latest-post Area -->
 							<div class="latest-post-wrap">
 								<h4 class="cat-title">Latest News</h4>
-								<div class="single-latest-post row align-items-center">
-									<div class="col-lg-5 post-left">
-										<div class="feature-img relative">
-											<div class="overlay overlay-bg"></div>
-											<img class="img-fluid" src="img/l1.jpg" alt="">
-										</div>
-										<ul class="tags">
-											<li><a href="#">Lifestyle</a></li>
-										</ul>
-									</div>
-									<div class="col-lg-7 post-right">
-										<a href="image-post.php">
-											<h4>A Discount Toner Cartridge Is
-											Better Than Ever.</h4>
-										</a>
-										<ul class="meta">
-											<li><a href="#"><span class="lnr lnr-user"></span>Mark wiens</a></li>
-											<li><a href="#"><span class="lnr lnr-calendar-full"></span>03 April, 2018</a></li>
-											<li><a href="#"><span class="lnr lnr-bubble"></span>06 Comments</a></li>
-										</ul>
-										<p class="excert">
-											Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt.
-										</p>
-									</div>
-								</div>
+								<?php
+									$query_sql="SELECT * FROM Article";
+									$article = $conn->query($query_sql);
 
-
-
-								<!--
-								<div class="single-latest-post row align-items-center">
-									<div class="col-lg-5 post-left">
-										<div class="feature-img relative">
-											<div class="overlay overlay-bg"></div>
-											<img class="img-fluid" src="img/r1.jpg" alt="">
-										</div>
-										<ul class="tags">
-											<li><a href="#">Science</a></li>
-										</ul>
-									</div>
-									<div class="col-lg-7 post-right">
-										<a href="image-post.html">
-											<h4>A Discount Toner Cartridge Is
-											Better Than Ever.</h4>
-										</a>
-										<ul class="meta">
-											<li><a href="#"><span class="lnr lnr-user"></span>Mark wiens</a></li>
-											<li><a href="#"><span class="lnr lnr-calendar-full"></span>03 April, 2018</a></li>
-											<li><a href="#"><span class="lnr lnr-bubble"></span>06 Comments</a></li>
-										</ul>
-										<p>
-											Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt.
-										</p>
-									</div>
-								</div> -->
-
+									if ($article->num_rows > 0) {
+									  while($row = $article->fetch_assoc()) {
+											echo '<div class="single-latest-post row align-items-center">';
+														echo '<div class="col-lg-5 post-left">';
+																echo '<div ">';
+																	echo '<img src="'.$row['PhotoArticle'].'" width="238" height="150" alt="article photo">';
+																echo '</div>';
+																echo '<ul class="tags">';
+																	echo '<li><a href="#">'.$row['IdBadge'].'</a></li>';
+																echo '</ul>';
+															echo '</div>';
+															echo '<div class="col-lg-7 post-right">';
+																echo '<a href="image-post.php">';
+																	echo '<h4>'.$row['Title'].'</h4>';
+																echo '</a>';
+																echo '<ul class="meta">';
+																//	echo '<li><a href="#"><span class="lnr lnr-user"></span>Mark wiens</a></li>';
+																	echo '<li><a href="#"><span class="lnr lnr-calendar-full"></span>'.$row['Date'].'</a></li>';
+																	//echo '<li><a href="#"><span class="lnr lnr-bubble"></span>06 Comments</a></li>';
+																echo '</ul>';
+																echo '<p>'.$row['Intro'].'</p>';
+														echo '</div>';
+											echo '</div>';
+									  }
+									}
+									$conn->close();
+							 ?>
 
 
 								<div class="load-more">

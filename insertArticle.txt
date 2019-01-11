@@ -1,0 +1,2 @@
+INSERT INTO `Article`(`Body`, `Date`, `IdBadge`, `Intro`, `PhotoArticle`, `Title` ) VALUES 
+("Lorem impnus Lorem impnus Lorem impnusLorem impnusLorem impnusLorem impnus", "2018-01-10", "22", "This is my intro This is my intro This is my intro This is my intro", "res/test2.jpg", "Try to understand why this is like that");
