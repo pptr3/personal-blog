@@ -31,9 +31,8 @@
 	</head>
 	<body>
 
-<?php require 'header.php';
-			require_once 'dbconnection.php';
-?>
+	<?php require 'header.php';?>
+  <?php require_once 'dbconnection.php';?>
 
 			<!-- End top-post Area -->
 			<!-- Start latest-post Area -->
@@ -60,7 +59,7 @@
 																echo '</ul>';
 															echo '</div>';
 															echo '<div class="col-lg-7 post-right">';
-																echo '<a hre="image-post.php">';
+																echo '<a href="image-post.php">';
 																	echo '<h4 onclick="goToArticle('.$row['IdArticle'].')" >'.$row['Title'].'</h4>';
 																echo '</a>';
 																echo '<ul class="meta">';
@@ -77,9 +76,9 @@
 							 ?>
 
 
-								<div class="load-more">
+							<!--	<div class="load-more">
 									<a href="#" class="primary-btn">Load More Posts</a>
-								</div>
+								</div> -->
 							</div>
 						</div>
 

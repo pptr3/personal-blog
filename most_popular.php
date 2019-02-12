@@ -3,27 +3,6 @@
 
 
 
-
-    <!-- Badges -->
-    <div class="single-sidebar-widget social-network-widget">
-      <h6 class="title">Badges</h6>
-      <ul class="social-list">
-        <button type="button" class="btn btn-li"><i class="fa fa-linkedin"></i></button>
-        <button type="button" class="btn btn-fb"><i class="fa fa-facebook"></i></button>
-        <button type="button" class="btn btn-git"><i class="fa fa-github"></i></button>
-        <button type="button" class="btn btn-ins"><i class="fa fa-instagram"></i></button>
-      </ul>
-    </div>
-
-
-
-
-
-
-
-
-
-
     <!-- Most Popular -->
     <div class="single-sidebar-widget most-popular-widget">
       <h6 class="title">Most Popular</h6>
