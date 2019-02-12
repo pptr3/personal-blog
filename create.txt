@@ -1,4 +1,3 @@
-
 create table Article (
      IdArticle int not null AUTO_INCREMENT,
      IdBadge int not null,
@@ -18,4 +17,3 @@ create table Badge (
 alter table Article add constraint Article_Badge
      foreign key (IdBadge)
      references Badge (IdBadge);
-
