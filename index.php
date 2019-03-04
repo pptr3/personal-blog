@@ -54,17 +54,17 @@
 																echo '<div ">';
 																	echo '<img onclick="goToArticle('.$row['IdArticle'].')" src="'.$row['PhotoArticle'].'" width="238" height="150" alt="article photo">';
 																echo '</div>';
-																echo '<ul class="tags">';
-																	echo '<li><a href="#">'.$row['Name'].'</a></li>';
-																echo '</ul>';
+															//	echo '<ul class="tags">';
+																//	echo '<li><a href="#">'.$row['Name'].'</a></li>';
+															//	echo '</ul>';
 															echo '</div>';
 															echo '<div class="col-lg-7 post-right">';
-																echo '<a href="image-post.php">';
+																echo '<a>';
 																	echo '<h4 onclick="goToArticle('.$row['IdArticle'].')" >'.$row['Title'].'</h4>';
 																echo '</a>';
 																echo '<ul class="meta">';
 																//	echo '<li><a href="#"><span class="lnr lnr-user"></span>Mark wiens</a></li>';
-																	echo '<li><a href="#"><span class="lnr lnr-calendar-full"></span>'.$row['Date'].'</a></li>';
+																	echo '<li><a><span class="lnr lnr-calendar-full"></span>'.$row['Date'].'</a></li>';
 																	//echo '<li><a href="#"><span class="lnr lnr-bubble"></span>06 Comments</a></li>';
 																echo '</ul>';
 																echo '<p onclick="goToArticle('.$row['IdArticle'].')" >'.$row['Intro'].'</p>';
@@ -72,7 +72,7 @@
 											echo '</div>';
 									  }
 									}
-									$conn->close();
+									//$conn->close();
 							 ?>
 
 

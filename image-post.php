@@ -51,25 +51,28 @@
 												echo '</div>';
 												echo '<div class="content-wrap">';
 
+												// READING TIME
+												echo '<p> <b>Reading time</b>: '.$row['ReadingTime'].'</p>';
+
 										  // BADGE
-											echo '<ul class="tags mt-10">';
-												echo '<li><a href="#">'.$row['Name'].'</a></li>';
-											echo '</ul>';
+										//	echo '<ul class="tags mt-10">';
+											//	echo '<li><a href="#">'.$row['Name'].'</a></li>';
+										//	echo '</ul>';
 
-											// TITLE
-											echo'<a href="#">';
-												echo '<h3>'.$row['Title'].'</h3>';
-											echo '</a>';
+												// TITLE
+												echo'<a href="#">';
+													echo '<h3>'.$row['Title'].'</h3>';
+												echo '</a>';
 
-											// DATE
-											echo '<ul class="meta pb-20">';
-												echo '<li><a href="#"><span class="lnr lnr-calendar-full"></span>'.$row['Date'].'</a></li>';
-											echo '</ul>';
-											echo '<p>'.$row['Body'].'</p>';
+												// DATE
+												echo '<ul class="meta pb-20">';
+													echo '<li><a><span class="lnr lnr-calendar-full"></span>'.$row['Date'].'</a></li>';
+												echo '</ul>';
+												echo '<p>'.$row['Body'].'</p>';
 
 										}
 									}
-								$conn->close();
+								//$conn->close();
 								?>
 <!--########################################## HERE MY HTML ARTICLE ##########################################-->
 

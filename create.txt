@@ -5,6 +5,7 @@ create table Article (
      Date DATE not null,
      Title TEXT not null,
      Intro TEXT not null,
+     ReadingTime TEXT not null,
      PhotoArticle TEXT not null,
      constraint IDArticle primary key (IdArticle));
 
