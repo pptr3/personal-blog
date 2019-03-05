@@ -4,9 +4,9 @@
       <nav id="nav-menu-container">
         <ul class="nav-menu">
           <li class="menu-active"><a href="index.php">Home</a></li>
-          <li><a href="index.php">About Me</a></li>
+          <li><a href="aboutme.php">About Me</a></li>
           <li><a href="contact.php">Contact</a></li>
-          <li><a href="index.php">Hire Me</a></li>
+          <li><a href="hireme.php">Hire Me</a></li>
       </ul>
       </nav>
     </div>

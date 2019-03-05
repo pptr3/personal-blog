@@ -19,7 +19,6 @@
 		<!--
 		CSS
 		============================================= -->
-		<link rel="icon" href="res/test.jpg">
 		<link rel="stylesheet" href="css/linearicons.css">
 		<link rel="stylesheet" href="css/font-awesome.min.css">
 		<link rel="stylesheet" href="css/bootstrap.css">
@@ -45,43 +44,24 @@
 						<div class="col-lg-8 post-list">
 							<!-- Start latest-post Area -->
 							<div class="latest-post-wrap">
-								<h4 class="cat-title">Latest News</h4>
-								<?php
-									$query_sql="SELECT * FROM Article a, Badge b WHERE a.IdBadge = b.IdBadge";
-									$article = $conn->query($query_sql);
-
-									if ($article->num_rows > 0) {
-									  while($row = $article->fetch_assoc()) {
-											echo '<div class="single-latest-post row align-items-center">';
-														echo '<div class="col-lg-5 post-left">';
-																echo '<div ">';
-																	echo '<img class="zooming" id="'.$row['IdArticle'].'" onclick="goToArticle('.$row['IdArticle'].')" src="'.$row['PhotoArticle'].'" width="238" height="150" alt="article photo">';
-																echo '</div>';
-															//	echo '<ul class="tags">';
-																//	echo '<li><a href="#">'.$row['Name'].'</a></li>';
-															//	echo '</ul>';
-															echo '</div>';
-															echo '<div class="col-lg-7 post-right">';
-																echo '<a>';
-																	echo '<h4 onclick="goToArticle('.$row['IdArticle'].')" >'.$row['Title'].'</h4>';
-																echo '</a>';
-																echo '<ul class="meta">';
-																//	echo '<li><a href="#"><span class="lnr lnr-user"></span>Mark wiens</a></li>';
-																	echo '<li><a><span class="lnr lnr-calendar-full"></span>'.$row['Date'].'</a></li>';
-																	//echo '<li><a href="#"><span class="lnr lnr-bubble"></span>06 Comments</a></li>';
-																echo '</ul>';
-																echo '<p class="tohover" onclick="goToArticle('.$row['IdArticle'].')" >'.$row['Intro'].'</p>';
-														echo '</div>';
-											echo '</div>';
-									  }
-									}
-									//$conn->close();
-							 ?>
-
-
-							<!--	<div class="load-more">
-									<a href="#" class="primary-btn">Load More Posts</a>
-								</div> -->
+							Hi, I am Petru and I am a graduate student at Bologna Unviersity.
+              Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+              Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+              Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+              Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+              Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+              Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+              Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+              Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+              Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+              Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+              Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+              Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+              Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+              Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+              Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+              Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+              
 							</div>
 						</div>
 
