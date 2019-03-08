@@ -32,7 +32,8 @@
 
 	</head>
 <body>
-    <div class="col-lg-4">
+	<div class="myside">
+    <div class="col-lg-8">
       <div class="sidebars-area">
 
 
@@ -91,13 +92,13 @@
 
 
 
-      <script type="text/javascript">
-      	function goToArticle(id) {
-      		  window.location.href ="image-post.php?" + "id=" + id;
-      	}
-      </script>
-
 
       </div>
     </div>
+</div>
 </body>
+<script type="text/javascript">
+	function goToArticle(id) {
+			window.location.href ="image-post.php?" + "id=" + id;
+	}
+</script>

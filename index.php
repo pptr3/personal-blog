@@ -37,13 +37,12 @@
 
 	<?php require 'header.php';?>
   <?php require_once 'dbconnection.php';?>
-
 			<!-- End top-post Area -->
 			<!-- Start latest-post Area -->
 			<section class="latest-post-area pb-120">
-				<div class="container no-padding">
+				<div class="container no-padding myalign">
 					<div class="row">
-						<div class="col-lg-8 post-list">
+						<div class="col-lg-12 post-list">
 							<!-- Start latest-post Area -->
 							<div class="latest-post-wrap">
 								<h4 class="cat-title">Latest News</h4>
@@ -54,51 +53,47 @@
 									if ($article->num_rows > 0) {
 									  while($row = $article->fetch_assoc()) {
 											echo '<div class="single-latest-post row align-items-center">';
-														echo '<div class="col-lg-6 post-left">';
-																echo '<div>';
-																			echo '<img class="zooming" id="'.$row['IdArticle'].'" onclick="goToArticle('.$row['IdArticle'].')" src="'.$row['PhotoArticle'].'" width="138" height="80" alt="article photo">';
-																echo '</div>';
-																echo '<a>';
-																	echo '<h4 onclick="goToArticle('.$row['IdArticle'].')" >'.$row['Title'].'</h4>';
-																echo '</a>';
-																echo '<ul class="meta">';
-																//	echo '<li><a href="#"><span class="lnr lnr-user"></span>Mark wiens</a></li>';
-																	echo '<li><a><span class="lnr lnr-calendar-full"></span>'.$row['Date'].'</a></li>';
-																	//echo '<li><a href="#"><span class="lnr lnr-bubble"></span>06 Comments</a></li>';
-																echo '</ul>';
-																echo '<p class="tohover" onclick="goToArticle('.$row['IdArticle'].')" >'.$row['Intro'].'</p>';
-															// BADGE
-															//	echo '<ul class="tags">';
-																//	echo '<li><a href="#">'.$row['Name'].'</a></li>';
-															//	echo '</ul>';
-											     echo '</div>';
-
-
-
-
-													echo '<div class="col-lg-6 post-right">';
-															echo '<div>';
-																echo '<img class="zooming" id="'.$row['IdArticle'].'" onclick="goToArticle('.$row['IdArticle'].')" src="'.$row['PhotoArticle'].'" width="138" height="80" alt="article photo">';
+												echo '<div class="col-lg-6 post-left">';
+													echo '<div style="padding: 3px;" class="single-list flex-row d-flex">';
+															echo '<div class="thumb">';
+																echo '<img class="zooming" onclick="goToArticle('.$row['IdArticle'].')" width="120" height="80" src="'.$row['PhotoArticle'].'" alt="photo most recent posts">';
 															echo '</div>';
-															echo '<a>';
-																echo '<h4 onclick="goToArticle('.$row['IdArticle'].')" >'.$row['Title'].'</h4>';
-															echo '</a>';
-															echo '<ul class="meta">';
-															//	echo '<li><a href="#"><span class="lnr lnr-user"></span>Mark wiens</a></li>';
-																echo '<li><a><span class="lnr lnr-calendar-full"></span>'.$row['Date'].'</a></li>';
-																//echo '<li><a href="#"><span class="lnr lnr-bubble"></span>06 Comments</a></li>';
-															echo '</ul>';
-															echo '<p class="tohover" onclick="goToArticle('.$row['IdArticle'].')" >'.$row['Intro'].'</p>';
+																echo '<div style="padding-left: 10px;" class="details">';
+																	echo '<a>';
+																		echo '<h6 class="tohover" onclick="goToArticle('.$row['IdArticle'].')" >'.$row['Title'].'</h6>';
+																	echo '</a>';
+																	echo '<a>';
+																		echo '<p class="tohover" onclick="goToArticle('.$row['IdArticle'].')" >'.$row['Intro'].'</hp>';
+																	echo '</a>';
+																	echo '<ul class="meta">';
+																		echo '<li"><a style="color: grey;" ><span class="lnr lnr-calendar-full"></span>'.$row['Date'].'</a></li>';
+																	echo '</ul>';
+															echo '</div>';
 													echo '</div>';
-													
+												echo '</div>';
+
+
+
+
+												echo '<div class="col-lg-6 post-left">';
+													echo '<div style="padding: 3px;" class="single-list flex-row d-flex">';
+															echo '<div class="thumb">';
+																echo '<img class="zooming" onclick="goToArticle('.$row['IdArticle'].')" width="120" height="80" src="'.$row['PhotoArticle'].'" alt="photo most recent posts">';
+															echo '</div>';
+																echo '<div style="padding-left: 10px;" class="details">';
+																	echo '<a>';
+																		echo '<h6 class="tohover" onclick="goToArticle('.$row['IdArticle'].')" >'.$row['Title'].'</h6>';
+																	echo '</a>';
+																	echo '<a>';
+																		echo '<p class="tohover" onclick="goToArticle('.$row['IdArticle'].')" >'.$row['Intro'].'</hp>';
+																	echo '</a>';
+																	echo '<ul class="meta">';
+																		echo '<li"><a style="color: grey;" ><span class="lnr lnr-calendar-full"></span>'.$row['Date'].'</a></li>';
+																	echo '</ul>';
+															echo '</div>';
+													echo '</div>';
+												echo '</div>';
 											echo '</div>';
-
-
-
-
-
-
-
 
 
 
@@ -111,24 +106,24 @@
 									//$conn->close();
 							 ?>
 
-
 							<!--	<div class="load-more">
 									<a href="#" class="primary-btn">Load More Posts</a>
 								</div> -->
 							</div>
+
 						</div>
 
 
 
-		<?php require 'most_popular.php'?>
+
 					</div>
+
 				</div>
+
 			</section>
+
 			<!-- End latest-post Area -->
 		</div>
-
-
-
 
 
 

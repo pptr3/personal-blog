@@ -5,9 +5,9 @@
 .zooming:hover {
   filter: grayscale(50%);
   border-width: 20px;
-  border: 2px dotted gray;
 }
 
-.zooming {
-  border-radius: 4%;
+.myalign {
+  width: 50%;
+  margin: 0 auto;
 }
