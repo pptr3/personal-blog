@@ -37,96 +37,55 @@
 
 	<?php require 'header.php';?>
   <?php require_once 'dbconnection.php';?>
-			<!-- End top-post Area -->
-			<!-- Start latest-post Area -->
-			<section class="latest-post-area pb-120">
-				<div class="container no-padding myalign">
-					<div class="row">
-						<div class="col-lg-12 post-list">
-							<!-- Start latest-post Area -->
-							<div class="latest-post-wrap">
-								<h4 class="cat-title">Latest News</h4>
-								<?php
-									$query_sql="SELECT * FROM Article a, Badge b WHERE a.IdBadge = b.IdBadge";
-									$article = $conn->query($query_sql);
 
-									if ($article->num_rows > 0) {
-									  while($row = $article->fetch_assoc()) {
-											echo '<div class="single-latest-post row align-items-center">';
-												echo '<div class="col-lg-6 post-left">';
-													echo '<div style="padding: 3px;" class="single-list flex-row d-flex">';
-															echo '<div class="thumb">';
-																echo '<img class="zooming" onclick="goToArticle('.$row['IdArticle'].')" width="120" height="80" src="'.$row['PhotoArticle'].'" alt="photo most recent posts">';
-															echo '</div>';
-																echo '<div style="padding-left: 10px;" class="details">';
-																	echo '<a>';
-																		echo '<h6 class="tohover" onclick="goToArticle('.$row['IdArticle'].')" >'.$row['Title'].'</h6>';
-																	echo '</a>';
-																	echo '<a>';
-																		echo '<p class="tohover" onclick="goToArticle('.$row['IdArticle'].')" >'.$row['Intro'].'</hp>';
-																	echo '</a>';
-																	echo '<ul class="meta">';
-																		echo '<li"><a style="color: grey;" ><span class="lnr lnr-calendar-full"></span>'.$row['Date'].'</a></li>';
-																	echo '</ul>';
-															echo '</div>';
-													echo '</div>';
-												echo '</div>';
+	<div class="container">
+		<div class="row">
+		  <div class="col-sm-8">
+				<div class="row">
+					<?php
+					  $query_sql="SELECT * FROM Article a, Badge b WHERE a.IdBadge = b.IdBadge";
+					  $article = $conn->query($query_sql);
 
-
-
-
-												echo '<div class="col-lg-6 post-left">';
-													echo '<div style="padding: 3px;" class="single-list flex-row d-flex">';
-															echo '<div class="thumb">';
-																echo '<img class="zooming" onclick="goToArticle('.$row['IdArticle'].')" width="120" height="80" src="'.$row['PhotoArticle'].'" alt="photo most recent posts">';
-															echo '</div>';
-																echo '<div style="padding-left: 10px;" class="details">';
-																	echo '<a>';
-																		echo '<h6 class="tohover" onclick="goToArticle('.$row['IdArticle'].')" >'.$row['Title'].'</h6>';
-																	echo '</a>';
-																	echo '<a>';
-																		echo '<p class="tohover" onclick="goToArticle('.$row['IdArticle'].')" >'.$row['Intro'].'</hp>';
-																	echo '</a>';
-																	echo '<ul class="meta">';
-																		echo '<li"><a style="color: grey;" ><span class="lnr lnr-calendar-full"></span>'.$row['Date'].'</a></li>';
-																	echo '</ul>';
-															echo '</div>';
-													echo '</div>';
-												echo '</div>';
-											echo '</div>';
-
-
-
-
-
-
-
-									  }
-									}
-									//$conn->close();
-							 ?>
-
-							<!--	<div class="load-more">
-									<a href="#" class="primary-btn">Load More Posts</a>
-								</div> -->
-							</div>
-
-						</div>
-
-
-
-
-					</div>
-
+					  if ($article->num_rows > 0) {
+					    while($row = $article->fetch_assoc()) {
+								echo	'<div class="col-sm-6">';
+										echo	'<div class="row">';
+										 echo	'<div class="col-sm-6">';
+											 echo '<img class="zooming" onclick="goToArticle('.$row['IdArticle'].')" width="140" height="90" src="'.$row['PhotoArticle'].'" alt="photo most recent posts">';
+										 echo	'</div>';
+										 echo	'<div class="col-sm-6">';
+											 echo '<a>';
+												 echo '<h6 class="tohover" onclick="goToArticle('.$row['IdArticle'].')" >'.$row['Title'].'</h6>';
+											 echo '</a>';
+										 echo	'</div>';
+										 echo	'<div class="col">';
+											 echo '<a>';
+												 echo '<p class="tohover" onclick="goToArticle('.$row['IdArticle'].')" >'.$row['Intro'].'</hp>';
+											 echo '</a>';
+											 echo	'<div class="col">';
+												echo	'<button type="button" name="button">read more</button>';
+											echo	'</div>';
+											echo	'<div class="col">';
+												echo '<ul class="meta">';
+													echo '<li"><a style="color: grey;" ><span class="lnr lnr-calendar-full"></span>'.$row['Date'].'</a></li>';
+												echo '</ul>';
+										 echo	'</div>';
+										 echo	'</div>';
+									 echo	'</div>';
+									echo	'</div>';
+								}
+							}
+								?>
 				</div>
-
-			</section>
-
-			<!-- End latest-post Area -->
-		</div>
+			</div>
 
 
 
+
+
+	  <div class="col-sm-4"><?php require 'most_popular.php'?></div>
+	</div>
+</div>
 
 	<?php require 'footer.php'?>
 
@@ -140,7 +99,7 @@
 	}
 </script>
 
-
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 		<script src="js/vendor/jquery-2.2.4.min.js"></script>
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
 		<script src="js/vendor/bootstrap.min.js"></script>
