@@ -34,8 +34,21 @@
 
     <?php require 'header.php'?>
 
-    <embed id="content" src="resume/Resume.pdf" width="100%" height="800px">
+    <div class="site-main-container">
 
+      <section class="top-post-area pt-10">
+        <div class="container no-padding">
+          <div class="row">
+            <div class="col-lg-12">
+              <div class="news-tracker-wrap">
+                <h6><a href="https://docs.google.com/document/d/1uRTHiM3hcZdW-yiOXaePntyEPhLF6EqoH1Ir0WFn8Js/edit?usp=sharing">If you can not see the curriculm, click here.</a></h6>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+    <embed id="content" src="resume/Resume.pdf" width="100%" height="800px">
 
 
 

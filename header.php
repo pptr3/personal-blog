@@ -30,10 +30,7 @@
     <div class="container no-padding">
       <div class="row">
         <div class="col-lg-12">
-          <div class="hero-nav-area">
-            <h1 class="text-white">Petru Potrimba's Blog</h1>
-
-          </div>
+            <img src="res/agg.jpg" alt="aldo giovanni e giacomo header photo" style="height: 100%; width: 100%; object-fit: contain">
         </div>
         <div class="col-lg-12">
           <div class="news-tracker-wrap">
@@ -43,3 +40,4 @@
       </div>
     </div>
   </section>
+</div>

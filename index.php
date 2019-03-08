@@ -31,6 +31,7 @@
 		<link rel="stylesheet" href="css/main.css">
 		<link rel="stylesheet" href="mystyle.css">
 
+
 	</head>
 	<body>
 
@@ -53,15 +54,10 @@
 									if ($article->num_rows > 0) {
 									  while($row = $article->fetch_assoc()) {
 											echo '<div class="single-latest-post row align-items-center">';
-														echo '<div class="col-lg-5 post-left">';
-																echo '<div ">';
-																	echo '<img class="zooming" id="'.$row['IdArticle'].'" onclick="goToArticle('.$row['IdArticle'].')" src="'.$row['PhotoArticle'].'" width="238" height="150" alt="article photo">';
+														echo '<div class="col-lg-6 post-left">';
+																echo '<div>';
+																			echo '<img class="zooming" id="'.$row['IdArticle'].'" onclick="goToArticle('.$row['IdArticle'].')" src="'.$row['PhotoArticle'].'" width="138" height="80" alt="article photo">';
 																echo '</div>';
-															//	echo '<ul class="tags">';
-																//	echo '<li><a href="#">'.$row['Name'].'</a></li>';
-															//	echo '</ul>';
-															echo '</div>';
-															echo '<div class="col-lg-7 post-right">';
 																echo '<a>';
 																	echo '<h4 onclick="goToArticle('.$row['IdArticle'].')" >'.$row['Title'].'</h4>';
 																echo '</a>';
@@ -71,8 +67,45 @@
 																	//echo '<li><a href="#"><span class="lnr lnr-bubble"></span>06 Comments</a></li>';
 																echo '</ul>';
 																echo '<p class="tohover" onclick="goToArticle('.$row['IdArticle'].')" >'.$row['Intro'].'</p>';
-														echo '</div>';
+															// BADGE
+															//	echo '<ul class="tags">';
+																//	echo '<li><a href="#">'.$row['Name'].'</a></li>';
+															//	echo '</ul>';
+											     echo '</div>';
+
+
+
+
+													echo '<div class="col-lg-6 post-right">';
+															echo '<div>';
+																echo '<img class="zooming" id="'.$row['IdArticle'].'" onclick="goToArticle('.$row['IdArticle'].')" src="'.$row['PhotoArticle'].'" width="138" height="80" alt="article photo">';
+															echo '</div>';
+															echo '<a>';
+																echo '<h4 onclick="goToArticle('.$row['IdArticle'].')" >'.$row['Title'].'</h4>';
+															echo '</a>';
+															echo '<ul class="meta">';
+															//	echo '<li><a href="#"><span class="lnr lnr-user"></span>Mark wiens</a></li>';
+																echo '<li><a><span class="lnr lnr-calendar-full"></span>'.$row['Date'].'</a></li>';
+																//echo '<li><a href="#"><span class="lnr lnr-bubble"></span>06 Comments</a></li>';
+															echo '</ul>';
+															echo '<p class="tohover" onclick="goToArticle('.$row['IdArticle'].')" >'.$row['Intro'].'</p>';
+													echo '</div>';
+													
 											echo '</div>';
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 									  }
 									}
 									//$conn->close();
@@ -113,7 +146,6 @@
 </script>
 
 
-
 		<script src="js/vendor/jquery-2.2.4.min.js"></script>
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
 		<script src="js/vendor/bootstrap.min.js"></script>
@@ -129,5 +161,7 @@
 		<script src="js/owl.carousel.min.js"></script>
 		<script src="js/mail-script.js"></script>
 		<script src="js/main.js"></script>
+		<!-- Latest compiled and minified CSS -->
+
 	</body>
 </html>
