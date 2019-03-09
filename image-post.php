@@ -48,7 +48,7 @@
 									  while($row = $article->fetch_assoc()) {
 											echo '<div class="single-post-wrap">';
 												echo '<div class="feature-img-thumb relative">';
-													echo '<img width="200" height="400" src="'.$row['PhotoArticle'].'" alt="">';
+													echo '<img id="img" width="200" height="400" src="'.$row['PhotoArticle'].'" alt="">';
 												echo '</div>';
 												echo '<div class="content-wrap">';
 

@@ -40,7 +40,7 @@
 
 	<div class="container">
 		<div class="row">
-		  <div class="col-sm-8">
+		  <div class="col-sm-8" id="mydiv">
 				<div class="row">
 					<?php
 					  $query_sql="SELECT * FROM Article a, Badge b WHERE a.IdBadge = b.IdBadge";
@@ -60,10 +60,10 @@
 										 echo	'</div>';
 										 echo	'<div class="col">';
 											 echo '<a>';
-												 echo '<p class="tohover" onclick="goToArticle('.$row['IdArticle'].')" >'.$row['Intro'].'</hp>';
+												 echo '<p>'.$row['Intro'].'</hp>';
 											 echo '</a>';
 											 echo	'<div class="col">';
-												echo	'<button type="button" name="button">read more</button>';
+												echo	'<button onclick="goToArticle('.$row['IdArticle'].')" type="button" name="button">Read More</button>';
 											echo	'</div>';
 											echo	'<div class="col">';
 												echo '<ul class="meta">';
@@ -95,7 +95,7 @@
 
 <script type="text/javascript">
 	function goToArticle(id) {
-		  window.location.href ="image-post.php?" + "id=" + id;
+		  window.location.href ="image-post.php?" + "id=" + id + "#img";
 	}
 </script>
 
