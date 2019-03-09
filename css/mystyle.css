@@ -1,0 +1,19 @@
+.tohover:hover {
+  color: yellow !important;
+
+}
+
+.zooming:hover {
+  filter: grayscale(100%) !important;
+}
+
+#mydiv {
+  background-color: white;
+}
+
+#readmoredate {
+  text-items: left;
+}
+ #somestyle {
+   padding: 1%;
+ }

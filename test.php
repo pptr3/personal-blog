@@ -40,53 +40,31 @@
 
 	<div class="container">
 		<div class="row">
-		  <div class="col-sm-8" id="mydiv">
-				<div class="row">
-					<?php
-					  $query_sql="SELECT * FROM Article a, Badge b WHERE a.IdBadge = b.IdBadge";
-					  $article = $conn->query($query_sql);
+		  <div class="col-sm-8">
+        <div class="row">
+          <div class="col-sm-6">
+              <div class="col">
+                <div style="float:left; background:red;"><img src="res/test.jpg" width="150" height="100"></div>
+                <div style="float:none; background:yellow;">
+                  Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est <br>
+                </div>
+                <button onclick="goToArticle('.$row['IdArticle'].')" type="button" name="button"><a href="#">Read More</a></button> <br>
+                <a href="#">Date dd dd</a>
+             </div>
+          </div>
+          <div class="col-sm-6">
+              <div class="col">
+                <div style="float:left; background:red;"><img src="res/test.jpg" width="150" height="100"></div>
+                <div style="float:none; background:yellow;">
+                  Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est <br>
+                </div>
+                <button onclick="goToArticle('.$row['IdArticle'].')" type="button" name="button"><a href="#">Read More</a></button> <br>
+                <a href="#">Date dd dd</a>
+             </div>
+          </div>
 
-					  if ($article->num_rows > 0) {
-					    while($row = $article->fetch_assoc()) {
-								echo '<div id="somestyle" class="col-sm-6">';
-										echo '<div class="col">';
-											echo '<div style="float:left; padding-right: 4%;"><img class="zooming" onclick="goToArticle('.$row['IdArticle'].')" width="140" height="90" src="'.$row['PhotoArticle'].'" alt="photo most recent posts"></div>';
-											echo '<div style="float:none;">';
-													echo '<a><h6 class="tohover" onclick="goToArticle('.$row['IdArticle'].')" >'.$row['Title'].'</h6></a>';
-													echo '<p>'.$row['Intro'].'</p>';
-													echo '<button onclick="goToArticle('.$row['IdArticle'].')" type="button" name="button"><a href="#">Read More</a></button>';
-											echo '</div>';
-											echo '<a style="color: grey;" ><span class="lnr lnr-calendar-full"></span>'.$row['Date'].'</a>';
-									 echo '</div>';
-								echo '</div>';
-							}
-						}
-				?>
-				</div>
-			</div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+        </div>
+		</div>
 
 
 
