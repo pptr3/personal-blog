@@ -29,7 +29,7 @@
 		<link rel="stylesheet" href="css/owl.carousel.css">
 		<link rel="stylesheet" href="css/jquery-ui.css">
 		<link rel="stylesheet" href="css/main.css">
-		<link rel="stylesheet" href="css/mystyle.css">
+		<link rel="stylesheet" href="csss.css">
 
 
 	</head>
@@ -50,17 +50,17 @@
 					    while($row = $article->fetch_assoc()) {
 								echo '<div id="somestyle" class="col-sm-6">';
 										echo '<div class="col">';
-											echo '<div style="float:left; padding-right: 4%;"><img class="zooming" onclick="goToArticle('.$row['IdArticle'].')" width="140" height="90" src="'.$row['PhotoArticle'].'" alt="photo most recent posts"></div>';
+											echo '<div style="float:left; padding-right: 4%;"><img class="zooming" onclick="goToArticle('.$row['IdArticle'].')" width="140" height="120" src="'.$row['PhotoArticle'].'" alt="photo most recent posts"></div>';
 											echo '<div style="float:none;">';
-													echo '<a><h6 class="tohover" onclick="goToArticle('.$row['IdArticle'].')" >'.$row['Title'].'</h6></a>';
-													echo '<p>'.$row['Intro'].'</p>';
-													echo '<button onclick="goToArticle('.$row['IdArticle'].')" type="button" name="button"><a href="#">Read More</a></button>';
+													echo '<a href="" ><h6 class="tohover" onclick="goToArticle('.$row['IdArticle'].')" >'.$row['Title'].'</h6></a>';
+													echo '<p class="intro" >'.$row['Intro'].'</p>';
+													echo '<button class="readmore" onclick="goToArticle('.$row['IdArticle'].')">Read More</button>';
 											echo '</div>';
-											echo '<a style="color: grey;" ><span class="lnr lnr-calendar-full"></span>'.$row['Date'].'</a>';
+											echo '<a class="date">'.$row['Date'].'</a>';
 									 echo '</div>';
 								echo '</div>';
-							}
 						}
+					}
 				?>
 				</div>
 			</div>

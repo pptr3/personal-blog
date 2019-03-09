@@ -1,0 +1,101 @@
+.tohover:hover {
+  color: #EA9629 !important;
+}
+
+.tohover {
+  color: #BC360A;
+  font-weight: 605;
+}
+.zooming:hover {
+  filter: grayscale(1%);
+  cursor: pointer;
+}
+
+#mydiv {
+  background-color: white;
+}
+
+#readmoredate {
+  text-items: left;
+}
+ #somestyle {
+   padding: 1%;
+ }
+
+.intro {
+ font-size: 13px;
+ color: black;
+ font-family: "Arial"
+}
+
+
+.readmore {
+  background-color: white; /* Green */
+  border: none;
+  color: #4CAF50;
+  padding: 5px 15px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 12px;
+  margin: 4px 2px;
+  -webkit-transition-duration: 0.4s; /* Safari */
+  transition-duration: 0.4s;
+  cursor: pointer;
+  font-family: "Arial"
+}
+
+.readmore {
+  background-color: #4CAF50;
+  color: white;
+  border: 2px solid #4CAF50;
+}
+
+.readmore:hover {
+  background-color: white;
+  color: #4CAF50;
+}
+
+.date {
+   font-family: "Arial"
+   color: black !important;
+   font-size: 12px;
+}
+
+
+::selection {
+  color: white !important;
+  background: #82CFF2 !important;
+}
+
+
+.most_popular {
+  background-color: #90EE90;
+}
+
+.row2 {
+  padding: 3%;
+}
+
+.fa {
+  padding: 20px;
+  font-size: 30px;
+  width: 50px;
+  text-align: center;
+  text-decoration: none;
+  margin: 5px 2px;
+}
+
+.fa:hover {
+    opacity: 0.9;
+}
+
+.fa-facebook {
+  background: #3B5998;
+  color: white;
+}
+
+.fa-linkedin {
+  background: #007bb5;
+  color: white;
+}
