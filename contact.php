@@ -1,43 +1,42 @@
 <!DOCTYPE html>
 <html lang="zxx" class="no-js">
 	<head>
+		<!-- Mobile Specific Meta -->
 		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 		<meta charset="UTF-8">
 		<title>Petru Potrimba's Blog</title>
 		<link href="https://fonts.googleapis.com/css?family=Poppins:100,200,400,300,500,600,700" rel="stylesheet">
+		<link rel="icon" href="res/test.jpg">
 		<link rel="stylesheet" href="try.css">
-
 	</head>
 	<body>
 
 	<?php require 'header.php';?>
   <?php require_once 'dbconnection.php';?>
 
-
-							HERE CONTACT INFO
-
-
-
-		<?php require 'most_popular.php'?>
-
-
-
-
-
-
-
-
-	<?php require 'footer.php'?>
-
-
-
-
-
-<script type="text/javascript">
-	function goToArticle(id) {
-		  window.location.href ="image-post.php?" + "id=" + id;
-	}
-</script>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-	</body>
+	<div class="container">
+			<div class="row">
+			  <div class="col-sm-8" id="mydiv">
+							<div class="row">
+								<div class="col-sm-12" id="mydiv">
+										<h2>Contacts</h2>
+								</div>
+								<div class="col-sm-12" id="mydiv">
+										<p>Contact me at these following contacts:</p>
+										<ol>
+											<li>Email: ppotrimba@gmail.com</li>
+											<li>Phone number: +39 3896469181</li>
+										</ol>
+								</div>
+							</div>
+					</div>
+		  		<div class="col-sm-4"><?php require 'most_popular.php'?></div>
+			</div>
+			<div class="row">
+					<div class="col-sm-12">
+							<!-- <?php require 'footer.php'?> -->
+					</div>
+			</div>
+</div>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script></body>
 </html>
