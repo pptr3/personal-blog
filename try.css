@@ -20,8 +20,8 @@
   text-items: left;
 }
  #somestyle {
-   padding: 1%;
-   padding-top: 3%;
+   padding: 1% !important;
+   padding-top: 3% !important;
  }
 
 .intro {
@@ -100,4 +100,18 @@
 .fa-linkedin {
   background: #007bb5;
   color: white;
+}
+
+#header {
+  background-color: black;
+  padding-top: 3%;
+  padding-bottom: 3%;
+}
+
+.headerelement {
+  color: white;
+}
+
+.headerelement:hover {
+  color: #EA9629;
 }
