@@ -34,64 +34,48 @@
 
 	<?php require 'header.php';?>
   <?php require_once 'dbconnection.php';?>
-			<!-- End top-post Area -->
-			<!-- Start latest-post Area -->
-			<section class="latest-post-area pb-120">
-				<div class="container no-padding">
-					<div class="row">
-						<div class="col-lg-8 post-list">
-									<?php
-									$id = $_GET["id"];
-									$query_sql="SELECT * FROM Article a, Badge b WHERE a.IdBadge = b.IdBadge AND IdArticle = $id";
-									$article = $conn->query($query_sql);
-									if ($article->num_rows > 0) {
-									  while($row = $article->fetch_assoc()) {
-											echo '<div class="single-post-wrap">';
-												echo '<div class="feature-img-thumb relative">';
-													echo '<img id="img" width="200" height="400" src="'.$row['PhotoArticle'].'" alt="">';
-												echo '</div>';
-												echo '<div class="content-wrap">';
 
-												// READING TIME
-												echo '<p> <b>Reading time</b>: '.$row['ReadingTime'].'</p>';
 
-										  // BADGE
-										//	echo '<ul class="tags mt-10">';
-											//	echo '<li><a href="#">'.$row['Name'].'</a></li>';
-										//	echo '</ul>';
 
-												// TITLE
-												echo'<a>';
-													echo '<h3>'.$row['Title'].'</h3>';
-												echo '</a>';
 
-												// DATE
-												echo '<ul class="meta pb-20">';
-													echo '<li><a><span class="lnr lnr-calendar-full"></span>'.$row['Date'].'</a></li>';
-												echo '</ul>';
+
+
+	<div class="container">
+			<div class="row">
+			  <div class="col-sm-9" id="mydiv">
+							<div class="row">
+								<?php
+								$id = $_GET["id"];
+								$query_sql="SELECT * FROM Article a, Badge b WHERE a.IdBadge = b.IdBadge AND IdArticle = $id";
+								$article = $conn->query($query_sql);
+								if ($article->num_rows > 0) {
+									while($row = $article->fetch_assoc()) {
+										echo '<div id="somestyle" class="col-sm-12">';
+														echo '<div style="padding-left:16%;">';
+																echo '<div><img width="80%" height="auto" src="'.$row['PhotoArticle'].'" alt="photo most recent posts"></div>';
+																echo '<p> <b>Reading time</b>: '.$row['ReadingTime'].'</p>';
+																echo '<a>'.$row['Date'].'</a>';
+																echo '<h2>'.$row['Title'].'</h2>';
+																echo '<p>'.$row['Intro'].'</p>';
+														echo '</div>';
 												echo '<p>'.$row['Body'].'</p>';
+										echo '</div>';
 
-										}
 									}
-								//$conn->close();
-								?>
-<!--########################################## HERE MY HTML ARTICLE ##########################################-->
-
-											<!--<p>Hello World</p>-->
-
-<!--######################################### FINISH ARTICLE ########################################## -->
-							</div>
+								}
+							?>
 						</div>
-						<!-- End single-post Area -->
 					</div>
-
-		<?php require 'most_popular.php'?>
-				</div>
+		  		<div class="col-sm-3"><?php require 'most_popular.php'?></div>
 			</div>
-		</section>
-		<!-- End latest-post Area -->
-	</div>
-<?php require 'footer.php'?>
+			<div class="row">
+					<div class="col-sm-12">
+							<?php require 'footer.php'?>
+					</div>
+			</div>
+</div>
+
+
 
 	<script src="js/vendor/jquery-2.2.4.min.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>

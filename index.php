@@ -29,7 +29,7 @@
 		<link rel="stylesheet" href="css/owl.carousel.css">
 		<link rel="stylesheet" href="css/jquery-ui.css">
 		<link rel="stylesheet" href="css/main.css">
-		<link rel="stylesheet" href="csss.css">
+		<link rel="stylesheet" href="try.css">
 
 
 	</head>
@@ -52,7 +52,7 @@
 										echo '<div class="col">';
 											echo '<div style="float:left; padding-right: 4%;"><img class="zooming" onclick="goToArticle('.$row['IdArticle'].')" width="140" height="120" src="'.$row['PhotoArticle'].'" alt="photo most recent posts"></div>';
 											echo '<div style="float:none;">';
-													echo '<a href="" ><h6 class="tohover" onclick="goToArticle('.$row['IdArticle'].')" >'.$row['Title'].'</h6></a>';
+													echo '<h6 class="tohover" onclick="goToArticle('.$row['IdArticle'].')" >'.$row['Title'].'</h6>';
 													echo '<p class="intro" >'.$row['Intro'].'</p>';
 													echo '<button class="readmore" onclick="goToArticle('.$row['IdArticle'].')">Read More</button>';
 											echo '</div>';
@@ -64,34 +64,6 @@
 				?>
 				</div>
 			</div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 	  <div class="col-sm-4"><?php require 'most_popular.php'?></div>
 	</div>
 </div>

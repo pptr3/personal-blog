@@ -1,5 +1,6 @@
 .tohover:hover {
   color: #EA9629 !important;
+  cursor: pointer;
 }
 
 .tohover {
@@ -7,7 +8,7 @@
   font-weight: 605;
 }
 .zooming:hover {
-  filter: grayscale(1%);
+  filter: grayscale(50%) !important;
   cursor: pointer;
 }
 
@@ -20,6 +21,7 @@
 }
  #somestyle {
    padding: 1%;
+   padding-top: 3%;
  }
 
 .intro {
