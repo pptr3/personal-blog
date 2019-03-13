@@ -7,11 +7,12 @@
 		<title>Petru Potrimba's Blog</title>
 		<link href="https://fonts.googleapis.com/css?family=Poppins:100,200,400,300,500,600,700" rel="stylesheet">
 		<link rel="icon" href="res/test.jpg">
-		<link rel="stylesheet" href="try.css">
+		<link rel="stylesheet" href="test.css">
+		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 	</head>
 	<body>
 
-	<?php require 'header.php';?>
+	<?php require 'newheader.php';?>
   <?php require_once 'dbconnection.php';?>
 
 	<div class="container">
@@ -32,7 +33,7 @@
 																echo '<h2>'.$row['Title'].'</h2>';
 																echo '<p>'.$row['Intro'].'</p>';
 														echo '</div>';
-												echo '<p>'.$row['Body'].'</p>';
+														echo '<p>'.$row['Body'].'</p>';
 										echo '</div>';
 
 									}
@@ -40,7 +41,7 @@
 							?>
 						</div>
 					</div>
-		  		<div class="col-sm-3"><?php require 'most_popular.php'?></div>
+		  		<div class="col-lg-3 col-md-12 col-sm-12"><?php require 'most_popular.php'?></div>
 			</div>
 			<div class="row">
 					<div class="col-sm-12">

@@ -7,7 +7,7 @@
   <body>
     <div class="container">
   		<div class="row">
-          <div class="col-sm-12 head" id="header">
+          <div class="col-sm-12 head" id="newheader">
           		  <div class="col-sm-6">
             				<div class="row">
                         <div class="col-lg-3 col-md-6 col-sm-12"><a class="headerelement" href="index.php">HOME</a></div>
