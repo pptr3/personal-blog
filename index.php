@@ -5,12 +5,12 @@
 		<meta charset="UTF-8">
 		<title>Petru Potrimba's Blog</title>
 		<link rel="icon" href="res/test.jpg">
-		<link rel="stylesheet" href="test.css">
+		<link rel="stylesheet" href="css.css">
 		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 	</head>
 	<body>
 
-	<?php require 'header.php';?>
+	<?php require 'header.html';?>
   <?php require_once 'dbconnection.php';?>
 
 	<div class="container">

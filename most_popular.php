@@ -5,7 +5,7 @@
 		<meta charset="UTF-8">
 		<title>Petru Potrimba's Blog</title>
 		<link rel="icon" href="res/test.jpg">
-		<link rel="stylesheet" href="test.css">
+		<link rel="stylesheet" href="css.css">
 	</head>
 <body>
 	<?php require_once 'dbconnection.php';?>
