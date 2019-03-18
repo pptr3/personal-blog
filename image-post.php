@@ -11,9 +11,9 @@
 		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 	</head>
 	<body>
-
-	<?php require 'newheader.php';?>
+	<?php require 'header.php';?>
   <?php require_once 'dbconnection.php';?>
+	<?php include 'lib/Mobile_Detect.php';?>
 
 	<div class="container">
 			<div class="row">
@@ -22,6 +22,18 @@
 								<?php
 								$id = $_GET["id"];
 								$query_sql="SELECT * FROM Article a, Badge b WHERE a.IdBadge = b.IdBadge AND IdArticle = $id";
+								$detect = new Mobile_Detect();
+								$multiplier = 1;
+								// Check for any mobile device.
+								if ($detect->isMobile()) {
+									$multiplier = 1.44;
+								}
+
+								if (preg_match('/(tablet|ipad|playbook)|(android(?!.*(mobi|opera mini)))/i', strtolower($_SERVER['HTTP_USER_AGENT']))) {
+									$multiplier = 1.05;
+								}
+
+
 								$article = $conn->query($query_sql);
 								if ($article->num_rows > 0) {
 									while($row = $article->fetch_assoc()) {
@@ -33,7 +45,9 @@
 																echo '<h2>'.$row['Title'].'</h2>';
 																echo '<p>'.$row['Intro'].'</p>';
 														echo '</div>';
-														echo '<p>'.$row['Body'].'</p>';
+														echo '<object data="'.$row['NameArticle'].'.html" width="100%" height="'.$multiplier*$row['HeightArticle'].'%">';
+											      	echo '	<p>Your browser doesn’t support the object tag.</p>';
+											      echo '</object>';
 										echo '</div>';
 
 									}

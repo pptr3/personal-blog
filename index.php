@@ -25,7 +25,7 @@
 					    while($row = $article->fetch_assoc()) {
 								echo '<div id="somestyle" class="col-sm-6">';
 										echo '<div class="col">';
-											echo '<div style="float:left; padding-right: 4%;"><img class="zooming" onclick="goToArticle('.$row['IdArticle'].')" width="140" height="120" src="'.$row['PhotoArticle'].'" alt="photo most recent posts"></div>';
+											echo '<div style="float:left; padding-right: 4%;"><img class="zooming" onclick="goToArticle('.$row['IdArticle'].')" width="140" height="120" src="'.$row['PhotoArticle'].'" alt="Photo article"></div>';
 											echo '<div style="float:none;">';
 													echo '<h6 class="tohover" onclick="goToArticle('.$row['IdArticle'].')" >'.$row['Title'].'</h6>';
 													echo '<p class="intro" >'.$row['Intro'].'</p>';
