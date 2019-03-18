@@ -55,7 +55,16 @@
 							?>
 						</div>
 					</div>
-		  		<div class="col-lg-3 col-md-12 col-sm-12"><?php require 'most_popular.php'?></div>
+		  		<div class="col-lg-3 col-md-12 col-sm-12">
+						<?php
+								if (!$detect->isMobile()) {
+									require 'most_popular.php';
+								}
+								if (preg_match('/(tablet|ipad|playbook)|(android(?!.*(mobi|opera mini)))/i', strtolower($_SERVER['HTTP_USER_AGENT']))) {
+									require 'most_popular.php';
+								}
+						?>
+					</div>
 			</div>
 			<div class="row">
 					<div class="col-sm-12">
