@@ -97,29 +97,3 @@
   background: #007bb5;
   color: white;
 }
-
-#header {
-  background-color: black;
-  padding-top: 3%;
-  padding-bottom: 3%;
-  margin-top: 1%;
-  margin-left: 1%;
-}
-
-.headerelement {
-  color: white;
-}
-
-.headerelement:hover {
-  color: #EA9629;
-}
-
-.headerelement2 {
-  color: white;
-  padding-left: 20%;
-  font-size: 16px;
-}
-
-.headerelement2:hover {
-  color: #EA9629;
-}

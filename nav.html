@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    <style media="screen">
+      .nav ul {
+          *zoom:1;
+          list-style:none;
+          margin:0;
+          padding:0;
+          background:#333;
+      }
+      .nav ul:before,.nav ul:after {
+          content:"";
+          display:table;
+      }
+      .nav ul:after {
+          clear:both;
+      }
+      .nav ul > li {
+          float:left;
+          position:relative;
+      }
+      .nav a {
+          display:block;
+          padding:10px 20px;
+          line-height:1.2em;
+          color:#fff;
+          border-left:1px solid #595959;
+      }
+      .nav a:hover {
+          text-decoration:none;
+          background:#595959;
+      }
+      .nav li ul {
+          background:#333;
+      }
+      .nav li ul li {
+          width:200px;
+      }
+      .nav li ul a {
+          border:none;
+      }
+      .nav li ul a:hover {
+          background:rgba(0,0,0,0.2);
+      }
+
+      .nav li ul {
+          position:absolute;
+          left:0;
+          top:36px;
+          z-index:1;
+      }
+      .nav li ul li {
+          overflow:hidden;
+          height:0;
+          -webkit-transition:height 200ms ease-in;
+          -moz-transition:height 200ms ease-in;
+          -o-transition:height 200ms ease-in;
+          transition:height 200ms ease-in;
+      }
+      .nav ul > li:hover ul li {
+          height:36px;
+      }
+      nav {
+        background: #333 !important;
+      }
+
+      .nav-buttons {
+        display: inline;
+        color: white;
+        padding-left: 3%;
+        font-size: 115%;
+      }
+
+      #mynav {
+        background-color: black;
+        padding: 2%;
+      }
+
+      .nav {
+        display: none;
+      }
+
+      @media (max-width: 767px) {
+
+        #mynav {
+          display: none;
+        }
+
+        .nav {
+          display: inline;
+        }
+
+      }
+      .anav:hover {
+        color: #EA9629;
+        text-decoration: none;
+      }
+      .nav-buttons:hover {
+        color: #EA9629;
+        text-decoration: none;
+      }
+      .menu:hover {
+        color: white;
+      }
+
+    </style>
+  </head>
+  <body>
+    <nav class="nav">
+      <ul>
+          <li>
+              <a class="menu" href="#">Menu</a>
+              <ul>
+                  <li><a class="anav" href="index.php">HOME</a></li>
+                  <li><a class="anav" href="aboutme.php">ABOUT ME</a></li>
+                  <li><a class="anav" href="contact.php">CONTACT</a></li>
+                  <li><a class="anav" href="hireme.php">HIRE ME</a></li>
+              </ul>
+          </li>
+      </ul>
+    </nav>
+
+
+
+    <nav id="mynav">
+      <a class="nav-buttons" href="index.php">HOME</a>
+      <a class="nav-buttons" href="aboutme.php">ABOUT ME</a>
+      <a class="nav-buttons" href="contact.php">CONTACT</a>
+      <a class="nav-buttons" href="hireme.php">HIRE ME</a>
+    </nav>
+
+
+  </body>
+</html>

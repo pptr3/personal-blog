@@ -12,7 +12,7 @@
 	</head>
 	<body>
 
-	<?php require 'header.html';?>
+	<?php require 'nav.html';?>
   <?php require_once 'dbconnection.php';?>
 
 	<div class="container">

@@ -7,15 +7,23 @@
 		<title>Petru Potrimba's Blog</title>
 		<link href="https://fonts.googleapis.com/css?family=Poppins:100,200,400,300,500,600,700" rel="stylesheet">
 		<link rel="icon" href="res/test.jpg">
-		<link rel="stylesheet" href="css.css">
+		<link rel="stylesheet" href="css2.css">
 		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+		<style media="screen">
+		.anav {
+			color: white !important;
+		}
+
+		</style>
 	</head>
 	<body>
-	<?php require 'header2.html';?>
+  <?php require 'nav.html';?>
   <?php require_once 'dbconnection.php';?>
 	<?php include 'lib/Mobile_Detect.php';?>
 
 	<div class="container">
+
+
 			<div class="row">
 			  <div class="col-sm-9" id="mydiv">
 							<div class="row">
@@ -56,11 +64,7 @@
 						 }
 						?>
 					</div>
-			</div>
-			<div class="row">
-					<div class="col-sm-12">
-							<!-- <?php require 'footer.php'?> -->
-					</div>
+
 			</div>
 </div>
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script></body>
