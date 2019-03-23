@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="zxx" class="no-js">
+<html lang="en">
 	<head>
 		<!-- Mobile Specific Meta -->
 		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -17,7 +17,7 @@
 		</style>
 	</head>
 	<body>
-  <?php require 'nav.html';?>
+  <?php require 'nav_article.html';?>
   <?php require_once 'dbconnection.php';?>
 	<?php include 'lib/Mobile_Detect.php';?>
 
