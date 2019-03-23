@@ -17,7 +17,7 @@
 
 	<div class="container">
 			<div class="row">
-			  <div class="col-sm-8" id="mydiv">
+			  <div class="col-sm-9" id="mydiv">
 							<div class="row">
 								<div class="col-sm-12" id="mydiv">
 										<h2>Contacts</h2>
@@ -31,7 +31,7 @@
 								</div>
 							</div>
 					</div>
-		  		<div class="col-sm-4"><?php require 'most_popular.php'?></div>
+		  		<div class="col-sm-3"><?php require 'most_popular.php'?></div>
 			</div>
 </div>
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script></body>
