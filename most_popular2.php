@@ -9,11 +9,11 @@
 
 		<style media="screen">
 			.cool {
-				padding-left: 10%;
+				padding-left: 15%;
 				padding-top: 25%;
-				padding-bottom: 17%;
-				font-size: 120%;
-				font-family: oblique;
+        padding-right: 10%;
+				padding-bottom: 22%;
+				font-size: 145%;
 			}
 
 			.most_popular {
@@ -27,25 +27,40 @@
 
 			.pack {
 				padding-bottom: 12%;
+        padding-left: 5%;
 			}
 
 			.recent {
-				padding-bottom: 3%;
+				padding-bottom: 5%;
+        padding-left: 5%;
+        font-size: 120%;
 			}
 
 			.social {
 				padding-top: 5%;
 				padding-bottom: 3%;
+        padding-left: 5%;
 			}
+
+      .social2 {
+        padding-left: 5%;
+        font-size: 120%;
+      }
 
 			.social-button {
 				padding-right: 3%;
 			}
 
-			.author {
-				font-family: oblique;
-				color: black;
-			}
+      .author {
+        padding-left: 5%;
+				padding-bottom: 5%;
+        font-size: 125%;
+      }
+
+      .tohover {
+        font-size: 115%;
+      }
+
 		</style>
 
 	</head>
@@ -83,11 +98,11 @@
 
 			<div class="row">
 				<div class="col-sm-12 most_popular">
-					<b>Social</b>
+				  <p class="social2"><b>Social</b></p>
 					<section class="social">
-						<a class="social-button" href="https://www.facebook.com/petru.potrimba.77"><input type="image" name="facebook" value="facebook logo" src="article/img/fb-logo.png" width="12%" height="auto"></a>
-						<a class="social-button" href="https://www.linkedin.com/in/petru-potrimba-a065a0137/"><input type="image" name="facebook" value="linkedin logo" src="article/img/in-logo.png" width="12%" height="auto"></a>
-						<a class="social-button" href="https://github.com/Pptr95"><input type="image" name="facebook" value="facebook" src="article/img/github-logo.png" width="12%" height="auto"></a>
+						<a class="social-button" target="_blank" href="https://www.facebook.com/petru.potrimba.77"><input type="image" name="facebook" value="facebook logo" src="article/img/fb-logo.png" width="12%" height="auto"></a>
+						<a class="social-button" target="_blank" href="https://www.linkedin.com/in/petru-potrimba-a065a0137/"><input type="image" name="facebook" value="linkedin logo" src="article/img/in-logo.png" width="12%" height="auto"></a>
+						<a class="social-button" target="_blank" href="https://github.com/Pptr95"><input type="image" name="facebook" value="facebook" src="article/img/github-logo.png" width="12%" height="auto"></a>
 					</section>
 				</div>
 			</div>

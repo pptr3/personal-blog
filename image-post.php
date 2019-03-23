@@ -57,10 +57,10 @@
 		  		<div class="col-lg-3 col-md-12 col-sm-12">
 						 <?php
 						 if (!$detect->isMobile()) {
-							 require 'most_popular.php';
+							 require 'most_popular2.php';
 						 }
 						 if (preg_match('/(tablet|ipad|playbook)|(android(?!.*(mobi|opera mini)))/i', strtolower($_SERVER['HTTP_USER_AGENT']))) {
-							 require 'most_popular.php';
+							 require 'most_popular2.php';
 						 }
 						?>
 					</div>
