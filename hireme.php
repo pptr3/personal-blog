@@ -18,8 +18,11 @@
 	<div class="container">
 			<div class="row">
 			  <div class="col-sm-9" id="mydiv">
+					<div class="row">
+						<h1 style="padding-top: 5%;">Hire Me!</h1>
+					</div>
 							<div class="row">
-                <h6><a href="https://docs.google.com/document/d/1uRTHiM3hcZdW-yiOXaePntyEPhLF6EqoH1Ir0WFn8Js/edit?usp=sharing">If you can not see the curriculm, click here.</a></h6>
+                <h6 style="padding-top: 2%;" >If you cannot see the cv underneath, <a href="https://docs.google.com/document/d/1uRTHiM3hcZdW-yiOXaePntyEPhLF6EqoH1Ir0WFn8Js/edit?usp=sharing" target="_blank">click here.</a></h6>
                 <embed id="content" src="resume/Resume.pdf" width="100%" height="800px">
 							</div>
 					</div>

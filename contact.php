@@ -20,14 +20,14 @@
 			  <div class="col-sm-9" id="mydiv">
 							<div class="row">
 								<div class="col-sm-12" id="mydiv">
-										<h2>Contacts</h2>
+										<h1 style="padding-top: 5%;">Contacts</h1>
 								</div>
 								<div class="col-sm-12" id="mydiv">
-										<p>Contact me at these following contacts:</p>
-										<ol>
-											<li>Email: ppotrimba@gmail.com</li>
-											<li>Phone number: +39 3896469181</li>
-										</ol>
+										<p>Have some questions to ask me? Then contact me at the following references:</p>
+										<ul>
+											<li><b>Email</b>: ppotrimba@gmail.com</li>
+											<li><b>Phone number</b>: +39 3896469181</li>
+										</ul>
 								</div>
 							</div>
 					</div>

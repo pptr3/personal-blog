@@ -35,12 +35,12 @@
 								if ($article->num_rows > 0) {
 									while($row = $article->fetch_assoc()) {
 										echo '<div id="somestyle" class="col-sm-12">';
-														echo '<div style="padding-left:16%;">';
-																echo '<div><img width="80%" height="auto" src="'.$row['PhotoArticle'].'" alt="photo most recent posts"></div>';
-																echo '<p> <b>Reading time</b>: '.$row['ReadingTime'].'</p>';
-																echo '<a>'.$row['Date'].'</a>';
-																echo '<h2>'.$row['Title'].'</h2>';
-																echo '<p>'.$row['Intro'].'</p>';
+														echo '<div style="padding-left:12%;">';
+																echo '<div><img width="85%" height="auto" src="'.$row['PhotoArticle'].'" alt="photo most recent posts"></div>';
+																echo '<p style="padding-left:1%;"> <b>Reading time</b>: '.$row['ReadingTime'].'</p>';
+																echo '<p style="padding-left:1%;">'.$row['Date'].'</p>';
+															//	echo '<h2>'.$row['Title'].'</h2>';
+															//	echo '<p>'.$row['Intro'].'</p>';
 														echo '</div>';
 														include($row['NameArticle']. ".html");
 														//echo '<embed type="text/html" src="'.$row['NameArticle'].'.html" width="100%" style="height :100%;">';

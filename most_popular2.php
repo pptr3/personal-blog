@@ -96,7 +96,7 @@
 
 
 
-			<div class="row">
+			<!-- <div class="row">
 				<div class="col-sm-12 most_popular">
 				  <p class="social2"><b>Social</b></p>
 					<section class="social">
@@ -105,7 +105,7 @@
 						<a class="social-button" target="_blank" href="https://github.com/Pptr95"><input type="image" name="facebook" value="facebook" src="article/img/github-logo.png" width="12%" height="auto"></a>
 					</section>
 				</div>
-			</div>
+			</div> -->
 
 </body>
 <script type="text/javascript">
