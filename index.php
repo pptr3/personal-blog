@@ -27,8 +27,8 @@
 										echo '<div class="col">';
 											echo '<div style="float:left; padding-right: 4%;"><img class="zooming" onclick="goToArticle('.$row['IdArticle'].')" width="140" height="120" src="'.$row['PhotoArticle'].'" alt="Photo article"></div>';
 											echo '<div style="float:none;">';
-													echo '<h6 class="tohover" onclick="goToArticle('.$row['IdArticle'].')" >'.$row['Title'].'</h6>';
-													echo '<p class="intro" >'.$row['Intro'].'</p>';
+													echo '<h6 style="font-size: 120%;" class="tohover" onclick="goToArticle('.$row['IdArticle'].')" >'.$row['Title'].'</h6>';
+													echo '<p style="font-size: 95%;" class="intro" >'.$row['Intro'].'</p>';
 													echo '<button class="readmore" onclick="goToArticle('.$row['IdArticle'].')">Read More</button>';
 											echo '</div>';
 											echo '<a class="date">'.$row['Date'].'</a>';
@@ -42,7 +42,7 @@
 	  <div class="col-sm-3"><?php require 'most_popular.php'?></div>
 	</div>
 </div>
-
+<?php require 'footer.html'?>
 <script type="text/javascript">
 	function goToArticle(id) {
 		  window.location.href ="image-post.php?" + "id=" + id + "#img";

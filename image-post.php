@@ -22,50 +22,50 @@
 	<?php include 'lib/Mobile_Detect.php';?>
 
 	<div class="container">
+				<div class="row">
+				  <div class="col-sm-9" id="mydiv">
+								<div class="row">
+									<?php
+									$id = $_GET["id"];
+									$query_sql="SELECT * FROM Article a, Badge b WHERE a.IdBadge = b.IdBadge AND IdArticle = $id";
+									$article = $conn->query($query_sql);
+									$detect = new Mobile_Detect();
+									if ($article->num_rows > 0) {
+										while($row = $article->fetch_assoc()) {
+											echo '<div id="somestyle" class="col-sm-12">';
+															echo '<div style="padding-left:12%;">';
+																	echo '<div><img width="85%" height="auto" src="'.$row['PhotoArticle'].'" alt="photo most recent posts"></div>';
+																	echo '<p style="padding-left:1%;"> <b>Reading time</b>: '.$row['ReadingTime'].'</p>';
+																	echo '<p style="padding-left:1%;">'.$row['Date'].'</p>';
+																//	echo '<h2>'.$row['Title'].'</h2>';
+																//	echo '<p>'.$row['Intro'].'</p>';
+															echo '</div>';
+															include($row['NameArticle']. ".html");
+															//echo '<embed type="text/html" src="'.$row['NameArticle'].'.html" width="100%" style="height :100%;">';
+															//echo '<object data="'.$row['NameArticle'].'.html" width="100%" height="'.$multiplier*$row['HeightArticle'].'%">';
+												      	//echo '	<p>Your browser doesn’t support the object tag.</p>';
+												      //echo '</object>';
+											echo '</div>';
 
-
-			<div class="row">
-			  <div class="col-sm-9" id="mydiv">
-							<div class="row">
-								<?php
-								$id = $_GET["id"];
-								$query_sql="SELECT * FROM Article a, Badge b WHERE a.IdBadge = b.IdBadge AND IdArticle = $id";
-								$article = $conn->query($query_sql);
-								$detect = new Mobile_Detect();
-								if ($article->num_rows > 0) {
-									while($row = $article->fetch_assoc()) {
-										echo '<div id="somestyle" class="col-sm-12">';
-														echo '<div style="padding-left:12%;">';
-																echo '<div><img width="85%" height="auto" src="'.$row['PhotoArticle'].'" alt="photo most recent posts"></div>';
-																echo '<p style="padding-left:1%;"> <b>Reading time</b>: '.$row['ReadingTime'].'</p>';
-																echo '<p style="padding-left:1%;">'.$row['Date'].'</p>';
-															//	echo '<h2>'.$row['Title'].'</h2>';
-															//	echo '<p>'.$row['Intro'].'</p>';
-														echo '</div>';
-														include($row['NameArticle']. ".html");
-														//echo '<embed type="text/html" src="'.$row['NameArticle'].'.html" width="100%" style="height :100%;">';
-														//echo '<object data="'.$row['NameArticle'].'.html" width="100%" height="'.$multiplier*$row['HeightArticle'].'%">';
-											      	//echo '	<p>Your browser doesn’t support the object tag.</p>';
-											      //echo '</object>';
-										echo '</div>';
-
+										}
 									}
-								}
+								?>
+							</div>
+						</div>
+			  		<div class="col-lg-3 col-md-12 col-sm-12">
+							 <?php
+							 if (!$detect->isMobile()) {
+								 require 'most_popular2.php';
+							 }
+							 if (preg_match('/(tablet|ipad|playbook)|(android(?!.*(mobi|opera mini)))/i', strtolower($_SERVER['HTTP_USER_AGENT']))) {
+								 require 'most_popular2.php';
+							 }
 							?>
 						</div>
-					</div>
-		  		<div class="col-lg-3 col-md-12 col-sm-12">
-						 <?php
-						 if (!$detect->isMobile()) {
-							 require 'most_popular2.php';
-						 }
-						 if (preg_match('/(tablet|ipad|playbook)|(android(?!.*(mobi|opera mini)))/i', strtolower($_SERVER['HTTP_USER_AGENT']))) {
-							 require 'most_popular2.php';
-						 }
-						?>
-					</div>
 
-			</div>
-</div>
+				</div>
+	</div>
+<?php require 'footer2.html'?>
+</body>
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script></body>
 </html>

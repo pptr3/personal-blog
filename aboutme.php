@@ -24,9 +24,9 @@
 								</div>
 							</div>
 							<div class="col">
-								<div style="float:left; padding-right: 4%;"><img width="350" height="auto" src="article/img/mee.jpg" alt="Photo article"></div>
+								<div style="float:left; padding-right: 4%;"><style="padding-bottom: 10%;" img width="300" height="auto" src="article/img/mee.jpg" alt="Photo article"></div>
 								<div style="float:none;">
-										<p class="intro">
+										<p style="font-size: 100%;" class="intro">
 Hello there! I am Petru and I am a Computer Scientist. I live in Italy in a small city called Imola (famous for the autodrome).<br><br>
 
 My course of study took a variant of paths before find my true passion.
@@ -58,5 +58,7 @@ playing basketball in some courts or visiting some cool places.
 		  		<div class="col-sm-3"><?php require 'most_popular.php'?></div>
 			</div>
 </div>
+<?php require 'footer.html'?>
+</body>
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script></body>
 </html>
