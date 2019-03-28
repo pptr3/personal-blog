@@ -21,12 +21,10 @@
 					<div class="row">
 						<div class="col-sm-12">
 								<h1 style="padding-top: 5%;">Hire Me</h1>
+								<h6 style="padding-top: 2%;" >If you cannot see the cv underneath, <a href="https://docs.google.com/document/d/1uRTHiM3hcZdW-yiOXaePntyEPhLF6EqoH1Ir0WFn8Js/edit?usp=sharing" target="_blank">click here.</a></h6>
+								<embed id="content" src="resume/Resume.pdf" width="100%" height="800px">
 						</div>
 					</div>
-							<div class="row">
-                <h6 style="padding-top: 2%;" >If you cannot see the cv underneath, <a href="https://docs.google.com/document/d/1uRTHiM3hcZdW-yiOXaePntyEPhLF6EqoH1Ir0WFn8Js/edit?usp=sharing" target="_blank">click here.</a></h6>
-                <embed id="content" src="resume/Resume.pdf" width="100%" height="800px">
-							</div>
 					</div>
 		  		<div class="col-sm-3"><?php require 'most_popular.php'?></div>
 			</div>
