@@ -77,7 +77,7 @@
 
 		  <div class="row">
 				<?php
-				$query_sql="SELECT * FROM Article limit 2";
+				$query_sql="SELECT * FROM Article ORDER BY IdArticle DESC limit 2";
 				$article = $conn->query($query_sql);
 				if ($article->num_rows > 0) {
 					echo '<div class="col-sm-12 recent_post">';

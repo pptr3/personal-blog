@@ -35,9 +35,13 @@
 											echo '<div id="somestyle" class="col-sm-12">';
 															echo '<div style="padding-left:12%;">';
 																	echo '<div><img width="90%" height="auto" src="'.$row['PhotoArticle'].'" alt="photo most recent posts"></div>';
+																	$explodedDate = explode("-", $row['Date']);
+																	$month = $explodedDate[1];
+																	$dateObj   = DateTime::createFromFormat('!m', $month);
+																	$monthName = $dateObj->format('F'); // March
+																	$dateWithMonthLiteral = $monthName.' '.$explodedDate[2].', '.$explodedDate[0];
+																	echo '<p style="padding-left:1%;">'.$dateWithMonthLiteral.'</p>';
 																	echo '<p style="padding-left:1%;"> <b>Reading time</b>: '.$row['ReadingTime'].' minutes</p>';
-																	echo '<p style="padding-left:1%;">'.$row['Date'].'</p>';
-
 															echo '</div>';
 															include($row['NameArticle']. ".html");
 											echo '</div>';
