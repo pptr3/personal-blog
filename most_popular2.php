@@ -4,7 +4,6 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 		<meta charset="UTF-8">
 		<title>Petru Potrimba's Blog</title>
-		<link rel="icon" href="res/test.jpg">
 		<link rel="stylesheet" href="css2.css">
 
 		<style media="screen">
@@ -102,8 +101,8 @@
 				  <p class="social2"><b>Social</b></p>
 					<section class="social">
 						<a class="social-button" target="_blank" href="https://www.facebook.com/petru.potrimba.77"><input type="image" name="facebook" value="facebook logo" src="article/img/fb-logo.png" width="12%" height="auto"></a>
-						<a class="social-button" target="_blank" href="https://www.linkedin.com/in/petru-potrimba-a065a0137/"><input type="image" name="facebook" value="linkedin logo" src="article/img/in-logo.png" width="12%" height="auto"></a>
-						<a class="social-button" target="_blank" href="https://github.com/Pptr95"><input type="image" name="facebook" value="facebook" src="article/img/github-logo.png" width="12%" height="auto"></a>
+						<a class="social-button" target="_blank" href="https://www.linkedin.com/in/petru-potrimba-a065a0137/"><input type="image" name="linkedin" value="linkedin logo" src="article/img/in-logo.png" width="12%" height="auto"></a>
+						<a class="social-button" target="_blank" href="https://github.com/Pptr95"><input type="image" name="facebook" value="github" src="article/img/github-logo.png" width="12%" height="auto"></a>
 					</section>
 				</div>
 			</div> -->

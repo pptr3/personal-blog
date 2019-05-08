@@ -6,7 +6,7 @@
 		<meta charset="UTF-8">
 		<title>Petru Potrimba's Blog</title>
 		<link href="https://fonts.googleapis.com/css?family=Poppins:100,200,400,300,500,600,700" rel="stylesheet">
-		<link rel="icon" href="res/test.jpg">
+		<link rel="icon" href="article/img/p.png">
 		<link rel="stylesheet" href="css2.css">
 		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 		<style media="screen">
@@ -34,17 +34,12 @@
 										while($row = $article->fetch_assoc()) {
 											echo '<div id="somestyle" class="col-sm-12">';
 															echo '<div style="padding-left:12%;">';
-																	echo '<div><img width="85%" height="auto" src="'.$row['PhotoArticle'].'" alt="photo most recent posts"></div>';
-																	echo '<p style="padding-left:1%;"> <b>Reading time</b>: '.$row['ReadingTime'].'</p>';
+																	echo '<div><img width="90%" height="auto" src="'.$row['PhotoArticle'].'" alt="photo most recent posts"></div>';
+																	echo '<p style="padding-left:1%;"> <b>Reading time</b>: '.$row['ReadingTime'].' minutes</p>';
 																	echo '<p style="padding-left:1%;">'.$row['Date'].'</p>';
-																//	echo '<h2>'.$row['Title'].'</h2>';
-																//	echo '<p>'.$row['Intro'].'</p>';
+
 															echo '</div>';
 															include($row['NameArticle']. ".html");
-															//echo '<embed type="text/html" src="'.$row['NameArticle'].'.html" width="100%" style="height :100%;">';
-															//echo '<object data="'.$row['NameArticle'].'.html" width="100%" height="'.$multiplier*$row['HeightArticle'].'%">';
-												      	//echo '	<p>Your browser doesn’t support the object tag.</p>';
-												      //echo '</object>';
 											echo '</div>';
 
 										}

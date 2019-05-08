@@ -2,7 +2,6 @@ create table Article (
      IdArticle int not null AUTO_INCREMENT,
      IdBadge int not null,
      NameArticle LONGTEXT not null,
-     HeightArticle TEXT not null,
      Date DATE not null,
      Title TEXT not null,
      Intro TEXT not null,

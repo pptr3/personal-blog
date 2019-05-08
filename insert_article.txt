@@ -4,6 +4,7 @@ INSERT INTO `Badge`(`Name`) VALUES ("Python");
 
 ## then you can add an article
 
-INSERT INTO `Article`(`NameArticle`, `HeightArticle`, `Date`, `IdBadge`, `Intro`, `PhotoArticle`,  `ReadingTime`, `Title`) VALUES
+INSERT INTO `Article`(`NameArticle`, `Date`, `IdBadge`, `Intro`, `PhotoArticle`,  `ReadingTime`, `Title`) VALUES
 
-("article/LinearRegression", "930", "2019-01-10", "1", "With the following article we will explain in depth what is Linear Regression and how it works. We will start from math concepts and we will end by implementing it ...", "article/img/linear-regression.png", "10", "Linear Regression: from math concepts to implementation");
+("article/<path/to/article>", "2019-03-28", "1", "Linear Regression goal is to fit a straight line to the data, trying to capture what is the trend of the data.
+In this article we will start with a quick intuitive walk-through of the mathematics behind this well-known problem and we will implement the whole algorithm from scratch ...", "article/img/linear-regression.png", "8", "Linear Regression: from math concepts to implementation");

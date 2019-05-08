@@ -4,7 +4,7 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 		<meta charset="UTF-8">
 		<title>Petru Potrimba's Blog</title>
-		<link rel="icon" href="res/test.jpg">
+		<link rel="icon" href="article/img/p.png">
 		<link rel="stylesheet" href="css2.css">
 		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 	</head>
@@ -18,14 +18,14 @@
 		  <div class="col-sm-9" id="mydiv">
 				<div class="row">
 					<?php
-					  $query_sql="SELECT * FROM Article a, Badge b WHERE a.IdBadge = b.IdBadge";
+					  $query_sql="SELECT * FROM Article a, Badge b WHERE a.IdBadge = b.IdBadge ORDER BY IdArticle DESC";
 					  $article = $conn->query($query_sql);
 
 					  if ($article->num_rows > 0) {
 					    while($row = $article->fetch_assoc()) {
 								echo '<div id="somestyle" class="col-sm-6">';
 										echo '<div class="col">';
-											echo '<div style="float:left; padding-right: 4%;"><img class="zooming" onclick="goToArticle('.$row['IdArticle'].')" width="140" height="120" src="'.$row['PhotoArticle'].'" alt="Photo article"></div>';
+											echo '<div style="float:left; padding-right: 4%;"><img class="zooming" onclick="goToArticle('.$row['IdArticle'].')" width="160" height="140" src="'.$row['PhotoArticle'].'" alt="Photo article"></div>';
 											echo '<div style="float:none;">';
 													echo '<h6 style="font-size: 120%;" class="tohover" onclick="goToArticle('.$row['IdArticle'].')" >'.$row['Title'].'</h6>';
 													echo '<p style="font-size: 95%;" class="intro" >'.$row['Intro'].'</p>';
