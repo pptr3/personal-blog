@@ -31,7 +31,13 @@
 													echo '<p style="font-size: 95%;" class="intro" >'.$row['Intro'].'</p>';
 													echo '<button class="readmore" onclick="goToArticle('.$row['IdArticle'].')">Read More</button>';
 											echo '</div>';
-											echo '<a class="date">'.$row['Date'].'</a>';
+
+											$explodedDate = explode("-", $row['Date']);
+											$month = $explodedDate[1];
+											$dateObj   = DateTime::createFromFormat('!m', $month);
+											$monthName = $dateObj->format('F'); // March
+											$dateWithMonthLiteral = $monthName.' '.$explodedDate[2].', '.$explodedDate[0];
+											echo '<a class="date">'.$dateWithMonthLiteral.'</a>';
 									 echo '</div>';
 								echo '</div>';
 						}
