@@ -85,7 +85,12 @@
 					while($row = $article->fetch_assoc()) {
 												echo '<section class="pack">';
 													echo '<h6 class="tohover" onclick="goToArticle('.$row['IdArticle'].')" >'.$row['Title'].'</h6>';
-													echo '<a class="date">'.$row['Date'].'</a>';
+													$explodedDate = explode("-", $row['Date']);
+													$month = $explodedDate[1];
+													$dateObj   = DateTime::createFromFormat('!m', $month);
+													$monthName = $dateObj->format('F'); // March
+													$dateWithMonthLiteral = $monthName.' '.$explodedDate[2].', '.$explodedDate[0];
+													echo '<a class="date">'.$dateWithMonthLiteral.'</a>';
 												echo '</section>';
 							}
 						}
