@@ -1,3 +1,14 @@
+@font-face {
+  font-family: GraublauWeb;
+  src: url("font/OlsenTF-Regular.otf") format("opentype");
+}
+
+html {
+  font-family: GraublauWeb;
+  -ms-text-size-adjust: 130%;
+  -webkit-text-size-adjust: 130%;
+}
+
 .tohover:hover {
   color: #EA9629 !important;
   cursor: pointer;
@@ -73,7 +84,7 @@
 
 
 .most_popular {
-  background-color: #90EE90;
+  background-color: #F9F8EE;
 }
 
 .fa {

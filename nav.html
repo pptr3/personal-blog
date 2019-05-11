@@ -67,16 +67,22 @@
         background: #333 !important;
       }
 
+      @font-face {
+        font-family: GraublauWeb;
+        src: url("font/OlsenTF-Regular.otf") format("opentype");
+      }
+
       .nav-buttons {
         display: inline;
         color: white;
         padding-left: 3%;
         font-size: 115%;
+        font-family: GraublauWeb;
       }
 
       #mynav {
         background-color: black;
-        padding: 2%;
+        padding: 1.5%; /*height of nav*/
       }
 
       .nav {
@@ -105,18 +111,36 @@
       .menu:hover {
         color: white;
       }
+
+      .menu {
+        font-family: GraublauWeb;
+      }
+
+      .anav {
+        font-family: GraublauWeb;
+      }
+
       .try {
         padding-top: 4% !important;
         /*padding-bottom: 2px !important;*/
         padding-bottom: 4% !important;
       }
 
+      /*this style is for responsive header*/
+        *{
+            -webkit-box-sizing: border-box;
+            box-sizing: border-box;
+        }
+
+        canvas{
+            background-color: #000;
+        }
 
     </style>
   </head>
   <body>
     <header>
-      <img src="article/img/nav1.jpeg" alt="Navigator image" width="100%" height="auto">
+      <img src="article/img/matrix.jpg" alt="Navigator image" width="100%" height="auto">
     </header>
     <nav class="nav">
       <ul class="try">
@@ -127,7 +151,7 @@
                   <li><a class="anav" href="aboutme.php">ABOUT ME</a></li>
                   <li><a class="anav" href="contact.php">CONTACT</a></li>
                   <li><a class="anav" href="hireme.php">HIRE ME</a></li>
-                  <li><a style="color: #EA9629" class="anav" href="but.php">BUT..</a></li>
+                  <li><a style="color: #EA9629;" class="anav" href="but.php">BUT..</a></li>
               </ul>
           </li>
       </ul>
@@ -140,9 +164,8 @@
       <a class="nav-buttons" href="aboutme.php">ABOUT ME</a>
       <a class="nav-buttons" href="contact.php">CONTACT</a>
       <a class="nav-buttons" href="hireme.php">HIRE ME</a>
-      <a style="color: #EA9629" class="nav-buttons" href="but.php">BUT..</a>
+      <a style="color: #EA9629;" class="nav-buttons" href="but.php">BUT..</a>
     </nav>
-
 
   </body>
 </html>

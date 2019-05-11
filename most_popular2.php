@@ -10,18 +10,20 @@
 			.cool {
 				padding-left: 15%;
 				padding-top: 25%;
-        padding-right: 10%;
+        padding-right: 7%;
 				padding-bottom: 22%;
 				font-size: 145%;
 			}
 
 			.most_popular {
 				margin-top: 10%;
+				background-color: #F9F8EE;
 			}
 
 			.recent_post {
-				background-color: #90EE90;
+			  background-color: #F9F8EE;
 				margin-top: 10%;
+				padding-top: 3%
 			}
 
 			.pack {
@@ -60,7 +62,13 @@
       .tohover {
         font-size: 115%;
       }
-
+			@font-face {
+				font-family: GraublauWeb;
+				src: url("font/OlsenTF-Regular.otf") format("opentype");
+			}
+			.cool, .author, .recent, .tohover, .date, body {
+				font-family: GraublauWeb;
+			}
 		</style>
 
 	</head>

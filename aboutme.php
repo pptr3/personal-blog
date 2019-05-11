@@ -9,6 +9,15 @@
 		<link rel="icon" href="article/img/p.png">
 		<link rel="stylesheet" href="css2.css">
 		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+		<style media="screen">
+		@font-face {
+			font-family: GraublauWeb;
+			src: url("font/OlsenTF-Regular.otf") format("opentype");
+		}
+		.abm, .intro2 {
+			font-family: GraublauWeb;
+		}
+		</style>
 	</head>
 	<body>
 
@@ -20,13 +29,13 @@
 			  <div class="col-sm-9" id="mydiv">
 							<div class="row">
 								<div class="col-sm-12">
-										<h1 style="padding-top: 5%;">About Me</h1>
+										<h1 class="abm" style="padding-top: 5%;">About Me</h1>
 								</div>
 							</div>
 							<div class="col">
 								<div style="float:left; padding-right: 4%;"><img style="padding-bottom: 10%;" width="300" height="auto" src="article/img/mee.jpg" alt="Photo article"></div>
 								<div style="float:none;">
-										<p style="font-size: 100%;" class="intro">
+										<p style="font-size: 100%;" class="intro2">
 Hello there! I am Petru and I am a Computer Scientist. I live in Italy in a small city called Imola (famous for the autodrome).<br><br>
 
 My course of study took a variant of paths before find my true passion.
@@ -62,5 +71,5 @@ playing basketball in some courts or visiting some cool places.
 </div>
 <?php require 'footer.html'?>
 </body>
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script></body>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 </html>

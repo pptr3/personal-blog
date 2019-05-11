@@ -76,7 +76,7 @@
 
       #mynav {
         background-color: black;
-        padding: 2%;
+        padding: 1.5%; /*height of nav*/
       }
 
       .nav {
@@ -98,6 +98,7 @@
         color: #EA9629;
         text-decoration: none;
       }
+
       .nav-buttons:hover {
         color: #EA9629;
         text-decoration: none;
@@ -111,12 +112,22 @@
         padding-bottom: 4% !important;
       }
 
+      @font-face {
+  			font-family: GraublauWeb;
+  			src: url("font/OlsenTF-Regular.otf") format("opentype");
+  		}
+
       .nav-buttons {
-        font-family:"Arial" !important;
+        font-family: GraublauWeb;
+      }
+
+      .anav {
+        font-family: GraublauWeb;
       }
 
       .menu {
         font-size: 125%;
+        font-family: GraublauWeb;
       }
 
       .anav {
@@ -128,7 +139,7 @@
   </head>
   <body>
     <header>
-      <img src="article/img/nav1.jpeg" alt="Navigator image" width="100%" height="auto">
+      <img src="article/img/matrix.jpg" alt="Navigator image" width="100%" height="auto">
     </header>
     <nav class="nav">
       <ul class="try">

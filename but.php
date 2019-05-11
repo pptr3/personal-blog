@@ -13,6 +13,15 @@
       .reasons {
         padding-top: 2%;
       }
+
+			@font-face {
+				font-family: GraublauWeb;
+				src: url("font/OlsenTF-Regular.otf") format("opentype");
+			}
+			.but, .why, .reasons, .number {
+				font-family: GraublauWeb;
+			}
+
     </style>
   </head>
 	<body>
@@ -29,8 +38,8 @@
 							<div class="row">
 
 								<div class="col-sm-12" id="mydiv">
-										<h1 style="padding-top: 5%;">But..</h1>
-                    <h3 style="padding-top: 5%;">Why a personal website?</h3>
+										<h1 class="but" style="padding-top: 5%;">But..</h1>
+                    <h3 class="why" style="padding-top: 5%;">Why a personal website?</h3>
 								</div>
 								<div class="col-sm-12" id="mydiv">
 										<p class="reasons"><b>Cause it it cool and funny</b>!</p>
@@ -49,5 +58,5 @@
 </div>
 <?php require 'footer.html'?>
 </body>
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script></body>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 </html>

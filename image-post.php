@@ -9,6 +9,7 @@
 		<link rel="icon" href="article/img/p.png">
 		<link rel="stylesheet" href="css2.css">
 		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
 		<style media="screen">
 		.anav {
 			color: white !important;
@@ -40,8 +41,8 @@
 																	$dateObj   = DateTime::createFromFormat('!m', $month);
 																	$monthName = $dateObj->format('F'); // March
 																	$dateWithMonthLiteral = $monthName.' '.$explodedDate[2].', '.$explodedDate[0];
-																	echo '<p style="padding-left:1%;">'.$dateWithMonthLiteral.'</p>';
-																	echo '<p style="padding-left:1%;"> <b>Reading time</b>: '.$row['ReadingTime'].' minutes</p>';
+																	echo '<p style="padding-left:2%; color: #BC360A;"><span style="color: #BC360A; padding-right:1%;" class="glyphicon glyphicon-time"></span>'.$dateWithMonthLiteral.'</p>';
+																	echo '<p style="padding-left:2%;"> <b>Reading time</b>: '.$row['ReadingTime'].' minutes</p>';
 															echo '</div>';
 															include($row['NameArticle']. ".html");
 											echo '</div>';

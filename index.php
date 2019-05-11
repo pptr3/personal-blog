@@ -7,6 +7,20 @@
 		<link rel="icon" href="article/img/p.png">
 		<link rel="stylesheet" href="css2.css">
 		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+		<link href="//db.onlinewebfonts.com/c/b6958b09ead02c6060160101a8dbbe25?family=FF+Olsen" rel="stylesheet" type="text/css">
+	
+		<style media="screen">
+		@font-face {
+			font-family: GraublauWeb;
+			src: url("font/OlsenTF-Regular.otf") format("opentype");
+		}
+		.tohover, .date {
+			font-family: GraublauWeb;
+		}
+		#intro2forFont {
+			font-family: GraublauWeb;
+		}
+		</style>
 	</head>
 	<body>
 
@@ -28,7 +42,7 @@
 											echo '<div style="float:left; padding-right: 4%;"><img class="zooming" onclick="goToArticle('.$row['IdArticle'].')" width="160" height="140" src="'.$row['PhotoArticle'].'" alt="Photo article"></div>';
 											echo '<div style="float:none;">';
 													echo '<h6 style="font-size: 120%;" class="tohover" onclick="goToArticle('.$row['IdArticle'].')" >'.$row['Title'].'</h6>';
-													echo '<p style="font-size: 95%;" class="intro" >'.$row['Intro'].'</p>';
+													echo '<p style="font-size: 95%;" id="intro2forFont" class="intro" >'.$row['Intro'].'</p>';
 													echo '<button class="readmore" onclick="goToArticle('.$row['IdArticle'].')">Read More</button>';
 											echo '</div>';
 

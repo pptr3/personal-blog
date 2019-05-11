@@ -8,7 +8,8 @@
 
 		<style media="screen">
 			.cool {
-				padding-left: 5%;
+				padding-left: 12%;
+				padding-right: 8%;
 				padding-top: 25%;
 				padding-bottom: 17%;
 				font-size: 120%;
@@ -17,11 +18,13 @@
 
 			.most_popular {
 				margin-top: 10%;
+				background-color: #F9F8EE;
 			}
 
 			.recent_post {
-				background-color: #90EE90;
+				background-color: #F9F8EE;
 				margin-top: 10%;
+				padding-top: 3%
 			}
 
 			.pack {
@@ -37,6 +40,9 @@
 				padding-bottom: 3%;
 			}
 
+			.socialForPaddingTop {
+				padding-top: 3%;
+			}
 			.social-button {
 				padding-right: 3%;
 			}
@@ -45,6 +51,17 @@
 				font-family: oblique;
 				color: black;
 			}
+
+			<style media="screen">
+			@font-face {
+				font-family: GraublauWeb;
+				src: url("font/OlsenTF-Regular.otf") format("opentype");
+			}
+			.cool, .author, .recent, .tohover, .date, .soc {
+				font-family: GraublauWeb;
+			}
+
+			</style>
 		</style>
 
 	</head>
@@ -86,8 +103,8 @@
 
 
 			<div class="row">
-				<div class="col-sm-12 most_popular">
-					<b>Social</b>
+				<div class="col-sm-12 most_popular socialForPaddingTop">
+					<b class="soc">Social</b>
 					<section class="social">
 						<a target="_blank" class="social-button" href="https://www.facebook.com/petru.potrimba.77"><input type="image" name="facebook" value="facebook logo" src="article/img/fb-logo.png" width="12%" height="auto"></a>
 						<a target="_blank" class="social-button" href="https://www.linkedin.com/in/petru-potrimba-a065a0137/"><input type="image" name="linkedin" value="linkedin logo" src="article/img/in-logo.png" width="12%" height="auto"></a>
