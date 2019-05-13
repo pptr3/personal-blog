@@ -14,14 +14,12 @@
 		.anav {
 			color: white !important;
 		}
-
 		</style>
 	</head>
 	<body>
   <?php require 'nav_article.html';?>
   <?php require_once 'dbconnection.php';?>
 	<?php include 'lib/Mobile_Detect.php';?>
-
 	<div class="container">
 				<div class="row">
 				  <div class="col-sm-9" id="mydiv">
@@ -41,7 +39,7 @@
 																	$dateObj   = DateTime::createFromFormat('!m', $month);
 																	$monthName = $dateObj->format('F'); // March
 																	$dateWithMonthLiteral = $monthName.' '.$explodedDate[2].', '.$explodedDate[0];
-																	echo '<p style="padding-left:2%; color: #BC360A;"><span style="color: #BC360A; padding-right:1%;" class="glyphicon glyphicon-time"></span>'.$dateWithMonthLiteral.'</p>';
+																	echo '<p style="padding-left:2%; color: #BC360A;"><span style="color: #BC360A; padding-right:1%;" class="glyphicon glyphicon-time"></span>'.$dateWithMonthLiteral.'<a target="_blank" href="'.$row['NameJupyterArticle'].'" style="padding-left: 2%; color: #BC360A;">Link to Jupyter Notebook</span></a>';
 																	echo '<p style="padding-left:2%;"> <b>Reading time</b>: '.$row['ReadingTime'].' minutes</p>';
 															echo '</div>';
 															include($row['NameArticle']. ".html");
@@ -51,6 +49,9 @@
 									}
 								?>
 							</div>
+
+
+
 						</div>
 			  		<div class="col-lg-3 col-md-12 col-sm-12">
 							 <?php
@@ -65,7 +66,11 @@
 
 				</div>
 	</div>
+
+
 <?php require 'footer2.html'?>
 </body>
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script></body>
+
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+	</script>
 </html>

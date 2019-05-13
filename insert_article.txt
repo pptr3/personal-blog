@@ -4,7 +4,7 @@ INSERT INTO `Badge`(`Name`) VALUES ("Python");
 
 ## then you can add an article
 
-INSERT INTO `Article`(`NameArticle`, `Date`, `IdBadge`, `Intro`, `PhotoArticle`,  `ReadingTime`, `Title`) VALUES
+INSERT INTO `Article`(`NameArticle`, `NameJupyterArticle`, `Date`, `IdBadge`, `Intro`, `PhotoArticle`,  `ReadingTime`, `Title`) VALUES
 
-("article/<path/to/article>", "2019-03-28", "1", "Linear Regression goal is to fit a straight line to the data, trying to capture what is the trend of the data.
-In this article we will start with a quick intuitive walk-through of the mathematics behind this well-known problem and we will implement the whole algorithm from scratch ...", "article/img/linear-regression.png", "8", "Linear Regression: from math concepts to implementation");
+("article/linear-regression/LinearRegressionArticle", "https://github.com/Pptr95/personal-blog/blob/master/article/linear-regression/jupyter-notebook/LinearRegression.ipynb", "2019-03-28", "1", "Linear Regression goal is to fit a straight line to the data, trying to capture what is the trend of the data.
+In this article we will start with a quick intuitive walk-through of the mathematics behind this well-known problem and we will implement the whole algorithm from scratch ...", "article/linear-regression/img/linear-regression.png", "8", "Linear Regression: from math concepts to implementation");

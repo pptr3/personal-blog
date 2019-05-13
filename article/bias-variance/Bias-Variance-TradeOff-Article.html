@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head><meta charset="utf-8" />
-<title>LinearRegression2</title><script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.1.10/require.min.js"></script>
+<title>Bias-Variance-TradeOff-Article</title><script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.1.10/require.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
 
 <style type="text/css">
@@ -18,8 +18,8 @@
 /*! normalize.css v3.0.3 | MIT License | github.com/necolas/normalize.css */
 html {
   font-family: sans-serif;
-  -ms-text-size-adjust: 100%;
-  -webkit-text-size-adjust: 100%;
+  -ms-text-size-adjust: 130%;
+  -webkit-text-size-adjust: 130%;
 }
 body {
   margin: 0;
@@ -11772,7 +11772,7 @@ div#notebook {
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="Linear-Regression:-from-math-concepts-to-implementation">Linear Regression: from math concepts to implementation<a class="anchor-link" href="#Linear-Regression:-from-math-concepts-to-implementation">&#182;</a></h1>
+<h1 id="Bias---Variance-tradeoff-and-Polynomial-regression">Bias - Variance tradeoff and Polynomial regression<a class="anchor-link" href="#Bias---Variance-tradeoff-and-Polynomial-regression">&#182;</a></h1>
 </div>
 </div>
 </div>
@@ -11780,10 +11780,7 @@ div#notebook {
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>Linear Regression goal is to fit a straight line to the data, trying to capture what is the trend of the data. <br>
-In this article we will start with a quick intuitive walk-through of the mathematics behind this well-known problem and we will implement the whole algorithm from scratch. Of course there are already many libraries that implement linear regression, but our goal is to understand how linear regression works and I found that the best way to do that is to implement it from scratch.<br>
-In this article we will only explain how to fit a <strong>straight line</strong> to the data. In the <a href="http://petrupotrimba.altervista.org/image-post.php?id=2#img" style="color: #BC360A;">next article</a> we will explain also how to fit data that has not a linear  trend by creating non-linear model. So stay tuned!</p>
-<p>Let's look into some math aspetcs and then proceed to implementation!</p>
+<p>The objective of the following article is to explore the relationship between two competing properties of a statistical learning model: <strong>bias</strong> and <strong>variace</strong>.</p>
 
 </div>
 </div>
@@ -11792,14 +11789,7 @@ In this article we will only explain how to fit a <strong>straight line</strong>
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>The objective of linear regression is to minimize the cost function:</p>
-<p>$$J(\theta) = \frac{1}{2m} \sum_{i=1}^{m} (h_\theta(x^{(i)}) - y^{(i)})^2$$</p>
-<p>where the hypothesis $h_\theta$ is given by the linear model:</p>
-<p>$$ h_\theta = \theta^T x = \theta_0 + \theta_1 x_1 $$</p>
-<p>The model's parameters are the $\theta_j$ values. These are the values that need to be adjusted to minimize cost $J(\theta)$.
-One way to do this is to use the batch gradient descent algorithm. In batch gradient descent, each iteration performs the update:</p>
-<p>$$\theta_j := \theta_j - \frac{\alpha}{m} \sum_{i=1}^{m} (h_\theta(x^{(i)}) - y^{(i)}) x_j^{(i)}$$ (simultaneously update $\theta_j$ for all $j$);
-With each step of gradient descent, the parameters $\theta_j$ come closer to the optimal values that will achieve the lowest cost $J(\theta)$.</p>
+<p>An important concept in machine learning is the <strong>bias-variance</strong> tradeoff. Model with high bias are not complex enough for the data and then to underfit, whilst models with high variance overfit to the training data.</p>
 
 </div>
 </div>
@@ -11808,7 +11798,8 @@ With each step of gradient descent, the parameters $\theta_j$ come closer to the
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Linear-Regression-with-one-variable">Linear Regression with one variable<a class="anchor-link" href="#Linear-Regression-with-one-variable">&#182;</a></h2>
+<p>The <em>variance</em> consists in the amount by which a model changes when we train it on a different data set. It is expected that the fitted method varies according to the data it is fed with, nevertheless the change shouldn't be significant. If this is not the case the model is generally too flexible and is said to have <em>high variance</em>.</p>
+
 </div>
 </div>
 </div>
@@ -11816,7 +11807,71 @@ With each step of gradient descent, the parameters $\theta_j$ come closer to the
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>In this part we will implement linear regression with one variable to predict profits for a food truck. Suppose you are a CEO of a restaurant franchise and are considering different cities for opening a new outlet. The chain already has trucks in various cities and you have data for profits and populations from cities. You would like to use this data to help you select which city to exapend to next.</p>
+<p>On the other hand, the <em>bias</em> is the error introduced when we try to model a real world problem, which may be very complicated, with a too simple approximation.</p>
+<p>So the <strong>goal</strong> is to create a model which can find a <strong>tradeoff</strong> between <em>bias</em> and <em>variace</em>.</p>
+<p>To better understand the problem we will do an example. In this example we try to predict the water flowing out of a dam using the change in water level of an external reservoir.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>As a general rule, the more we increase the flexibity of a method, the more the variance increases and the bias decreases. The rate at which the two properties change is not the same though and it is crucial to study their relative fluctuation to find the sweet spot minimizing the total model error.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="The-water-and-the-dam">The water and the dam<a class="anchor-link" href="#The-water-and-the-dam">&#182;</a></h3>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>As announced above we will build a predictive model to forecast the amount of water getting out of a dam. We will do this playing around with Linear Regression (checkout my <a style="color: #BC360A;" href="http://petrupotrimba.altervista.org/image-post.php?id=1#img">article</a> if you are not familiar with Linear Regression) at first drawing a straight line and later on extending the feature space with the addition of p-th degree polynomials of X.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>First recall the regularized cost function and its gradient for Linear Regression:</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>$J(\theta) = \frac{1}{2m} \sum_{i=1}^{m} (h_\theta(x^{(i)}) - y^{(i)})^2 + \frac{\lambda}{2m}\sum_{j=1}^n\theta_j^2$</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>$\frac{\partial J(\theta)}{\partial \theta_0} = \frac{1}{m} \sum_{i=1}^{m} (h_\theta(x^{(i)}) - y^{(i)}) x_j^{(i)} $ for $j=0$</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>$\frac{\partial J(\theta)}{\partial \theta_j} = \frac{1}{m} \sum_{i=1}^{m} (h_\theta(x^{(i)}) - y^{(i)}) x_j^{(i)} + \frac{\lambda}{m}\sum_{j=1}^n\theta_j$ for $j\geq1$</p>
 
 </div>
 </div>
@@ -11829,6 +11884,8 @@ With each step of gradient descent, the parameters $\theta_j$ come closer to the
 <div class=" highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 <span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
 <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">import</span> <span class="nn">scipy.io</span>
+<span class="kn">from</span> <span class="nn">scipy</span> <span class="k">import</span> <span class="n">optimize</span>
 </pre></div>
 
 </div>
@@ -11841,66 +11898,30 @@ With each step of gradient descent, the parameters $\theta_j$ come closer to the
 <div class="prompt input_prompt">In&nbsp;[2]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">style</span><span class="o">.</span><span class="n">use</span><span class="p">(</span><span class="s1">&#39;ggplot&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">rcParams</span><span class="p">[</span><span class="s1">&#39;figure.figsize&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="mi">18</span><span class="p">,</span> <span class="mi">12</span><span class="p">)</span>
-<span class="kn">from</span> <span class="nn">IPython.core.display</span> <span class="k">import</span> <span class="n">display</span><span class="p">,</span> <span class="n">HTML</span>
-<span class="n">display</span><span class="p">(</span><span class="n">HTML</span><span class="p">(</span><span class="s2">&quot;&lt;style&gt;.rendered_html { font-size: 17px; }&lt;/style&gt;&quot;</span><span class="p">))</span>
-
-<span class="n">data</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">loadtxt</span><span class="p">(</span><span class="s1">&#39;ex1data1.txt&#39;</span><span class="p">,</span> <span class="n">delimiter</span><span class="o">=</span><span class="s1">&#39;,&#39;</span><span class="p">)</span>
-<span class="n">X</span> <span class="o">=</span> <span class="n">data</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">]</span>
-<span class="n">y</span> <span class="o">=</span> <span class="n">data</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">]</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">mat</span> <span class="o">=</span> <span class="n">scipy</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">loadmat</span><span class="p">(</span><span class="s1">&#39;ex5data1.mat&#39;</span><span class="p">)</span>
+<span class="n">X</span> <span class="o">=</span> <span class="n">mat</span><span class="p">[</span><span class="s1">&#39;X&#39;</span><span class="p">]</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">mat</span><span class="p">[</span><span class="s1">&#39;y&#39;</span><span class="p">]</span>
+<span class="n">X_val</span> <span class="o">=</span> <span class="n">mat</span><span class="p">[</span><span class="s1">&#39;Xval&#39;</span><span class="p">]</span>
+<span class="n">y_val</span> <span class="o">=</span> <span class="n">mat</span><span class="p">[</span><span class="s1">&#39;yval&#39;</span><span class="p">]</span>
+<span class="n">X_test</span> <span class="o">=</span> <span class="n">mat</span><span class="p">[</span><span class="s1">&#39;Xtest&#39;</span><span class="p">]</span>
+<span class="n">y_test</span> <span class="o">=</span> <span class="n">mat</span><span class="p">[</span><span class="s1">&#39;ytest&#39;</span><span class="p">]</span>
 </pre></div>
 
 </div>
 </div>
 </div>
 
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area">
-
-<div class="prompt"></div>
-
-
-
-<div class="output_html rendered_html output_subarea ">
-<style>.rendered_html { font-size: 17px; }</style>
-</div>
-
-</div>
-
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<p>Before starting on any task, it is often useful to understand the data by visualizing it. For this dataset, you can use a scatter plot to visualize it since it has only two properties to plot (profit and population). Nevertheless, many other problems that you will encounter in real life are multi-dimensional and therefore can't be plotted on a 2-d plot.</p>
-
-</div>
-</div>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 <div class="prompt input_prompt">In&nbsp;[3]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># create figure</span>
-<span class="n">fig = plt.figure()</span>
-<span class="c1"># adjust figure&#39;s size</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">fig = plt.figure()</span>
 <span class="n">ax = fig.add_subplot(1, 1, 1) </span>
-<span class="c1"># plot X data and the relative labels y</span>
-<span class="c1">#ax.plot(X, y, &#39;x&#39;, markersize=15, linewidth=7)</span>
-<span class="n">ax.scatter(X, y, s=500, marker=&#39;x&#39;,color=&#39;r&#39;,linewidths=8)</span>
-<span class="c1"># set label y</span>
-<span class="n">plt.ylabel(&#39;Profit in $10Ks&#39;)</span>
-<span class="c1"># set label x </span>
-<span class="n">plt.xlabel(&#39;Population of City in 10Ks&#39;)</span>
-<span class="c1"># show the figure</span>
+<span class="n">ax.plot(X, y, &#39;x&#39;, color=&#39;r&#39;)</span>
+<span class="n">plt.xlabel(&#39;Change in water level (x)&#39;)</span>
+<span class="n">plt.ylabel(&#39;Water flowing out of the dam (y)&#39;)</span>
 <span class="n">plt.show()</span>
 </pre></div>
 
@@ -11913,7 +11934,7 @@ With each step of gradient descent, the parameters $\theta_j$ come closer to the
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p><img src="article/linear-regression/img/1.png" alt="" style="width: 1000px;"/></p>
+<p><img src="article/bias-variance/img/1.png" alt="" style="width: 1000px;"/></p>
 
 </div>
 </div>
@@ -11922,7 +11943,8 @@ With each step of gradient descent, the parameters $\theta_j$ come closer to the
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Functions">Functions<a class="anchor-link" href="#Functions">&#182;</a></h2>
+<p>It can se seen that the relation between X and y is not linear. Nevertheless, for the purpose of experimenting with ML we will fit a linear model and check the results we get.</p>
+
 </div>
 </div>
 </div>
@@ -11930,7 +11952,16 @@ With each step of gradient descent, the parameters $\theta_j$ come closer to the
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h4 id="Computing-the-cost-$J(\theta)$-and-Gradient-Descent-Algorithm">Computing the cost $J(\theta)$ and Gradient Descent Algorithm<a class="anchor-link" href="#Computing-the-cost-$J(\theta)$-and-Gradient-Descent-Algorithm">&#182;</a></h4>
+<p>Below there are some useful functions I created that we will use throughout this article.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Functions">Functions<a class="anchor-link" href="#Functions">&#182;</a></h3>
 </div>
 </div>
 </div>
@@ -11939,17 +11970,74 @@ With each step of gradient descent, the parameters $\theta_j$ come closer to the
 <div class="prompt input_prompt">In&nbsp;[4]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="k">def</span> <span class="nf">computeCost</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">theta</span><span class="p">):</span>
-    <span class="k">return</span> <span class="p">(</span><span class="mi">1</span><span class="o">/</span><span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="n">y</span><span class="o">.</span><span class="n">size</span><span class="p">))</span><span class="o">*</span><span class="nb">sum</span><span class="p">((</span><span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">theta</span><span class="o">.</span><span class="n">T</span><span class="p">,</span> <span class="n">X</span><span class="o">.</span><span class="n">T</span><span class="p">)</span><span class="o">.</span><span class="n">T</span><span class="o">-</span><span class="n">y</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span>
-
-<span class="k">def</span> <span class="nf">gradientDescent</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">theta</span><span class="p">,</span> <span class="n">alpha</span><span class="p">,</span> <span class="n">iterations</span><span class="p">):</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="k">def</span> <span class="nf">costFunctionReg</span><span class="p">(</span><span class="n">theta</span><span class="p">,</span> <span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">lamda</span><span class="p">):</span>
     <span class="n">m</span> <span class="o">=</span> <span class="n">y</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
-    <span class="n">J_history</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="n">iterations</span><span class="p">,</span> <span class="mi">1</span><span class="p">))</span>
-    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">iterations</span><span class="p">):</span>
-        <span class="n">hypothesis_minus_y</span> <span class="o">=</span> <span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">matmul</span><span class="p">(</span><span class="n">theta</span><span class="o">.</span><span class="n">T</span><span class="p">,</span> <span class="n">X</span><span class="o">.</span><span class="n">T</span><span class="p">)</span><span class="o">.</span><span class="n">T</span><span class="o">-</span><span class="n">y</span><span class="p">)</span><span class="o">.</span><span class="n">T</span>
-        <span class="n">theta</span> <span class="o">=</span> <span class="p">(</span><span class="n">theta</span><span class="o">.</span><span class="n">T</span> <span class="o">-</span> <span class="p">(</span><span class="n">alpha</span><span class="o">/</span><span class="n">m</span><span class="p">)</span><span class="o">*</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">matmul</span><span class="p">(</span><span class="n">hypothesis_minus_y</span><span class="p">,</span> <span class="n">X</span><span class="p">)))</span><span class="o">.</span><span class="n">T</span>
-        <span class="n">J_history</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">computeCost</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">theta</span><span class="p">)</span>
+    <span class="n">h_y</span> <span class="o">=</span> <span class="n">X</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">theta</span><span class="p">)</span> <span class="o">-</span> <span class="n">y</span>
+    <span class="n">cost</span> <span class="o">=</span> <span class="p">(</span><span class="mi">1</span><span class="o">/</span><span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="n">m</span><span class="p">))</span> <span class="o">*</span> <span class="p">(</span><span class="nb">sum</span><span class="p">(</span><span class="n">h_y</span><span class="o">**</span><span class="mi">2</span><span class="p">))</span> <span class="o">+</span> <span class="p">(</span><span class="n">lamda</span><span class="o">/</span><span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="n">m</span><span class="p">))</span><span class="o">*</span><span class="p">(</span><span class="nb">sum</span><span class="p">(</span><span class="n">theta</span><span class="p">[</span><span class="mi">1</span><span class="p">:]</span><span class="o">**</span><span class="mi">2</span><span class="p">))</span>
+    <span class="k">return</span> <span class="n">cost</span>
+
+<span class="k">def</span> <span class="nf">computeGradientReg</span><span class="p">(</span><span class="n">theta</span><span class="p">,</span> <span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">lamda</span><span class="p">):</span>
+    <span class="n">theta</span> <span class="o">=</span> <span class="n">theta</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+    <span class="n">m</span> <span class="o">=</span> <span class="n">y</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+    <span class="n">h_y</span> <span class="o">=</span> <span class="n">X</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">theta</span><span class="p">)</span> <span class="o">-</span> <span class="n">y</span>
+    <span class="n">grad</span> <span class="o">=</span> <span class="mi">1</span><span class="o">/</span><span class="n">m</span> <span class="o">*</span> <span class="p">(</span><span class="n">h_y</span><span class="p">)</span><span class="o">.</span><span class="n">T</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
+    <span class="n">grad</span><span class="p">[</span><span class="mi">1</span><span class="p">:]</span> <span class="o">=</span> <span class="n">grad</span> <span class="o">+</span> <span class="n">lamda</span><span class="o">/</span><span class="n">m</span><span class="o">*</span><span class="n">theta</span><span class="p">[</span><span class="mi">1</span><span class="p">:]</span><span class="o">.</span><span class="n">T</span>
+    <span class="k">return</span> <span class="n">grad</span>
+
+<span class="k">def</span> <span class="nf">gradientDescent</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">theta</span><span class="p">,</span> <span class="n">alpha</span><span class="p">,</span> <span class="n">num_iters</span><span class="p">,</span> <span class="n">lamda</span><span class="p">):</span>
+    <span class="n">m</span> <span class="o">=</span> <span class="n">y</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+    <span class="n">J_history</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="n">num_iters</span><span class="p">,</span> <span class="mi">1</span><span class="p">))</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">num_iters</span><span class="p">):</span>
+        <span class="n">h_y</span> <span class="o">=</span> <span class="n">X</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">theta</span><span class="p">)</span> <span class="o">-</span> <span class="n">y</span>
+        <span class="n">gradient</span> <span class="o">=</span> <span class="p">(</span><span class="n">alpha</span><span class="o">/</span><span class="n">m</span><span class="p">)</span><span class="o">*</span><span class="p">((</span><span class="n">X</span><span class="o">.</span><span class="n">T</span><span class="p">)</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">h_y</span><span class="p">))</span>
+        <span class="n">gradient</span><span class="p">[</span><span class="mi">1</span><span class="p">:]</span> <span class="o">=</span> <span class="n">gradient</span><span class="p">[</span><span class="mi">1</span><span class="p">:]</span> <span class="o">+</span> <span class="p">(</span><span class="n">lamda</span><span class="o">/</span><span class="n">m</span><span class="o">*</span><span class="n">theta</span><span class="p">[</span><span class="mi">1</span><span class="p">:])</span>
+        <span class="n">theta</span> <span class="o">=</span> <span class="n">theta</span> <span class="o">-</span> <span class="n">gradient</span>
+        <span class="n">J_history</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">costFunctionReg</span><span class="p">(</span><span class="n">theta</span><span class="p">,</span> <span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">lamda</span><span class="p">)</span>
+
     <span class="k">return</span> <span class="n">theta</span><span class="p">,</span> <span class="n">J_history</span>
+
+<span class="k">def</span> <span class="nf">learningCurve</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">Xval</span><span class="p">,</span> <span class="n">yval</span><span class="p">,</span> <span class="n">lamda</span><span class="p">):</span>
+    <span class="n">m</span> <span class="o">=</span>  <span class="n">X</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+    <span class="n">initial_theta</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">((</span><span class="n">X</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="mi">1</span><span class="p">))</span>
+    <span class="n">error_train</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="n">m</span><span class="p">,</span> <span class="mi">1</span><span class="p">))</span>
+    <span class="n">error_val</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="n">m</span><span class="p">,</span> <span class="mi">1</span><span class="p">))</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">m</span><span class="p">):</span>
+        <span class="n">theta</span> <span class="o">=</span> <span class="n">gradientDescent</span><span class="p">(</span><span class="n">X</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">],</span> <span class="n">y</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">],</span> <span class="n">initial_theta</span><span class="p">,</span> <span class="mf">0.001</span><span class="p">,</span> <span class="mi">3000</span><span class="p">,</span> <span class="n">lamda</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+        <span class="n">error_train</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">costFunctionReg</span><span class="p">(</span><span class="n">theta</span><span class="p">,</span> <span class="n">X</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">],</span> <span class="n">y</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">],</span> <span class="n">lamda</span><span class="p">)</span>
+        <span class="n">error_val</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">costFunctionReg</span><span class="p">(</span><span class="n">theta</span><span class="p">,</span> <span class="n">Xval</span><span class="p">,</span> <span class="n">yval</span><span class="p">,</span> <span class="n">lamda</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">error_train</span><span class="p">,</span> <span class="n">error_val</span>
+
+<span class="k">def</span> <span class="nf">polyFeatures</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">p</span><span class="p">):</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">p</span> <span class="o">+</span> <span class="mi">1</span><span class="p">):</span>
+        <span class="n">X</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">c_</span><span class="p">[</span><span class="n">X</span><span class="p">,</span> <span class="n">X</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">]</span><span class="o">**</span><span class="n">i</span><span class="p">]</span>
+    <span class="k">return</span> <span class="n">X</span>
+
+<span class="k">def</span> <span class="nf">featureNormalize</span><span class="p">(</span><span class="n">X</span><span class="p">):</span>
+    <span class="n">average</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+    <span class="n">sigma</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">std</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+    <span class="n">X_norm</span> <span class="o">=</span> <span class="p">(</span><span class="n">X</span> <span class="o">-</span> <span class="n">average</span><span class="p">)</span><span class="o">/</span><span class="n">sigma</span>
+    <span class="k">return</span> <span class="n">X_norm</span><span class="p">,</span> <span class="n">average</span><span class="p">,</span> <span class="n">sigma</span>
+
+<span class="k">def</span> <span class="nf">plotFit</span><span class="p">(</span><span class="n">min_X</span><span class="p">,</span> <span class="n">max_X</span><span class="p">,</span> <span class="n">mu</span><span class="p">,</span> <span class="n">sigma</span><span class="p">,</span> <span class="n">p</span><span class="p">):</span>
+    <span class="n">X</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">min_X</span> <span class="o">-</span> <span class="mi">15</span><span class="p">,</span> <span class="n">max_X</span> <span class="o">+</span> <span class="mi">15</span><span class="p">,</span> <span class="mf">0.05</span><span class="p">)</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span>
+    <span class="n">X_poly</span> <span class="o">=</span> <span class="n">polyFeatures</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">p</span><span class="p">)</span>
+    <span class="n">X_poly</span> <span class="o">=</span> <span class="p">(</span><span class="n">X_poly</span> <span class="o">-</span> <span class="n">mu</span><span class="p">)</span> <span class="o">/</span> <span class="n">sigma</span>
+    <span class="n">X_poly</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">c_</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">(</span><span class="n">X_poly</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]),</span> <span class="n">X_poly</span><span class="p">]</span>
+    <span class="k">return</span> <span class="n">X</span><span class="p">,</span> <span class="n">X_poly</span>
+
+<span class="k">def</span> <span class="nf">validationCurve</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">Xval</span><span class="p">,</span> <span class="n">yval</span><span class="p">,</span> <span class="n">lambda_vec</span><span class="p">):</span>
+    <span class="n">m</span> <span class="o">=</span> <span class="n">lambda_vec</span><span class="o">.</span><span class="n">size</span>
+    <span class="n">error_train</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="n">m</span><span class="p">,</span> <span class="mi">1</span><span class="p">))</span>
+    <span class="n">error_val</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="n">m</span><span class="p">,</span> <span class="mi">1</span><span class="p">))</span>
+    <span class="n">initial_theta</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="n">X</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="mi">1</span><span class="p">))</span>
+    <span class="n">alpha</span> <span class="o">=</span> <span class="mf">0.001</span>
+    <span class="n">num_iters</span> <span class="o">=</span> <span class="mi">3000</span>
+    <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">lamda</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">lambda_vec</span><span class="p">):</span>
+        <span class="n">theta</span> <span class="o">=</span> <span class="n">gradientDescent</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">initial_theta</span><span class="p">,</span> <span class="n">alpha</span><span class="p">,</span> <span class="n">num_iters</span><span class="p">,</span> <span class="n">lamda</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+        <span class="n">error_train</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">costFunctionReg</span><span class="p">(</span><span class="n">theta</span><span class="p">,</span> <span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+        <span class="n">error_val</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">costFunctionReg</span><span class="p">(</span><span class="n">theta</span><span class="p">,</span> <span class="n">Xval</span><span class="p">,</span> <span class="n">yval</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+    <span class="n">best_lamda</span> <span class="o">=</span> <span class="n">lambda_vec</span><span class="p">[</span><span class="n">error_val</span><span class="o">.</span><span class="n">argmin</span><span class="p">()]</span>
+    <span class="k">return</span> <span class="n">error_train</span><span class="p">,</span> <span class="n">error_val</span><span class="p">,</span> <span class="n">best_lamda</span>
 </pre></div>
 
 </div>
@@ -11961,7 +12049,16 @@ With each step of gradient descent, the parameters $\theta_j$ come closer to the
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h4 id="Running-Linear-Model">Running Linear Model<a class="anchor-link" href="#Running-Linear-Model">&#182;</a></h4>
+<h2 id="High-Bias-model">High Bias model<a class="anchor-link" href="#High-Bias-model">&#182;</a></h2>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Now we are ready to run Linear Regression. To minimaze Linear Regression cost function we use <em>gradient descent</em> algorithm which we have just implemented above. We set our initial parameters <code>initial_theta</code> to one and the regualarization parameter <code>lamda</code> to zero since in this section we do not want to regularize our model.</p>
+
 </div>
 </div>
 </div>
@@ -11970,27 +12067,16 @@ With each step of gradient descent, the parameters $\theta_j$ come closer to the
 <div class="prompt input_prompt">In&nbsp;[5]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># y need to be shaped from (97,) to (97, 1)</span>
-<span class="n">y</span> <span class="o">=</span> <span class="n">y</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="n">y</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="mi">1</span><span class="p">)</span>
-<span class="c1"># it is not necessarily to reshape X since we add the intercept term and X become already right shaped into (97, 2)</span>
-<span class="c1">#X = X.reshape(X.shape[0], 1)</span>
-<span class="n">X</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">c_</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">(</span><span class="n">X</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]),</span> <span class="n">X</span><span class="p">]</span> <span class="c1"># adding column of ones to X to account for theta_0 (the intercept)</span>
-</pre></div>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># add bias term</span>
+<span class="n">X</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">c_</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">(</span><span class="n">X</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]),</span> <span class="n">X</span><span class="p">]</span>
 
-</div>
-</div>
-</div>
+<span class="c1"># regularization parameter</span>
+<span class="n">lamda</span> <span class="o">=</span> <span class="mi">0</span>
 
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[6]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">theta</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">]])</span><span class="o">.</span><span class="n">T</span>
-<span class="n">iterations</span> <span class="o">=</span> <span class="mi">1500</span>
-<span class="n">alpha</span> <span class="o">=</span> <span class="mf">0.01</span>
-<span class="n">theta</span><span class="p">,</span> <span class="n">J_history</span> <span class="o">=</span> <span class="n">gradientDescent</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">theta</span><span class="p">,</span> <span class="n">alpha</span><span class="p">,</span> <span class="n">iterations</span><span class="p">)</span>
+<span class="n">initial_theta</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">((</span><span class="n">X</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="mi">1</span><span class="p">))</span>
+<span class="n">num_iters</span> <span class="o">=</span> <span class="mi">3000</span>
+<span class="n">alpha</span> <span class="o">=</span> <span class="mf">0.001</span>
+<span class="n">theta</span><span class="p">,</span> <span class="n">J_history</span> <span class="o">=</span> <span class="n">gradientDescent</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">initial_theta</span><span class="p">,</span> <span class="n">alpha</span><span class="p">,</span> <span class="n">num_iters</span><span class="p">,</span> <span class="n">lamda</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Theta found by gradient descent: intercept=</span><span class="si">{0}</span><span class="s2">, slope=</span><span class="si">{1}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">theta</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span><span class="n">theta</span><span class="p">[</span><span class="mi">1</span><span class="p">]))</span>
 </pre></div>
 
@@ -12008,7 +12094,7 @@ With each step of gradient descent, the parameters $\theta_j$ come closer to the
 
 
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>Theta found by gradient descent: intercept=[-3.63029144], slope=[1.16636235]
+<pre>Theta found by gradient descent: intercept=[12.42957875], slope=[0.36383098]
 </pre>
 </div>
 </div>
@@ -12021,27 +12107,19 @@ With each step of gradient descent, the parameters $\theta_j$ come closer to the
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h4 id="Visualize-the-cost">Visualize the cost<a class="anchor-link" href="#Visualize-the-cost">&#182;</a></h4>
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<p>After you performed gradient descent to learn minimize the cost function $J(\theta)$, it is helpful to monitor the convergence by computing the cost. You should see that the cost $J(\theta)$ is not-increasing at each iteration.</p>
+<p>To check that <em>gradient descent</em> have worked properly, we plot the cost value of the cost function to make sure it non increase with each iteration of gradient descent.</p>
 
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[7]:</div>
+<div class="prompt input_prompt">In&nbsp;[6]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">fig = plt.figure()</span>
 <span class="n">ax = fig.add_subplot(1, 1, 1)</span>
-<span class="n">ax.plot(range(iterations), J_history, linewidth=10, c=&#39;r&#39;)</span>
+<span class="n">ax.plot(range(num_iters), J_history)</span>
 <span class="n">plt.ylabel(&#39;Cost Value&#39;)</span>
 <span class="n">plt.xlabel(&#39;Iteration of Gradient Descent&#39;)</span>
 <span class="n">plt.show()</span>
@@ -12056,7 +12134,7 @@ With each step of gradient descent, the parameters $\theta_j$ come closer to the
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p><img src="article/linear-regression/img/2.png" alt="" style="width: 100%;"/></p>
+<p><img src="article/bias-variance/img/2.png" alt="" style="width: 1000px;"/></p>
 
 </div>
 </div>
@@ -12065,26 +12143,33 @@ With each step of gradient descent, the parameters $\theta_j$ come closer to the
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h4 id="Plot-the-result">Plot the result<a class="anchor-link" href="#Plot-the-result">&#182;</a></h4>
+<p>The cost is decreasing with each iteration, good!</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Now is the moment to plot the fit line.</p>
+
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[8]:</div>
+<div class="prompt input_prompt">In&nbsp;[7]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">fig = plt.figure()</span>
 <span class="n">ax = fig.add_subplot(1, 1, 1) </span>
-<span class="c1"># plot X data and the relative labels y</span>
-<span class="c1">#ax.plot(X[:, 1], y[:, 0], &#39;x&#39;, label=&#39;Training Data&#39;)</span>
-<span class="n">ax.scatter(X[:, 1], y[:, 0], s=500, marker=&#39;x&#39;,color=&#39;r&#39;,linewidths=8, label=&#39;Training data&#39;)</span>
-<span class="c1"># plot the hypotesis line h = theta0*X[:, 0] + theta1*X[:, 1] </span>
-<span class="n">ax.plot(X[:,1], np.matmul(X, theta), linestyle=&#39;-&#39;, label=&#39;Linear Regression&#39;, linewidth=8, c=&#39;b&#39;)</span>
+<span class="n">ax.plot(X[:, 1], y[:, 0], &#39;x&#39;, label=&#39;Training Data&#39;)</span>
+<span class="n">ax.plot(X[:,1], np.matmul(X, theta), linestyle=&#39;-&#39;, label=&#39;Linear Regression&#39;)</span>
 <span class="c1"># set the legend for the labels: &#39;Training Data&#39; and &#39;Linear Regression&#39;</span>
 <span class="n">legend = ax.legend(loc=&#39;upper center&#39;, shadow=True)</span>
-<span class="n">plt.ylabel(&#39;Profit in $10Ks&#39;)</span>
-<span class="n">plt.xlabel(&#39;Population of City in 10Ks&#39;)</span>
+<span class="n">plt.ylabel(&#39;Change in water level (x)&#39;)</span>
+<span class="n">plt.xlabel(&#39;Water flowing out of the dam (y)&#39;)</span>
 <span class="n">plt.show()</span>
 </pre></div>
 
@@ -12097,7 +12182,7 @@ With each step of gradient descent, the parameters $\theta_j$ come closer to the
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p><img src="article/linear-regression/img/3.png" alt="" style="width: 1000px;"/></p>
+<p><img src="article/bias-variance/img/3.png" alt="" style="width: 1000px;"/></p>
 
 </div>
 </div>
@@ -12106,38 +12191,52 @@ With each step of gradient descent, the parameters $\theta_j$ come closer to the
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="Make-prediction">Make prediction<a class="anchor-link" href="#Make-prediction">&#182;</a></h3>
+<p>It is evident that a straight line does not model the true relationship between X and y. The method is not flexible enough, resulting in <strong>high bias</strong> and <strong>low variance</strong>. The finding is proved by the below learning curve as well.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Learning-curve">Learning curve<a class="anchor-link" href="#Learning-curve">&#182;</a></h3>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>A <strong>learning curve</strong> is a useful method that shows the error on the training set v.s. validation set for an increasing number of data points ingested in the learning process. Let's call <code>learningCurve</code> function and plot the result.</p>
+
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[9]:</div>
+<div class="prompt input_prompt">In&nbsp;[8]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">predict1</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">matmul</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">1</span><span class="p">,</span> <span class="mf">3.5</span><span class="p">]]),</span> <span class="n">theta</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;For a population of 35000, we predict a profict of: &quot;</span><span class="p">,</span> <span class="nb">round</span><span class="p">(</span><span class="n">predict1</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span> <span class="o">*</span> <span class="mi">10000</span><span class="p">),</span> <span class="s2">&quot;$&quot;</span><span class="p">)</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># add bias term validation set</span>
+<span class="n">X_val</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">c_</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">((</span><span class="n">X_val</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="mi">1</span><span class="p">)),</span> <span class="n">X_val</span><span class="p">]</span>
 </pre></div>
 
 </div>
 </div>
 </div>
 
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area">
-
-<div class="prompt"></div>
-
-
-<div class="output_subarea output_stream output_stdout output_text">
-<pre>For a population of 35000, we predict a profict of:  4520.0 $
-</pre>
 </div>
-</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[9]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">lamda</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="n">error_train</span><span class="p">,</span> <span class="n">error_val</span> <span class="o">=</span> <span class="n">learningCurve</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">X_val</span><span class="p">,</span> <span class="n">y_val</span><span class="p">,</span> <span class="n">lamda</span><span class="p">)</span>
+</pre></div>
 
+</div>
 </div>
 </div>
 
@@ -12147,38 +12246,27 @@ With each step of gradient descent, the parameters $\theta_j$ come closer to the
 <div class="prompt input_prompt">In&nbsp;[10]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">predict2</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">matmul</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">7</span><span class="p">]]),</span> <span class="n">theta</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;For a population of 70000, we predict a profict of: &quot;</span><span class="p">,</span> <span class="nb">round</span><span class="p">(</span><span class="n">predict2</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span> <span class="o">*</span> <span class="mi">10000</span><span class="p">),</span> <span class="s2">&quot;$&quot;</span><span class="p">)</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">fig = plt.figure()</span>
+<span class="n">ax = fig.add_subplot(1, 1, 1)</span>
+<span class="n">ax.plot(range(X.shape[0]), error_train, label = &#39;Training set error&#39;)</span>
+<span class="n">ax.plot(range(X.shape[0]), error_val, label = &#39;Validation set error&#39;)</span>
+<span class="n">legend = ax.legend(loc=&#39;upper center&#39;, shadow=True)</span>
+<span class="n">plt.ylabel(&#39;Error&#39;)</span>
+<span class="n">plt.xlabel(&#39;Training samples&#39;)</span>
+<span class="n">plt.show()</span>
 </pre></div>
 
 </div>
 </div>
 </div>
 
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area">
-
-<div class="prompt"></div>
-
-
-<div class="output_subarea output_stream output_stdout output_text">
-<pre>For a population of 70000, we predict a profict of:  45342.0 $
-</pre>
-</div>
-</div>
-
-</div>
-</div>
-
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Linear-Regression-with-multiple-variable">Linear Regression with multiple variable<a class="anchor-link" href="#Linear-Regression-with-multiple-variable">&#182;</a></h2>
+<p><img src="article/bias-variance/img/4.png" alt="" style="width: 1000px;"/></p>
+
 </div>
 </div>
 </div>
@@ -12186,10 +12274,61 @@ With each step of gradient descent, the parameters $\theta_j$ come closer to the
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>In this part, we will implement linear regression with multiple variables to predict the prices of houses. Suppose you are selling your house and you want to know what a good market price would be. One way to do this is to first collect information on recent sold and make a model of housing prices.
-We will consider now a dataset containing a training set of housing prices in Portland, Oregon.
-The first column is the size of the house (in square feet), the second column is the number of bedrooms, and the third column is the price of the house.</p>
+<p>It can be observed that <em>both</em> the train error and cross validation error are high when the number of training examples is increased. As we already discovered before looking at the line that fits the training set, this reflects a <strong>high bias</strong> problem in the model, namely the linear regression model is too simple and is unable to fit our dataset well. To fit a better model we will implement <strong>polynomial regression</strong>.</p>
 
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="Polynomial-regression">Polynomial regression<a class="anchor-link" href="#Polynomial-regression">&#182;</a></h1>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>The problem with our linear model was that it was too simple for the data and resulted <strong>underfitting</strong> (high bias). In this part, we will address this problem by adding more features and our hypothesis will have the following form:</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>$h_\theta(x) = \theta_0 + \theta_1 * (waterLevel) + \theta_2 * (waterLevel)^2 + \dots + \theta_p * (waterLevel)^p =\theta_0 + \theta_1x_1 + \theta_2x_2 + \dots + \theta_px_p$</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Notice that, by doing that mapping, we obtain a linear regression model where the features are the various powers of the original value (waterLevel).</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>To achieve that, I implemented the function <code>polyFeatures</code> which takes in input the dataset we want to add polynomial features and the max polynomial degree.
+It turns out that if we run the training directly using the new dataset we obtained, will not work well as the features would be badly scaled. Therefore is necessary to use feature normalization. To do that, I implemented the function <code>featureNormalize</code>. This function returns the normalized dataset, the <em>mean</em> and the <em>standard deviation</em> (represented by <code>sigma</code> variable in the code). We need the mean and standard deviation for normalize subsequently the validation and test set.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="High-Variance-model">High Variance model<a class="anchor-link" href="#High-Variance-model">&#182;</a></h2>
 </div>
 </div>
 </div>
@@ -12198,10 +12337,13 @@ The first column is the size of the house (in square feet), the second column is
 <div class="prompt input_prompt">In&nbsp;[11]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">data</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">loadtxt</span><span class="p">(</span><span class="s1">&#39;ex1data2.txt&#39;</span><span class="p">,</span> <span class="n">delimiter</span><span class="o">=</span><span class="s1">&#39;,&#39;</span><span class="p">)</span>
-<span class="n">X</span> <span class="o">=</span> <span class="n">data</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">:</span><span class="mi">2</span><span class="p">]</span>
-<span class="n">y</span> <span class="o">=</span> <span class="n">data</span><span class="p">[:,</span> <span class="mi">2</span><span class="p">]</span>
-<span class="n">y</span> <span class="o">=</span> <span class="n">y</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="n">y</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="mi">1</span><span class="p">)</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">mat</span> <span class="o">=</span> <span class="n">scipy</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">loadmat</span><span class="p">(</span><span class="s1">&#39;ex5data1.mat&#39;</span><span class="p">)</span>
+<span class="n">X</span> <span class="o">=</span> <span class="n">mat</span><span class="p">[</span><span class="s1">&#39;X&#39;</span><span class="p">]</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">mat</span><span class="p">[</span><span class="s1">&#39;y&#39;</span><span class="p">]</span>
+<span class="n">X_val</span> <span class="o">=</span> <span class="n">mat</span><span class="p">[</span><span class="s1">&#39;Xval&#39;</span><span class="p">]</span>
+<span class="n">y_val</span> <span class="o">=</span> <span class="n">mat</span><span class="p">[</span><span class="s1">&#39;yval&#39;</span><span class="p">]</span>
+<span class="n">X_test</span> <span class="o">=</span> <span class="n">mat</span><span class="p">[</span><span class="s1">&#39;Xtest&#39;</span><span class="p">]</span>
+<span class="n">y_test</span> <span class="o">=</span> <span class="n">mat</span><span class="p">[</span><span class="s1">&#39;ytest&#39;</span><span class="p">]</span>
 </pre></div>
 
 </div>
@@ -12214,19 +12356,21 @@ The first column is the size of the house (in square feet), the second column is
 <div class="prompt input_prompt">In&nbsp;[12]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">fig = plt.figure()</span>
-<span class="n">ax = fig.add_subplot(2, 1, 1) </span>
-<span class="n">ax.scatter(X[:, 0], y, s=500, marker=&#39;x&#39;,color=&#39;r&#39;,linewidths=8)</span>
-<span class="n">plt.ylabel(&#39;House prices&#39;)</span>
-<span class="n">plt.xlabel(&#39;Size of the house (square feet)&#39;)</span>
-<span class="n">plt.show()</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">p</span> <span class="o">=</span> <span class="mi">10</span>
 
-<span class="n">fig = plt.figure()</span>
-<span class="n">ax = fig.add_subplot(2, 1, 1) </span>
-<span class="n">ax.scatter(X[:, 1], y, s=500, marker=&#39;x&#39;,color=&#39;r&#39;,linewidths=8)</span>
-<span class="n">plt.ylabel(&#39;House prices&#39;)</span>
-<span class="n">plt.xlabel(&#39;Number of bedrooms&#39;)</span>
-<span class="n">plt.show()</span>
+<span class="n">X_poly</span> <span class="o">=</span> <span class="n">polyFeatures</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">p</span><span class="p">)</span>
+<span class="c1"># it is important to normalize and scale our dataset before applying any ML on it</span>
+<span class="n">X_poly</span><span class="p">,</span> <span class="n">mean</span><span class="p">,</span> <span class="n">sigma</span> <span class="o">=</span> <span class="n">featureNormalize</span><span class="p">(</span><span class="n">X_poly</span><span class="p">)</span>
+<span class="c1"># add biad term to our new dataset</span>
+<span class="n">X_poly</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">c_</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">((</span><span class="n">X_poly</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="mi">1</span><span class="p">)),</span> <span class="n">X_poly</span><span class="p">]</span>
+
+<span class="n">X_poly_val</span> <span class="o">=</span> <span class="n">polyFeatures</span><span class="p">(</span><span class="n">X_val</span><span class="p">,</span> <span class="n">p</span><span class="p">)</span>
+<span class="n">X_poly_val</span> <span class="o">=</span> <span class="p">(</span><span class="n">X_poly_val</span> <span class="o">-</span> <span class="n">mean</span><span class="p">)</span> <span class="o">/</span> <span class="n">sigma</span>
+<span class="n">X_poly_val</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">c_</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">((</span><span class="n">X_poly_val</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="mi">1</span><span class="p">)),</span> <span class="n">X_poly_val</span><span class="p">]</span>
+
+<span class="n">X_poly_test</span> <span class="o">=</span> <span class="n">polyFeatures</span><span class="p">(</span><span class="n">X_test</span><span class="p">,</span> <span class="n">p</span><span class="p">)</span>
+<span class="n">X_poly_test</span> <span class="o">=</span> <span class="p">(</span><span class="n">X_poly_test</span> <span class="o">-</span> <span class="n">mean</span><span class="p">)</span> <span class="o">/</span> <span class="n">sigma</span>
+<span class="n">X_poly_test</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">c_</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">((</span><span class="n">X_poly_test</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="mi">1</span><span class="p">)),</span> <span class="n">X_poly_test</span><span class="p">]</span>
 </pre></div>
 
 </div>
@@ -12238,16 +12382,7 @@ The first column is the size of the house (in square feet), the second column is
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p><img src="article/linear-regression/img/4.png" alt="" style="width: 1000px;"/></p>
-
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<p>By looking at the values, note that house size are about 1000 times the number of bedrooms. When features differ by orders of magnitude, first performing feature scaling can make gradient decent converge much more quikly.</p>
+<p>Normalized our datasets, we can run Linear Regression on the polynomial dataset and see how good our line fits the model.</p>
 
 </div>
 </div>
@@ -12257,11 +12392,11 @@ The first column is the size of the house (in square feet), the second column is
 <div class="prompt input_prompt">In&nbsp;[13]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="k">def</span> <span class="nf">featureNormalize</span><span class="p">(</span><span class="n">X</span><span class="p">):</span>
-    <span class="n">average</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
-    <span class="n">sigma</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">std</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
-    <span class="n">X_norm</span> <span class="o">=</span> <span class="p">(</span><span class="n">X</span> <span class="o">-</span> <span class="n">average</span><span class="p">)</span><span class="o">/</span><span class="n">sigma</span>
-    <span class="k">return</span> <span class="n">X_norm</span><span class="p">,</span> <span class="n">average</span><span class="p">,</span> <span class="n">sigma</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">lamda</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="n">alpha</span> <span class="o">=</span> <span class="mf">0.001</span>
+<span class="n">num_iters</span> <span class="o">=</span> <span class="mi">3000</span>
+<span class="n">initial_theta</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">((</span><span class="n">X_poly</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="mi">1</span><span class="p">))</span>
+<span class="n">theta_fit_poly</span><span class="p">,</span> <span class="n">J_history_poly</span> <span class="o">=</span> <span class="n">gradientDescent</span><span class="p">(</span><span class="n">X_poly</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">initial_theta</span><span class="p">,</span> <span class="n">alpha</span><span class="p">,</span> <span class="n">num_iters</span><span class="p">,</span> <span class="n">lamda</span><span class="p">)</span>
 </pre></div>
 
 </div>
@@ -12274,78 +12409,13 @@ The first column is the size of the house (in square feet), the second column is
 <div class="prompt input_prompt">In&nbsp;[14]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">X</span><span class="p">,</span> <span class="n">average</span><span class="p">,</span> <span class="n">sigma</span> <span class="o">=</span> <span class="n">featureNormalize</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
-</pre></div>
-
-</div>
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h4 id="Running-Gradient-Descent">Running Gradient Descent<a class="anchor-link" href="#Running-Gradient-Descent">&#182;</a></h4>
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[15]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">alpha</span> <span class="o">=</span> <span class="mf">0.01</span>
-<span class="n">interations</span> <span class="o">=</span> <span class="mi">1500</span>
-<span class="c1"># adding the intercept</span>
-<span class="n">X</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">c_</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">(</span><span class="n">X</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]),</span> <span class="n">X</span><span class="p">]</span>
-
-<span class="n">theta</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="n">X</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="mi">1</span><span class="p">))</span>
-<span class="n">theta</span><span class="p">,</span> <span class="n">J_history</span> <span class="o">=</span> <span class="n">gradientDescent</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">theta</span><span class="p">,</span> <span class="n">alpha</span><span class="p">,</span>  <span class="n">interations</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Theta found by gradient descent: intercept=</span><span class="si">{0}</span><span class="s2">, slope1=</span><span class="si">{1}</span><span class="s2">, slope2=</span><span class="si">{2}</span><span class="s2"> &quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">theta</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span><span class="n">theta</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span><span class="n">theta</span><span class="p">[</span><span class="mi">2</span><span class="p">]))</span>
-</pre></div>
-
-</div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area">
-
-<div class="prompt"></div>
-
-
-<div class="output_subarea output_stream output_stdout output_text">
-<pre>Theta found by gradient descent: intercept=[340412.56301439], slope1=[109370.05670466], slope2=[-6500.61509507]
-</pre>
-</div>
-</div>
-
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h4 id="Visualizing-the-convergence-graph">Visualizing the convergence graph<a class="anchor-link" href="#Visualizing-the-convergence-graph">&#182;</a></h4>
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[16]:</div>
-<div class="inner_cell">
-    <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">fig = plt.figure()</span>
-<span class="n">ax = fig.add_subplot(1, 1, 1)</span>
-<span class="n">ax.plot(range(iterations), J_history, linewidth=10)</span>
-<span class="n">plt.ylabel(&#39;Cost Value&#39;)</span>
-<span class="n">plt.xlabel(&#39;Iterations of Gradient Descent&#39;)</span>
+<span class="n">ax = fig.add_subplot(1, 1, 1) </span>
+<span class="n">ax.plot(X, y, &#39;x&#39;, color=&#39;r&#39;)</span>
+<span class="n">X_fit, X_poly_fit = plotFit(min(X), max(X), mean, sigma, p)</span>
+<span class="n">ax.plot(X_fit, np.dot(X_poly_fit, theta_fit_poly), &#39;--&#39;, color=&#39;blue&#39;)</span>
+<span class="n">plt.xlabel(&#39;Change in water level (x)&#39;)</span>
+<span class="n">plt.ylabel(&#39;Water flowing out of the dam (y)&#39;)</span>
 <span class="n">plt.show()</span>
 </pre></div>
 
@@ -12358,7 +12428,7 @@ The first column is the size of the house (in square feet), the second column is
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p><img src="article/linear-regression/img/5.png" alt="" style="width: 1000px;"/></p>
+<p><img src="article/bias-variance/img/5.png" alt="" style="width: 1000px;"/></p>
 
 </div>
 </div>
@@ -12367,7 +12437,99 @@ The first column is the size of the house (in square feet), the second column is
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="Make-Prediction">Make Prediction<a class="anchor-link" href="#Make-Prediction">&#182;</a></h3><p>Estimate the price of a 1650 sq-ft, 3 bedrooms house:</p>
+<p>The problem with our linear model was that it was too simple for the data and resulted in underfitting (high bias).
+The polynomial fit, on the contrary, is able to follow the datapoints very well - thus, obtaining a low training error. However, the polynomial method is very complex and even drops off at the extremes. This is an indicator that the polynomial regression model is <strong>overfitting</strong> the training data and will not generalize well.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>To better understand the problems with the unregularized model ($\lambda = 0$), you can see that the learning curve plot blow shows the same effect where the training error is low, but the validation error is high. There is a gap between the training and cross validation errors, indicating a <strong>high variance</strong> problem</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[15]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">lamda</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="n">error_train_poly</span><span class="p">,</span> <span class="n">error_val_poly</span> <span class="o">=</span> <span class="n">learningCurve</span><span class="p">(</span><span class="n">X_poly</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">X_poly_val</span><span class="p">,</span> <span class="n">y_val</span><span class="p">,</span> <span class="n">lamda</span><span class="p">)</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[16]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">fig = plt.figure()</span>
+<span class="n">ax.plot(range(X_poly.shape[0]), error_train_poly, label = &#39;Training set error&#39;)</span>
+<span class="n">ax = fig.add_subplot(1, 1, 1)</span>
+<span class="n">ax.plot(range(X_poly.shape[0]), error_val_poly, label = &#39;Validation set error&#39;)</span>
+<span class="n">legend = ax.legend(loc=&#39;upper center&#39;, shadow=True)</span>
+<span class="n">plt.ylabel(&#39;Error&#39;)</span>
+<span class="n">plt.xlabel(&#39;Training samples&#39;)</span>
+<span class="n">plt.show()</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><img src="article/bias-variance/img/6.png" alt="" style="width: 1000px;"/></p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>To remedy the situation we have to reduce the variance. <strong>Regularization</strong> come to the rescue; specifically now we are going to apply the <em>validation set approach</em> to select the <em>best</em> value of lambda that minimize the validation set error. <br>
+Minimizing that validation set error means we created a model with no bias and no variance, which is our goal!</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Regularize-the-model-selecting-$\lambda$-using-a-cross-validation-set">Regularize the model selecting $\lambda$ using a cross validation set<a class="anchor-link" href="#Regularize-the-model-selecting-$\lambda$-using-a-cross-validation-set">&#182;</a></h3>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>$\lambda$ is a regularization parameter which controls the degree of regularization (thus, helps preventing overfitting). The regularization term puts a penalty on the overall cost $J$. As the magnitudes of the model parameters $\theta_j$ increase, the penalty increases as well.</p>
+<p>The regularization parameter $\lambda$ can significantly affect the results of regularized polynomial regression on the training and cross validation set. In particular, a model without regularization ($\lambda = 0$) fits the trainig set well, but does not generalize. Conversely, a model with too much regularization ($\lambda = 100$) does not fit the training set and testing set well. A good choice of $\lambda$ (e.g., $\lambda = 1$) can provide a good fit to the data.
+So we have to implememt an automated method to select the $\lambda$ parameter. Concretely, we will use a cross validation set to evaluate how good each $\lambda$ value is.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>After selecting the best $\lambda$ value using the cross validation set, we can then evaluate the model on the test set to estimate how well the model will perform on actual unseen data.
+To achieve that, I implemented <code>validationCurve</code> which does this job. This function takes in input a list of values to try (<em>lambda_vec</em>) along with the training and validation set.</p>
 
 </div>
 </div>
@@ -12377,9 +12539,8 @@ The first column is the size of the house (in square feet), the second column is
 <div class="prompt input_prompt">In&nbsp;[17]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">new_data</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">1650</span><span class="p">,</span> <span class="mi">3</span><span class="p">]])</span>
-<span class="c1"># first need to normalize our data</span>
-<span class="n">new_data</span> <span class="o">=</span> <span class="p">(</span><span class="n">new_data</span> <span class="o">-</span> <span class="n">average</span><span class="p">)</span> <span class="o">/</span> <span class="n">sigma</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">lambda_vec</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mf">0.001</span><span class="p">,</span> <span class="mf">0.003</span><span class="p">,</span> <span class="mf">0.01</span><span class="p">,</span> <span class="mf">0.03</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">,</span> <span class="mf">0.3</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">10</span><span class="p">])</span>
+<span class="n">train_error_lamb</span><span class="p">,</span> <span class="n">validation_error_lamb</span><span class="p">,</span> <span class="n">best_lamda</span> <span class="o">=</span> <span class="n">validationCurve</span><span class="p">(</span><span class="n">X_poly</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">X_poly_val</span><span class="p">,</span> <span class="n">y_val</span><span class="p">,</span> <span class="n">lambda_vec</span><span class="p">)</span>
 </pre></div>
 
 </div>
@@ -12392,8 +12553,17 @@ The first column is the size of the house (in square feet), the second column is
 <div class="prompt input_prompt">In&nbsp;[18]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># adding the intercept</span>
-<span class="n">new_data</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">c_</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">1</span><span class="p">]),</span> <span class="n">new_data</span><span class="p">]</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">nfig = plt.figure()</span>
+<span class="n">ax = fig.add_subplot(1, 1, 1)</span>
+<span class="n">ax.plot(np.arange(lambda_vec.min(), lambda_vec.max()), train_error_lamb, label = &#39;Train&#39;)</span>
+<span class="n">ax.plot(np.arange(lambda_vec.min(), lambda_vec.max()), validation_error_lamb,  label= &#39;Validation&#39;)</span>
+<span class="n">ax.annotate(&quot;Best Lambda: %.3f&quot; % best_lamda, xy=(2, 6), xytext=(0.001, 19),</span>
+ <span class="n">           arrowprops=dict(facecolor=&#39;black&#39;, shrink=0.005))</span>
+<span class="n">plt.ylabel(&#39;Error&#39;)</span>
+<span class="n">plt.xlabel(&#39;Lamda&#39;)</span>
+<span class="n">plt.xlim(0,9)</span>
+<span class="n">legend = ax.legend(loc=&#39;upper center&#39;, shadow=True)</span>
+<span class="n">plt.show()</span>
 </pre></div>
 
 </div>
@@ -12401,12 +12571,30 @@ The first column is the size of the house (in square feet), the second column is
 </div>
 
 </div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><img src="article/bias-variance/img/7.png" alt="" style="width: 1000px;"/></p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>The best $\lambda$ to choose is that value of $\lambda$ that causes the least error on the validation set. In this case is the third value (in the plot is shown that is the second value, but it is actually the third since the index starts from zero) from our <em>lambda_vec</em>, which is 0.003.</p>
+
+</div>
+</div>
+</div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 <div class="prompt input_prompt">In&nbsp;[19]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Estimated price for a house of 1650 sq-ft and 3 bedrooms: &quot;</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">new_data</span><span class="p">,</span> <span class="n">theta</span><span class="p">)[</span><span class="mi">0</span><span class="p">][</span><span class="mi">0</span><span class="p">],</span> <span class="s2">&quot;$&quot;</span><span class="p">)</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">validation_error_lamb</span>
 </pre></div>
 
 </div>
@@ -12419,13 +12607,24 @@ The first column is the size of the house (in square feet), the second column is
 
 <div class="output_area">
 
-<div class="prompt"></div>
+<div class="prompt output_prompt">Out[19]:</div>
 
 
-<div class="output_subarea output_stream output_stdout output_text">
-<pre>Estimated price for a house of 1650 sq-ft and 3 bedrooms:  293098.4666757651 $
-</pre>
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>array([[ 7.58127919],
+       [ 5.98824572],
+       [ 4.39488179],
+       [ 6.8846358 ],
+       [23.61431369],
+       [50.74367746],
+       [68.45252854],
+       [78.07489413],
+       [81.48716129],
+       [82.77865759]])</pre>
 </div>
+
 </div>
 
 </div>
@@ -12436,7 +12635,8 @@ The first column is the size of the house (in square feet), the second column is
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Normal-Equation">Normal Equation<a class="anchor-link" href="#Normal-Equation">&#182;</a></h2>
+<p>It can be seen that the least error value for the validation set is the third (4.17235022).</p>
+
 </div>
 </div>
 </div>
@@ -12444,10 +12644,15 @@ The first column is the size of the house (in square feet), the second column is
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>It is possible to show that the same optimized parameters found with Gradient Descent can be calculated in an elegant, efficient and closed form, using linear algebra. Specifically:
-$$\theta = (X^T X)^{-1} X^Ty$$
-Using this formula does not require any feature scaling, and you will get an exact solution in one calculation: there is no "loop until convergence" like in gradient descent.
-This equation is preferred that Gradient Descent when the dataset is &lt; 10000, otherwise Gradient Descent is preferred since it will converge faster. Furthermore, if the $X^T X$ does not admit inverse, this method cannot be applied.</p>
+<h3 id="Computing-test-set-error">Computing test set error<a class="anchor-link" href="#Computing-test-set-error">&#182;</a></h3>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Now that we have tuned our $\lambda$ parameter we can run our model on the test set.</p>
 
 </div>
 </div>
@@ -12457,14 +12662,36 @@ This equation is preferred that Gradient Descent when the dataset is &lt; 10000,
 <div class="prompt input_prompt">In&nbsp;[20]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="k">def</span> <span class="nf">normalEquation</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span>
-    <span class="n">XTX_inv</span><span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">inv</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">matmul</span><span class="p">(</span><span class="n">X</span><span class="o">.</span><span class="n">T</span><span class="p">,</span> <span class="n">X</span><span class="p">))</span>
-    <span class="n">XTy</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">matmul</span><span class="p">(</span><span class="n">X</span><span class="o">.</span><span class="n">T</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
-    <span class="n">theta</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">matmul</span><span class="p">(</span><span class="n">XTX_inv</span><span class="p">,</span> <span class="n">XTy</span><span class="p">)</span>
-    <span class="k">return</span> <span class="n">theta</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">initial_theta</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">((</span><span class="n">X_poly</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="mi">1</span><span class="p">))</span>
+<span class="n">lamb</span> <span class="o">=</span> <span class="mf">0.003</span>
+<span class="n">alpha</span> <span class="o">=</span> <span class="mf">0.001</span>
+<span class="n">iterations</span> <span class="o">=</span> <span class="mi">10000</span>
+
+<span class="n">theta_optimal</span><span class="p">,</span> <span class="n">J_history_poly</span> <span class="o">=</span> <span class="n">gradientDescent</span><span class="p">(</span><span class="n">X_poly</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">initial_theta</span><span class="p">,</span> <span class="n">alpha</span><span class="p">,</span> <span class="n">iterations</span><span class="p">,</span> <span class="n">lamb</span><span class="p">)</span>
+
+<span class="n">test_error</span> <span class="o">=</span> <span class="n">costFunctionReg</span><span class="p">(</span><span class="n">theta_optimal</span><span class="p">,</span> <span class="n">X_poly_test</span><span class="p">,</span> <span class="n">y_test</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;The test error at the optimal lambda = 0.003 is equal to </span><span class="si">%.2f</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">test_error</span><span class="p">)</span>
 </pre></div>
 
 </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+<div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>The test error at the optimal lambda = 0.003 is equal to 3.14
+</pre>
+</div>
+</div>
+
 </div>
 </div>
 
@@ -12474,171 +12701,53 @@ This equation is preferred that Gradient Descent when the dataset is &lt; 10000,
 <div class="prompt input_prompt">In&nbsp;[21]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">data</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">loadtxt</span><span class="p">(</span><span class="s1">&#39;ex1data2.txt&#39;</span><span class="p">,</span> <span class="n">delimiter</span><span class="o">=</span><span class="s1">&#39;,&#39;</span><span class="p">)</span>
-<span class="n">X</span> <span class="o">=</span> <span class="n">data</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">:</span><span class="mi">2</span><span class="p">]</span>
-<span class="n">y</span> <span class="o">=</span> <span class="n">data</span><span class="p">[:,</span> <span class="mi">2</span><span class="p">]</span>
-<span class="n">y</span> <span class="o">=</span> <span class="n">y</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="n">y</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="mi">1</span><span class="p">)</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">fig = plt.figure()</span>
+<span class="n">ax = fig.add_subplot(1, 1, 1) </span>
+<span class="n">ax.plot(X_test, y_test, &#39;x&#39;, color=&#39;r&#39;)</span>
+<span class="n">X_fit, X_poly_fit = plotFit(min(X), max(X), mean, sigma, p)</span>
+<span class="n">ax.plot(X_fit, np.dot(X_poly_fit, theta_optimal), &#39;--&#39;, color=&#39;blue&#39;)</span>
+<span class="n">plt.xlabel(&#39;Change in water level (x)&#39;)</span>
+<span class="n">plt.ylabel(&#39;Water flowing out of the dam (y)&#39;)</span>
+<span class="n">plt.show()</span>
 </pre></div>
 
 </div>
 </div>
 </div>
 
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><img src="article/bias-variance/img/8.png" alt="" style="width: 1000px;"/></p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>As it can be seen, the polynomial fit follows the data trend well! What about the learning curve? Let's plot them!</p>
+
+</div>
+</div>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 <div class="prompt input_prompt">In&nbsp;[22]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># adding the intercept</span>
-<span class="n">X</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">c_</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">(</span><span class="n">X</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]),</span> <span class="n">X</span><span class="p">]</span>
-</pre></div>
-
-</div>
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[23]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">theta</span> <span class="o">=</span> <span class="n">normalEquation</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Theta found by gradient descent: intercept=</span><span class="si">{0}</span><span class="s2">, slope1=</span><span class="si">{1}</span><span class="s2">, slope2=</span><span class="si">{2}</span><span class="s2"> &quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">theta</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span><span class="n">theta</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span><span class="n">theta</span><span class="p">[</span><span class="mi">2</span><span class="p">]))</span>
-</pre></div>
-
-</div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area">
-
-<div class="prompt"></div>
-
-
-<div class="output_subarea output_stream output_stdout output_text">
-<pre>Theta found by gradient descent: intercept=[89597.9095428], slope1=[139.21067402], slope2=[-8738.01911233]
-</pre>
-</div>
-</div>
-
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[24]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">new</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1650</span><span class="p">,</span> <span class="mi">3</span><span class="p">]])</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Estimated price for a house of 1650 sq-ft and 3 bedrooms: &quot;</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">new</span><span class="p">,</span> <span class="n">theta</span><span class="p">)[</span><span class="mi">0</span><span class="p">][</span><span class="mi">0</span><span class="p">],</span> <span class="s2">&quot;$&quot;</span><span class="p">)</span>
-</pre></div>
-
-</div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area">
-
-<div class="prompt"></div>
-
-
-<div class="output_subarea output_stream output_stdout output_text">
-<pre>Estimated price for a house of 1650 sq-ft and 3 bedrooms:  293081.4643348931 $
-</pre>
-</div>
-</div>
-
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<p>As you can notice, we obtained a predicted value very similar to the value we got earlier using Gradient Descent, which is: 293098.4666757651 $.</p>
-
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Compare-our-implementation-to-sklearn">Compare our implementation to sklearn<a class="anchor-link" href="#Compare-our-implementation-to-sklearn">&#182;</a></h2>
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[25]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
-<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
-<span class="kn">from</span> <span class="nn">sklearn</span> <span class="k">import</span> <span class="n">datasets</span><span class="p">,</span> <span class="n">linear_model</span>
-<span class="kn">from</span> <span class="nn">sklearn.metrics</span> <span class="k">import</span> <span class="n">mean_squared_error</span><span class="p">,</span> <span class="n">r2_score</span>
-</pre></div>
-
-</div>
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[26]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">data</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">loadtxt</span><span class="p">(</span><span class="s1">&#39;ex1data2.txt&#39;</span><span class="p">,</span> <span class="n">delimiter</span><span class="o">=</span><span class="s1">&#39;,&#39;</span><span class="p">)</span>
-<span class="n">X</span> <span class="o">=</span> <span class="n">data</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">:</span><span class="mi">2</span><span class="p">]</span>
-<span class="n">y</span> <span class="o">=</span> <span class="n">data</span><span class="p">[:,</span> <span class="mi">2</span><span class="p">]</span>
-<span class="n">y</span> <span class="o">=</span> <span class="n">y</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="n">y</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="mi">1</span><span class="p">)</span>
-</pre></div>
-
-</div>
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[27]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># adding the intercept term</span>
-<span class="n">X</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">c_</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">(</span><span class="n">X</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]),</span> <span class="n">X</span><span class="p">]</span>
-</pre></div>
-
-</div>
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[28]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># create linear regression object</span>
-<span class="n">regr</span> <span class="o">=</span> <span class="n">linear_model</span><span class="o">.</span><span class="n">LinearRegression</span><span class="p">()</span>
-
-<span class="c1"># train the model using the training set</span>
-<span class="n">regr</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
-
-<span class="c1"># make prediction</span>
-<span class="n">y_pred_regr</span> <span class="o">=</span> <span class="n">regr</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">error_train_poly</span><span class="p">,</span> <span class="n">error_val_poly</span> <span class="o">=</span> <span class="n">learningCurve</span><span class="p">(</span><span class="n">X_poly</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">X_poly_val</span><span class="p">,</span> <span class="n">y_val</span><span class="p">,</span> <span class="n">lamb</span><span class="p">)</span>
+<span class="n">fig = plt.figure()</span>
+<span class="n">ax = fig.add_subplot(1, 1, 1)</span>
+<span class="n">ax.plot(range(X_poly.shape[0]), error_train_poly, label = &#39;Training set error&#39;)</span>
+<span class="n">ax.plot(range(X_poly.shape[0]), error_val_poly, label = &#39;Validation set error&#39;)</span>
+<span class="n">legend = ax.legend(loc=&#39;upper center&#39;, shadow=True)</span>
+<span class="n">plt.ylabel(&#39;Error&#39;)</span>
+<span class="n">plt.xlabel(&#39;Training samples&#39;)</span>
+<span class="n">plt.show()</span>
 </pre></div>
 
 </div>
@@ -12650,49 +12759,17 @@ This equation is preferred that Gradient Descent when the dataset is &lt; 10000,
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p><strong>theta</strong> are the parameters we found before with Normal Equation.</p>
+<p><img src="article/bias-variance/img/9.png" alt="" style="width: 1000px;"/></p>
 
 </div>
 </div>
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[29]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># compare sklearn with my implementation using mean_squared_error</span>
-<span class="n">error</span> <span class="o">=</span> <span class="n">mean_squared_error</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">matmul</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">theta</span><span class="p">),</span> <span class="n">y_pred_regr</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Error between my implementation and sklearn implementation is: &quot;</span><span class="p">,</span> <span class="n">error</span><span class="p">)</span>
-</pre></div>
-
-</div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area">
-
-<div class="prompt"></div>
-
-
-<div class="output_subarea output_stream output_stdout output_text">
-<pre>Error between my implementation and sklearn implementation is:  9.454185273745276e-18
-</pre>
-</div>
-</div>
-
-</div>
-</div>
-
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>You can see that the mean squared error is really small! Great!</p>
+<p>We can notice that both the cross validation and trainig set error converge to a relatively low value and that there is no evident gab between them.</p>
+<p>So we managed to create a model with no bias and no variance! Great!</p>
 
 </div>
 </div>

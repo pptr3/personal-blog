@@ -8,7 +8,7 @@
 		<link rel="stylesheet" href="css2.css">
 		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 		<link href="//db.onlinewebfonts.com/c/b6958b09ead02c6060160101a8dbbe25?family=FF+Olsen" rel="stylesheet" type="text/css">
-	
+
 		<style media="screen">
 		@font-face {
 			font-family: GraublauWeb;
