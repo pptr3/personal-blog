@@ -6,7 +6,7 @@
 		<meta charset="UTF-8">
 		<title>Petru Potrimba's Blog</title>
 		<link href="https://fonts.googleapis.com/css?family=Poppins:100,200,400,300,500,600,700" rel="stylesheet">
-		<link rel="icon" href="article/img/p.png">
+		<link rel="icon" href="article/img/pp.png">
 		<link rel="stylesheet" href="css2.css">
 		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
@@ -39,12 +39,11 @@
 																	$dateObj   = DateTime::createFromFormat('!m', $month);
 																	$monthName = $dateObj->format('F'); // March
 																	$dateWithMonthLiteral = $monthName.' '.$explodedDate[2].', '.$explodedDate[0];
-																	echo '<p style="padding-left:2%; color: #BC360A;"><span style="color: #BC360A; padding-right:1%;" class="glyphicon glyphicon-time"></span>'.$dateWithMonthLiteral.'<a target="_blank" href="'.$row['NameJupyterArticle'].'" style="padding-left: 2%; color: #BC360A;">Link to Jupyter Notebook</span></a>';
+																	echo '<p style="padding-left:2%; color: #BC360A;"><span style="color: #BC360A; padding-right:1%;" class="glyphicon glyphicon-time"></span>'.$dateWithMonthLiteral.'<span style="color: #BC360A; padding-left:4%;" class="glyphicon glyphicon-folder-open"></span> <a target="_blank" href="'.$row['NameJupyterArticle'].'" style="padding-left: 1%; color: #BC360A;">Link to Jupyter Notebook</span></a>';
 																	echo '<p style="padding-left:2%;"> <b>Reading time</b>: '.$row['ReadingTime'].' minutes</p>';
 															echo '</div>';
 															include($row['NameArticle']. ".html");
 											echo '</div>';
-
 										}
 									}
 								?>
@@ -72,5 +71,4 @@
 </body>
 
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-	</script>
 </html>

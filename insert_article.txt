@@ -8,3 +8,9 @@ INSERT INTO `Article`(`NameArticle`, `NameJupyterArticle`, `Date`, `IdBadge`, `I
 
 ("article/linear-regression/LinearRegressionArticle", "https://github.com/Pptr95/personal-blog/blob/master/article/linear-regression/jupyter-notebook/LinearRegression.ipynb", "2019-03-28", "1", "Linear Regression goal is to fit a straight line to the data, trying to capture what is the trend of the data.
 In this article we will start with a quick intuitive walk-through of the mathematics behind this well-known problem and we will implement the whole algorithm from scratch ...", "article/linear-regression/img/linear-regression.png", "8", "Linear Regression: from math concepts to implementation");
+
+
+
+INSERT INTO `Article`(`NameArticle`, `NameJupyterArticle`, `Date`, `IdBadge`, `Intro`, `PhotoArticle`,  `ReadingTime`, `Title`) VALUES
+
+("article/linear-regression/LinearRegressionArticle", "https://github.com/Pptr95/personal-blog/blob/master/article/bias-variance/Bias-Variance-TradeOffArticle.ipynb", "2019-04-05", "1", "The objective of the following article is to explore the relationship between two competing properties of a statistical learning model: bias and variace. An important concept in machine learning is the bias-variance tradeoff ...", "article/bias-variance/img/bias-variance.png", "9", "Bias - Variance tradeoff and Polynomial Regression");
