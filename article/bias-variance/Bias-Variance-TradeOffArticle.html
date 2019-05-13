@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head><meta charset="utf-8" />
-<title>Bias-Variance-TradeOff-Article</title><script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.1.10/require.min.js"></script>
+<title>Bias-Variance-TradeOffArticle</title><script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.1.10/require.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
 
 <style type="text/css">
@@ -18,8 +18,8 @@
 /*! normalize.css v3.0.3 | MIT License | github.com/necolas/normalize.css */
 html {
   font-family: sans-serif;
-  -ms-text-size-adjust: 130%;
-  -webkit-text-size-adjust: 130%;
+  -ms-text-size-adjust: 100%;
+  -webkit-text-size-adjust: 100%;
 }
 body {
   margin: 0;
@@ -10439,6 +10439,8 @@ div#notebook {
     padding: 15px;
     background-color: #fff;
     min-height: 0;
+    -webkit-box-shadow: 0px 0px 12px 1px rgba(87, 87, 87, 0.2);
+    box-shadow: 0px 0px 12px 1px rgba(87, 87, 87, 0.2);
   }
 }
 @media print {
@@ -11718,6 +11720,7 @@ ul.typeahead-list > li > a {
 /* Overrides of notebook CSS for static HTML export */
 body {
   overflow: visible;
+  padding: 8px;
 }
 
 div#notebook {
@@ -11835,7 +11838,7 @@ div#notebook {
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>As announced above we will build a predictive model to forecast the amount of water getting out of a dam. We will do this playing around with Linear Regression (checkout my <a style="color: #BC360A;" href="http://petrupotrimba.altervista.org/image-post.php?id=1#img">article</a> if you are not familiar with Linear Regression) at first drawing a straight line and later on extending the feature space with the addition of p-th degree polynomials of X.</p>
+<p>As announced above we will build a predictive model to forecast the amount of water getting out of a dam. We will do this playing around with Linear Regression (checkout my <a href="http://petrupotrimba.altervista.org/image-post.php?id=1#img" style="color: #BC360A;">article</a> if you are not familiar with Linear Regression) at first drawing a straight line and later on extending the feature space with the addition of p-th degree polynomials of X.</p>
 
 </div>
 </div>
@@ -11886,9 +11889,30 @@ div#notebook {
 <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
 <span class="kn">import</span> <span class="nn">scipy.io</span>
 <span class="kn">from</span> <span class="nn">scipy</span> <span class="k">import</span> <span class="n">optimize</span>
+<span class="kn">from</span> <span class="nn">IPython.core.display</span> <span class="k">import</span> <span class="n">display</span><span class="p">,</span> <span class="n">HTML</span>
+<span class="n">display</span><span class="p">(</span><span class="n">HTML</span><span class="p">(</span><span class="s2">&quot;&lt;style&gt;.rendered_html { font-size: 17px; }&lt;/style&gt;&quot;</span><span class="p">))</span>
 </pre></div>
 
 </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+<div class="prompt"></div>
+
+
+
+<div class="output_html rendered_html output_subarea ">
+<style>.rendered_html { font-size: 17px; }</style>
+</div>
+
+</div>
+
 </div>
 </div>
 
@@ -12166,11 +12190,10 @@ div#notebook {
 <span class="n">ax = fig.add_subplot(1, 1, 1) </span>
 <span class="n">ax.plot(X[:, 1], y[:, 0], &#39;x&#39;, label=&#39;Training Data&#39;)</span>
 <span class="n">ax.plot(X[:,1], np.matmul(X, theta), linestyle=&#39;-&#39;, label=&#39;Linear Regression&#39;)</span>
-<span class="c1"># set the legend for the labels: &#39;Training Data&#39; and &#39;Linear Regression&#39;</span>
+<span class="n"># set the legend for the labels: &#39;Training Data&#39; and &#39;Linear Regression&#39;</span>
 <span class="n">legend = ax.legend(loc=&#39;upper center&#39;, shadow=True)</span>
 <span class="n">plt.ylabel(&#39;Change in water level (x)&#39;)</span>
-<span class="n">plt.xlabel(&#39;Water flowing out of the dam (y)&#39;)</span>
-<span class="n">plt.show()</span>
+<span class="n">plt.xlabel(&#39;Water flowing out of the dam (y)&#39;)#plt.show()</span>
 </pre></div>
 
 </div>
@@ -12472,8 +12495,8 @@ The polynomial fit, on the contrary, is able to follow the datapoints very well 
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">fig = plt.figure()</span>
-<span class="n">ax.plot(range(X_poly.shape[0]), error_train_poly, label = &#39;Training set error&#39;)</span>
 <span class="n">ax = fig.add_subplot(1, 1, 1)</span>
+<span class="n">ax.plot(range(X_poly.shape[0]), error_train_poly, label = &#39;Training set error&#39;)</span>
 <span class="n">ax.plot(range(X_poly.shape[0]), error_val_poly, label = &#39;Validation set error&#39;)</span>
 <span class="n">legend = ax.legend(loc=&#39;upper center&#39;, shadow=True)</span>
 <span class="n">plt.ylabel(&#39;Error&#39;)</span>
@@ -12553,12 +12576,11 @@ To achieve that, I implemented <code>validationCurve</code> which does this job.
 <div class="prompt input_prompt">In&nbsp;[18]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">nfig = plt.figure()</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">fig = plt.figure()</span>
 <span class="n">ax = fig.add_subplot(1, 1, 1)</span>
 <span class="n">ax.plot(np.arange(lambda_vec.min(), lambda_vec.max()), train_error_lamb, label = &#39;Train&#39;)</span>
-<span class="n">ax.plot(np.arange(lambda_vec.min(), lambda_vec.max()), validation_error_lamb,  label= &#39;Validation&#39;)</span>
-<span class="n">ax.annotate(&quot;Best Lambda: %.3f&quot; % best_lamda, xy=(2, 6), xytext=(0.001, 19),</span>
- <span class="n">           arrowprops=dict(facecolor=&#39;black&#39;, shrink=0.005))</span>
+<span class="n">ax.plot(np.arange(lambda_vec.min(), lambda_vec.max()), validation_error_lamb,  label= &#39;Validation&#39;) ax.annotate(&quot;Best Lambda: %.3f&quot; % best_lamda, xy=(2, 6), xytext=(0.001, 19),</span>
+<span class="n">arrowprops=dict(facecolor=&#39;black&#39;, shrink=0.005))</span>
 <span class="n">plt.ylabel(&#39;Error&#39;)</span>
 <span class="n">plt.xlabel(&#39;Lamda&#39;)</span>
 <span class="n">plt.xlim(0,9)</span>
@@ -12729,7 +12751,7 @@ To achieve that, I implemented <code>validationCurve</code> which does this job.
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>As it can be seen, the polynomial fit follows the data trend well! What about the learning curve? Let's plot them!</p>
+<p>As it can be seen, the polynomial fit follows the data trend well! What abou the learning curve? Let's plot them!</p>
 
 </div>
 </div>
@@ -12739,7 +12761,7 @@ To achieve that, I implemented <code>validationCurve</code> which does this job.
 <div class="prompt input_prompt">In&nbsp;[22]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">error_train_poly</span><span class="p">,</span> <span class="n">error_val_poly</span> <span class="o">=</span> <span class="n">learningCurve</span><span class="p">(</span><span class="n">X_poly</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">X_poly_val</span><span class="p">,</span> <span class="n">y_val</span><span class="p">,</span> <span class="n">lamb</span><span class="p">)</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">error_train_poly, error_val_poly = learningCurve(X_poly, y, X_poly_val, y_val, lamb)</span>
 <span class="n">fig = plt.figure()</span>
 <span class="n">ax = fig.add_subplot(1, 1, 1)</span>
 <span class="n">ax.plot(range(X_poly.shape[0]), error_train_poly, label = &#39;Training set error&#39;)</span>
