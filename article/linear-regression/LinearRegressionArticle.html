@@ -18,8 +18,8 @@
 /*! normalize.css v3.0.3 | MIT License | github.com/necolas/normalize.css */
 html {
   font-family: sans-serif;
-  -ms-text-size-adjust: 130%;
-  -webkit-text-size-adjust: 130%;
+  -ms-text-size-adjust: 100%;
+  -webkit-text-size-adjust: 100%;
 }
 body {
   margin: 0;
@@ -10439,6 +10439,8 @@ div#notebook {
     padding: 15px;
     background-color: #fff;
     min-height: 0;
+    -webkit-box-shadow: 0px 0px 12px 1px rgba(87, 87, 87, 0.2);
+    box-shadow: 0px 0px 12px 1px rgba(87, 87, 87, 0.2);
   }
 }
 @media print {
@@ -11718,6 +11720,7 @@ ul.typeahead-list > li > a {
 /* Overrides of notebook CSS for static HTML export */
 body {
   overflow: visible;
+  padding: 8px;
 }
 
 div#notebook {
@@ -11782,7 +11785,7 @@ div#notebook {
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>Linear Regression goal is to fit a straight line to the data, trying to capture what is the trend of the data. <br>
 In this article we will start with a quick intuitive walk-through of the mathematics behind this well-known problem and we will implement the whole algorithm from scratch. Of course there are already many libraries that implement linear regression, but our goal is to understand how linear regression works and I found that the best way to do that is to implement it from scratch.<br>
-In this article we will only explain how to fit a <strong>straight line</strong> to the data. In the <a href="http://petrupotrimba.altervista.org/image-post.php?id=2#img">next article</a> we will explain also how to fit data that has not a linear  trend by creating non-linear model. So stay tuned!</p>
+In this article we will only explain how to fit a <strong>straight line</strong> to the data. In the next article we will explain also how to fit data that has not a linear  trend by creating non-linear model. So stay tuned!</p>
 <p>Let's look into some math aspetcs and then proceed to implementation!</p>
 
 </div>
@@ -11843,6 +11846,8 @@ With each step of gradient descent, the parameters $\theta_j$ come closer to the
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">style</span><span class="o">.</span><span class="n">use</span><span class="p">(</span><span class="s1">&#39;ggplot&#39;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">rcParams</span><span class="p">[</span><span class="s1">&#39;figure.figsize&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="mi">18</span><span class="p">,</span> <span class="mi">12</span><span class="p">)</span>
+<span class="kn">from</span> <span class="nn">IPython.core.display</span> <span class="k">import</span> <span class="n">display</span><span class="p">,</span> <span class="n">HTML</span>
+<span class="n">display</span><span class="p">(</span><span class="n">HTML</span><span class="p">(</span><span class="s2">&quot;&lt;style&gt;.rendered_html { font-size: 17px; }&lt;/style&gt;&quot;</span><span class="p">))</span>
 
 <span class="n">data</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">loadtxt</span><span class="p">(</span><span class="s1">&#39;ex1data1.txt&#39;</span><span class="p">,</span> <span class="n">delimiter</span><span class="o">=</span><span class="s1">&#39;,&#39;</span><span class="p">)</span>
 <span class="n">X</span> <span class="o">=</span> <span class="n">data</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">]</span>
@@ -11850,6 +11855,25 @@ With each step of gradient descent, the parameters $\theta_j$ come closer to the
 </pre></div>
 
 </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+<div class="prompt"></div>
+
+
+
+<div class="output_html rendered_html output_subarea ">
+<style>.rendered_html { font-size: 17px; }</style>
+</div>
+
+</div>
+
 </div>
 </div>
 
@@ -11873,7 +11897,8 @@ With each step of gradient descent, the parameters $\theta_j$ come closer to the
 <span class="c1"># adjust figure&#39;s size</span>
 <span class="n">ax = fig.add_subplot(1, 1, 1) </span>
 <span class="c1"># plot X data and the relative labels y</span>
-<span class="n">ax.plot(X, y, &#39;x&#39;)</span>
+<span class="c1">#ax.plot(X, y, &#39;x&#39;, markersize=15, linewidth=7)</span>
+<span class="n">ax.scatter(X, y, s=500, marker=&#39;x&#39;,color=&#39;r&#39;,linewidths=8)</span>
 <span class="c1"># set label y</span>
 <span class="n">plt.ylabel(&#39;Profit in $10Ks&#39;)</span>
 <span class="c1"># set label x </span>
@@ -12019,7 +12044,7 @@ With each step of gradient descent, the parameters $\theta_j$ come closer to the
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">fig = plt.figure()</span>
 <span class="n">ax = fig.add_subplot(1, 1, 1)</span>
-<span class="n">ax.plot(range(iterations), J_history)</span>
+<span class="n">ax.plot(range(iterations), J_history, linewidth=10, c=&#39;r&#39;)</span>
 <span class="n">plt.ylabel(&#39;Cost Value&#39;)</span>
 <span class="n">plt.xlabel(&#39;Iteration of Gradient Descent&#39;)</span>
 <span class="n">plt.show()</span>
@@ -12034,7 +12059,7 @@ With each step of gradient descent, the parameters $\theta_j$ come closer to the
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p><img src="article/linear-regression/img/2.png" alt="" style="width: 1000px;"/></p>
+<p><img src="article/linear-regression/img/2.png" alt="" style="width: 100%;"/></p>
 
 </div>
 </div>
@@ -12055,9 +12080,10 @@ With each step of gradient descent, the parameters $\theta_j$ come closer to the
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">fig = plt.figure()</span>
 <span class="n">ax = fig.add_subplot(1, 1, 1) </span>
 <span class="c1"># plot X data and the relative labels y</span>
-<span class="n">ax.plot(X[:, 1], y[:, 0], &#39;x&#39;, label=&#39;Training Data&#39;)</span>
+<span class="c1">#ax.plot(X[:, 1], y[:, 0], &#39;x&#39;, label=&#39;Training Data&#39;)</span>
+<span class="n">ax.scatter(X[:, 1], y[:, 0], s=500, marker=&#39;x&#39;,color=&#39;r&#39;,linewidths=8, label=&#39;Training data&#39;)</span>
 <span class="c1"># plot the hypotesis line h = theta0*X[:, 0] + theta1*X[:, 1] </span>
-<span class="n">ax.plot(X[:,1], np.matmul(X, theta), linestyle=&#39;-&#39;, label=&#39;Linear Regression&#39;)</span>
+<span class="n">ax.plot(X[:,1], np.matmul(X, theta), linestyle=&#39;-&#39;, label=&#39;Linear Regression&#39;, linewidth=8, c=&#39;b&#39;)</span>
 <span class="c1"># set the legend for the labels: &#39;Training Data&#39; and &#39;Linear Regression&#39;</span>
 <span class="n">legend = ax.legend(loc=&#39;upper center&#39;, shadow=True)</span>
 <span class="n">plt.ylabel(&#39;Profit in $10Ks&#39;)</span>
@@ -12193,14 +12219,14 @@ The first column is the size of the house (in square feet), the second column is
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">fig = plt.figure()</span>
 <span class="n">ax = fig.add_subplot(2, 1, 1) </span>
-<span class="n">ax.plot(X[:, 0], y, &#39;x&#39;)</span>
+<span class="n">ax.scatter(X[:, 0], y, s=500, marker=&#39;x&#39;,color=&#39;r&#39;,linewidths=8)</span>
 <span class="n">plt.ylabel(&#39;House prices&#39;)</span>
 <span class="n">plt.xlabel(&#39;Size of the house (square feet)&#39;)</span>
 <span class="n">plt.show()</span>
 
 <span class="n">fig = plt.figure()</span>
 <span class="n">ax = fig.add_subplot(2, 1, 1) </span>
-<span class="n">ax.plot(X[:, 1], y, &#39;x&#39;)</span>
+<span class="n">ax.scatter(X[:, 1], y, s=500, marker=&#39;x&#39;,color=&#39;r&#39;,linewidths=8)</span>
 <span class="n">plt.ylabel(&#39;House prices&#39;)</span>
 <span class="n">plt.xlabel(&#39;Number of bedrooms&#39;)</span>
 <span class="n">plt.show()</span>
@@ -12320,7 +12346,7 @@ The first column is the size of the house (in square feet), the second column is
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">fig = plt.figure()</span>
 <span class="n">ax = fig.add_subplot(1, 1, 1)</span>
-<span class="n">ax.plot(range(iterations), J_history)</span>
+<span class="n">ax.plot(range(iterations), J_history, linewidth=10)</span>
 <span class="n">plt.ylabel(&#39;Cost Value&#39;)</span>
 <span class="n">plt.xlabel(&#39;Iterations of Gradient Descent&#39;)</span>
 <span class="n">plt.show()</span>
