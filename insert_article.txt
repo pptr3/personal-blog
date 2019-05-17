@@ -13,4 +13,10 @@ In this article we will start with a quick intuitive walk-through of the mathema
 
 INSERT INTO `Article`(`NameArticle`, `NameJupyterArticle`, `Date`, `IdBadge`, `Intro`, `PhotoArticle`,  `ReadingTime`, `Title`) VALUES
 
-("article/linear-regression/LinearRegressionArticle", "https://github.com/Pptr95/personal-blog/blob/master/article/bias-variance/Bias-Variance-TradeOffArticle.ipynb", "2019-04-05", "1", "The objective of the following article is to explore the relationship between two competing properties of a statistical learning model: bias and variace. An important concept in machine learning is the bias-variance tradeoff ...", "article/bias-variance/img/bias-variance.png", "9", "Bias - Variance tradeoff and Polynomial Regression");
+("article/linear-regression/LinearRegressionArticle", "https://github.com/Pptr95/personal-blog/blob/master/article/bias-variance/jupyter-notebook/Bias-Variance-TradeOff.ipynb", "2019-04-05", "1", "The objective of the following article is to explore the relationship between two competing properties of a statistical learning model: bias and variace. An important concept in machine learning is the bias-variance tradeoff ...", "article/bias-variance/img/bias-variance.png", "9", "Bias - Variance tradeoff and Polynomial Regression");
+
+
+INSERT INTO `Article`(`NameArticle`, `NameJupyterArticle`, `Date`, `IdBadge`, `Intro`, `PhotoArticle`,  `ReadingTime`, `Title`) VALUES
+
+("article/logistic-regression/LogisticRegressionArticle", "https://github.com/Pptr95/personal-blog/blob/master/article/logistic-regression/jupyter-notebook/LogisticRegression.ipynb", "2019-05-17", "1", "
+Logistic regression, as linear regression, is an algorithm that falls into the category of Supervised Learning, which means that we have the label (dependent variable) for each training example. Linear regression goal is to fit ...", "article/logistic-regression/img/logistic-regression.png", "10", "Everything you need to know about Logistic Regression");
