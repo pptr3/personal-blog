@@ -14,6 +14,18 @@
 		.anav {
 			color: white !important;
 		}
+		@font-face {
+		  font-family: GraublauWeb;
+		  src: url("font/OlsenTF-Regular.otf") format("opentype");
+		}
+
+		body {
+		  font-family: GraublauWeb;
+		}
+
+		.linktojupyternotebook:hover {
+			color: #EA9629 !important;
+		}
 		</style>
 	</head>
 	<body>
@@ -39,7 +51,7 @@
 																	$dateObj   = DateTime::createFromFormat('!m', $month);
 																	$monthName = $dateObj->format('F'); // March
 																	$dateWithMonthLiteral = $monthName.' '.$explodedDate[2].', '.$explodedDate[0];
-																	echo '<p style="padding-left:2%; color: #BC360A;"><span style="color: #BC360A; padding-right:1%;" class="glyphicon glyphicon-time"></span>'.$dateWithMonthLiteral.'<span style="color: #BC360A; padding-left:4%;" class="glyphicon glyphicon-folder-open"></span> <a target="_blank" href="'.$row['NameJupyterArticle'].'" style="padding-left: 1%; color: #BC360A;">Link to Jupyter Notebook</span></a>';
+																	echo '<p style="padding-left:2%; color: #BC360A;"><span style="color: #BC360A; padding-right:1%;" class="glyphicon glyphicon-time"></span>'.$dateWithMonthLiteral.'<span style="color: #BC360A; padding-left:4%;" class="glyphicon glyphicon-folder-open"></span> <a class="linktojupyternotebook" target="_blank" href="'.$row['NameJupyterArticle'].'" style="padding-left: 1%; color: #BC360A;">Link to Jupyter Notebook</span></a>';
 																	echo '<p style="padding-left:2%;"> <b>Reading time</b>: '.$row['ReadingTime'].' minutes</p>';
 															echo '</div>';
 															include($row['NameArticle']. ".html");

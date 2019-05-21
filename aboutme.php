@@ -14,9 +14,15 @@
 			font-family: GraublauWeb;
 			src: url("font/OlsenTF-Regular.otf") format("opentype");
 		}
+
 		.abm, .intro2 {
 			font-family: GraublauWeb;
 		}
+
+		.leadthefuture:hover {
+			color: #EA9629 !important;
+		}
+
 		</style>
 	</head>
 	<body>
@@ -48,7 +54,7 @@ This motivated me to roll up the sleeves in order to reach their level.
 At the beginning I always used to ask someone to help me when I had some problems. It was extremely rewarding when, approximately one year later,
 I was not the one who asked others but the others used to ask me to help them. All of this is thanks to my huge desire to learn more and more. <br><br>
 
-Recently, I have been selected to take part of <a href="https://leadthefuture.tech/" target="_blank">LeadTheFuture</a> network: a leading mentorship non-profit organization for students in STEM,
+Recently, I have been selected to take part of <a class="leadthefuture" style="color: #BC360A;" href="https://leadthefuture.tech/" target="_blank">LeadTheFuture</a> network: a leading mentorship non-profit organization for students in STEM,
 with acceptance rate below 20%. LeadTheFuture empowers top-performing students to achieve their goals and contribute to their communities
 by giving them one-on-one guidance from high-impact mentors coming from the world's leading STEM innovation hubs such as Silicon Valley and CERN. <br><br>
 

@@ -20,3 +20,8 @@ INSERT INTO `Article`(`NameArticle`, `NameJupyterArticle`, `Date`, `IdBadge`, `I
 
 ("article/logistic-regression/LogisticRegressionArticle", "https://github.com/Pptr95/personal-blog/blob/master/article/logistic-regression/jupyter-notebook/LogisticRegression.ipynb", "2019-05-17", "1", "
 Logistic regression, as linear regression, is an algorithm that falls into the category of Supervised Learning, which means that we have the label (dependent variable) for each training example. Linear regression goal is to fit ...", "article/logistic-regression/img/logistic-regression.png", "10", "Everything you need to know about Logistic Regression");
+
+
+#colors
+dark orange: #BC360A
+light orange: #EA9629

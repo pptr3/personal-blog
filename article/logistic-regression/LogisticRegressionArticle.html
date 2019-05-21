@@ -11737,6 +11737,14 @@ div#notebook {
     page-break-inside: avoid;
   }
 }
+
+  .toc {
+    color: #BC360A;
+    text-decoration: none !important;
+  }
+  .toc:hover {
+    color: #EA9629 !important;
+  }
 </style>
 
 <!-- Custom stylesheet, it must be in the same directory as the html file -->
@@ -11781,28 +11789,28 @@ div#notebook {
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h2 id="Table-of-contents">Table of contents<a class="anchor-link" href="#Table-of-contents">&#182;</a></h2><ul>
-<li><a href="#some-math">Math behind logistic regression and implementation</a><ul>
-<li><a href="#problem-definition1">Problem definition</a></li>
-<li><a href="#functions1">Functions</a></li>
-<li><a href="#running-gd">Running the model with Gradient Descent</a></li>
-<li><a href="#running-bfgs">Running the model with BFGS algorithm</a></li>
-<li><a href="#make-prediction">Make a prediction</a></li>
+<li><a class="toc" href="#some-math">Math behind logistic regression and implementation</a><ul>
+<li><a class="toc" href="#problem-definition1">Problem definition</a></li>
+<li><a class="toc" href="#functions1">Functions</a></li>
+<li><a class="toc" href="#running-gd">Running the model with Gradient Descent</a></li>
+<li><a class="toc" href="#running-bfgs">Running the model with BFGS algorithm</a></li>
+<li><a class="toc" href="#make-prediction">Make a prediction</a></li>
 </ul>
 </li>
-<li><a href="#regularized">Regularized logistic regression</a><ul>
-<li><a href="#problem-definition2">Problem definition</a></li>
-<li><a href="#feature-mapping">Feature mapping</a></li>
-<li><a href="#functions2">Functions</a></li>
-<li><a href="#running">Running the model</a></li>
+<li><a class="toc" href="#regularized">Regularized logistic regression</a><ul>
+<li><a class="toc" href="#problem-definition2">Problem definition</a></li>
+<li><a class="toc" href="#feature-mapping">Feature mapping</a></li>
+<li><a class="toc" href="#functions2">Functions</a></li>
+<li><a class="toc" href="#running">Running the model</a></li>
 </ul>
 </li>
-<li><a href="#one-vs-all">Multiclass Classification: One-vs-all</a><ul>
-<li><a href="#functions3">Functions</a></li>
-<li><a href="#best-lambda">Train the model choosing the best lambda value</a></li>
+<li><a class="toc" href="#one-vs-all">Multiclass Classification: One-vs-all</a><ul>
+<li><a class="toc" href="#functions3">Functions</a></li>
+<li><a class="toc" href="#best-lambda">Train the model choosing the best lambda value</a></li>
 </ul>
 </li>
-<li><a href="#compare-sklearn">Compare our logistic regression to sklearn logistic regression</a></li>
-<li><a href="#compare-svm">Compare logistic regression to SVM</a> </li>
+<li><a class="toc" href="#compare-sklearn">Compare our logistic regression to sklearn logistic regression</a></li>
+<li><a class="toc" href="#compare-svm">Compare logistic regression to SVM</a> </li>
 </ul>
 
 </div>
@@ -11821,7 +11829,7 @@ div#notebook {
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>Logistic regression, as linear regression, is an algorithm that falls into the category of <em>Supervised Learning</em>, which means that we have the label (dependent variable) for each training example.
-Linear regression goal is to fit a straight line to the data, trying to capture what is the trend of the data (read my <a href="http://petrupotrimba.altervista.org/image-post.php?id=1#img">article</a> about linear regression if you didn't). <br>
+Linear regression goal is to fit a straight line to the data, trying to capture what is the trend of the data (read my <a class="toc" href="http://petrupotrimba.altervista.org/image-post.php?id=1#img">article</a> about linear regression if you didn't). <br>
 By contrast, the <strong>logistic regression goal</strong> is to find the best decision boundary that separates the data in different classes. <br>
 In short, logistic regression answer you at questions like "<strong>Is it a cat or dog?</strong>".</p>
 
@@ -12293,7 +12301,7 @@ Now we are ready to plot the decision boundary we learned.</p>
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">plotx, ploty= plotDecisionBoundary(X, theta)</span>
 <span class="n">g = sns.lmplot(&quot;FirstExamScore&quot;, &quot;SecondExamScore&quot;, hue=&quot;Admission&quot;, </span>
-                <span class="c1">data=students_exams, markers=[&quot;o&quot;, &quot;x&quot;], fit_reg=False, height=12, legend=False, scatter_kws={&quot;s&quot;: 100})</span>
+                <span class="n">data=students_exams, markers=[&quot;o&quot;, &quot;x&quot;], fit_reg=False, height=12, legend=False, scatter_kws={&quot;s&quot;: 100})</span>
 <span class="n">ax = g.ax</span>
 <span class="n">ax.plot(plotx, ploty, color=&#39;k&#39;, label=&#39;Decision Boundary&#39;, linewidth=10)</span>
 <span class="n">legend = ax.legend(loc=1, shadow=True)</span>
@@ -12633,7 +12641,7 @@ In this case we use <em>Broyden–Fletcher–Goldfarb–Shanno</em> algorithm (B
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>One way to fit the data better is to create more features from each data point. We will map the features into all polynomial terms of $x1$ and $x2$ up to the <strong>sixth</strong> power.
-Doing so we take care of the low bias of the model, but we will also introduce inevitably much more variance (if you are somewhat confused about bias-variance tradeoff, checkout my <a href="http://petrupotrimba.altervista.org/image-post.php?id=2#img">article</a>). We will combat this second term using regularization.</p>
+Doing so we take care of the low bias of the model, but we will also introduce inevitably much more variance (if you are somewhat confused about bias-variance tradeoff, checkout my <a class="toc" href="http://petrupotrimba.altervista.org/image-post.php?id=2#img">article</a>). We will combat this second term using regularization.</p>
 
 </div>
 </div>
@@ -12819,9 +12827,6 @@ $$J(\theta) = \frac{1}{m}\sum_{i=1}^m(-y_i log(h_i(\theta)) - (1-y_i)log(1-h_i(\
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="Multiclass-Classification:-One-vs-all-">Multiclass Classification: One-vs-all <a class="anchor" id="one-vs-all" /><a class="anchor-link" href="#Multiclass-Classification:-One-vs-all-">&#182;</a></h1>
-</div>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
@@ -12863,6 +12868,9 @@ $$J(\theta) = \frac{1}{m}\sum_{i=1}^m(-y_i log(h_i(\theta)) - (1-y_i)log(1-h_i(\
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
+  <div class="text_cell_render border-box-sizing rendered_html">
+  <h1 id="Multiclass-Classification:-One-vs-all-">Multiclass Classification: One-vs-all <a class="anchor" id="one-vs-all" /><a class="anchor-link" href="#Multiclass-Classification:-One-vs-all-">&#182;</a></h1>
+  </div>
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>Now we will approach the classification of data when we have more than two categories. Instead of $y = \{0,1\}$ we will expand our definition so that $y = \{0,1...n\}$.</p>
 

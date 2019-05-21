@@ -32,11 +32,11 @@
 										<h1 class="contacts" style="padding-top: 5%;">Contacts</h1>
 								</div>
 								<div class="col-sm-12" id="mydiv">
-										<p class="qs" style="font-size: 100%;">Have some questions to ask me? Then contact me at the following references:</p>
+										<p class="qs" style="font-size: 100%;">Have some questions to ask me? Then contact me at the following email:</p>
 										<ul>
 											<li class="mail" style="font-size: 120%;"><b>Email</b>: ppotrimba@gmail.com</li>
-											<li class="number" style="font-size: 120%;"><b>Phone number</b>: +39 3896469181</li>
 										</ul>
+										<p class="qs" style="font-size: 100%;">Otherwise you can contact me through the social networks you can see on the bottom right of the page.</p>
 								</div>
 							</div>
 					</div>
