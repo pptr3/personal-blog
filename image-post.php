@@ -29,6 +29,12 @@
 		</style>
 	</head>
 	<body>
+    <!-- this is for facebook share button -->
+		<div id="fb-root"></div>
+		<script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v3.3"></script>
+
+
+
   <?php require 'nav_article.html';?>
   <?php require_once 'dbconnection.php';?>
 	<?php include 'lib/Mobile_Detect.php';?>
@@ -53,7 +59,21 @@
 																	$dateWithMonthLiteral = $monthName.' '.$explodedDate[2].', '.$explodedDate[0];
 																	echo '<p style="padding-left:2%; color: #BC360A;"><span style="color: #BC360A; padding-right:1%;" class="glyphicon glyphicon-time"></span>'.$dateWithMonthLiteral.'<span style="color: #BC360A; padding-left:4%;" class="glyphicon glyphicon-folder-open"></span> <a class="linktojupyternotebook" target="_blank" href="'.$row['NameJupyterArticle'].'" style="padding-left: 1%; color: #BC360A;">Link to Jupyter Notebook</span></a>';
 																	echo '<p style="padding-left:2%;"> <b>Reading time</b>: '.$row['ReadingTime'].' minutes</p>';
-															echo '</div>';
+
+echo '<div class="row">';
+		// Linkedin share button
+		echo '<div style="padding-right: 2%; padding-left: 2%; padding-top: 1%;">';
+	          echo '<div class="a2a_kit">';
+	                echo '<a target="_blank" class="a2a_button_linkedin_share" data-url="https://petrupotrimba.altervista.org/image-post.php?id='.$id.'#img"></a>';
+	          echo '</div>';
+		echo '</div>';
+
+		// Facebook share button
+		echo '<div style="padding-top: 1%;">';
+						echo '<div class="fb-share-button" data-href="https://petrupotrimba.altervista.org/image-post.php?id='.$id.'#img" data-layout="button" data-size="small"><a target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fdevelopers.facebook.com%2Fdocs%2Fplugins%2F&amp;src=sdkpreparse" class="fb-xfbml-parse-ignore">Share</a></div>';
+		echo '</div>';
+																	echo '</div>';
+echo '</div>';
 															include($row['NameArticle']. ".html");
 											echo '</div>';
 										}
@@ -81,6 +101,6 @@
 
 <?php require 'footer2.html'?>
 </body>
-
+  <script async src="https://static.addtoany.com/menu/page.js"></script>
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 </html>

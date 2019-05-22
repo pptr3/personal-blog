@@ -1,0 +1,19 @@
+create table Article (
+     IdArticle int not null AUTO_INCREMENT,
+     IdType int not null,
+     NameArticle LONGTEXT not null,
+     Title TEXT not null,
+     Intro TEXT not null,
+     PhotoArticle TEXT not null,
+     constraint IDArticle primary key (IdArticle));
+
+create table Type (
+     IdType int not null AUTO_INCREMENT,
+     Name TEXT not null,
+     IconSection TEXT not null,
+     constraint IDType primary key (IdType));
+
+
+alter table Article add constraint Article_Type
+     foreign key (IdType)
+     references Type (IdType);

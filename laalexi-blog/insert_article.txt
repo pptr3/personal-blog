@@ -1,0 +1,22 @@
+## first need to add badge
+
+INSERT INTO `Type`(`Name`, `IconSection`) VALUES ("Dolci", "article/img/dolci.png");
+INSERT INTO `Type`(`Name`, `IconSection`) VALUES ("Salati", "article/img/salty.png");
+INSERT INTO `Type`(`Name`, `IconSection`) VALUES ("Colazioni", "article/img/breakfast.png");
+INSERT INTO `Type`(`Name`, `IconSection`) VALUES ("Senza glutine", "article/img/gluten.png");
+INSERT INTO `Type`(`Name`, `IconSection`) VALUES ("Tutte le ricette", "article/img/dolci.png");
+
+## then you can add an article
+
+INSERT INTO `Article`(`IdType`, `NameArticle`, `Title`, `Intro`, `PhotoArticle`) VALUES
+("1", "article/pistacchio/pistacchio.html", "Cheesecake al pistacchio", "Questa è la mia prima ricetta. Si tratta di un tortino tondo composto da albume di nuovo, farina di cocco e tante cose buone. E' anche senza glutine", "article/pistacchio/img/pistacchio.png");
+
+INSERT INTO `Article`(`IdType`, `NameArticle`, `Title`, `Intro`, `PhotoArticle`) VALUES
+("2", "article/tortino/tortino.html", "Tortino salato buono", "Questa è la mia prima ricetta. Si tratta di un tortino tondo composto da albume di nuovo, farina di cocco e tante cose buone. E' anche senza glutine", "article/tortino/img/tortino.png");
+
+INSERT INTO `Article`(`IdType`, `NameArticle`, `Title`, `Intro`, `PhotoArticle`) VALUES
+("3", "article/cappuccino/cappuccino.html", "Buon cappuccino con schiumetta", "Questa è la mia prima ricetta. Si tratta di un tortino tondo composto da albume di nuovo, farina di cocco e tante cose buone. E' anche senza glutine", "article/cappuccino/img/cappuccino.png");
+
+INSERT INTO `Article`(`IdType`, `NameArticle`, `Title`, `Intro`, `PhotoArticle`) VALUES
+("4", "article/gluten/gluten.html", "Muffin ripieno senza glutine", "Questa è la mia prima ricetta. Si tratta di un tortino tondo composto da albume di nuovo, farina di cocco e tante cose buone. E' anche senza glutine", "article/gluten/img/gluten.png");
+

@@ -12,27 +12,17 @@
 
   <body>
     <div class="container">
-        <div class="row">
-          <div class="col-sm-12 col-md-12 col-lg-12">
-            <p class="share">Share</p>
-          </div>
+          <div class="row">
 
+          <!-- Linkedin share -->
+                <div class="a2a_kit">
+                    <a target="_blank" class="a2a_button_linkedin_share" data-url="http://petrupotrimba.altervista.org/image-post.php?id=1#img"></a>
+                </div>
 
+              <iframe src="https://www.facebook.com/plugins/share_button.php?href=https%3A%2F%2Fdevelopers.facebook.com%2Fdocs%2Fplugins%2F&layout=button&size=small&width=59&height=20&appId" width="59" height="20" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowTransparency="true" allow="encrypted-media"></iframe>
 
-      <!-- Linkedin share -->
-      <div class="a2a_kit">
-        <?php
-        echo '<a target="_blank" class="a2a_button_linkedin_share" data-url="http://petrupotrimba.altervista.org/image-post.php?id='.$id.'#img"></a>';
-        ?>
-
-
-
-        <!-- Facebook share -->
-        <a class="bb" target="_blank" href="http://www.facebook.com/sharer.php?u=http://petrupotrimba.altervista.org/image-post.php?id=1#img" width="20" height="20">Facebook</a>
-
+        </div>
       </div>
-    </div>
-</div>
   </body>
   <script async src="https://static.addtoany.com/menu/page.js"></script>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
