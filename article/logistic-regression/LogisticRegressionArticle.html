@@ -12264,7 +12264,7 @@ We should see that the cost is decreasing at each iteration until it converges t
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">fig = plt.figure()</span>
 <span class="n">ax = fig.add_subplot(1, 1, 1)</span>
-<span class="">ax.plot(range(iterations), J_history, linewidth=10)</span>
+<span class="">ax.plot(range(iterations), J_history, linewidth=6)</span>
 <span class="n">plt.ylabel(&#39;Cost Value&#39;)</span>
 <span class="n">plt.xlabel(&#39;Iteration of Gradient Descent&#39;)</span>
 <span class="n">plt.show()</span>
@@ -12303,7 +12303,7 @@ Now we are ready to plot the decision boundary we learned.</p>
 <span class="n">g = sns.lmplot(&quot;FirstExamScore&quot;, &quot;SecondExamScore&quot;, hue=&quot;Admission&quot;, </span>
                 <span class="n">data=students_exams, markers=[&quot;o&quot;, &quot;x&quot;], fit_reg=False, height=12, legend=False, scatter_kws={&quot;s&quot;: 100})</span>
 <span class="n">ax = g.ax</span>
-<span class="n">ax.plot(plotx, ploty, color=&#39;k&#39;, label=&#39;Decision Boundary&#39;, linewidth=10)</span>
+<span class="n">ax.plot(plotx, ploty, color=&#39;k&#39;, label=&#39;Decision Boundary&#39;, linewidth=6)</span>
 <span class="n">legend = ax.legend(loc=1, shadow=True)</span>
 <span class="n">plt.show()</span>
 </pre></div>
@@ -12434,7 +12434,7 @@ In this case we use <em>Broyden–Fletcher–Goldfarb–Shanno</em> algorithm (B
 <span class="n">g = sns.lmplot(&quot;FirstExamScore&quot;, &quot;SecondExamScore&quot;, hue=&quot;Admission&quot;, </span>
                <span class="n">data=students_exams, markers=[&quot;o&quot;, &quot;x&quot;], fit_reg=False, height=12, legend=False, scatter_kws={&quot;s&quot;: 100})</span>
 <span class="n">ax = g.ax</span>
-<span class="n">ax.plot(plotx, ploty, color=&#39;k&#39;, label=&#39;Decision Boundary&#39;, linewidth=10)</span>
+<span class="n">ax.plot(plotx, ploty, color=&#39;k&#39;, label=&#39;Decision Boundary&#39;, linewidth=6)</span>
 <span class="n">legend = ax.legend(loc=1, shadow=True)</span>
 <span class="n">plt.show()</span>
 </pre></div>
@@ -12758,7 +12758,7 @@ $$J(\theta) = \frac{1}{m}\sum_{i=1}^m(-y_i log(h_i(\theta)) - (1-y_i)log(1-h_i(\
         <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">v</span><span class="p">)):</span>
             <span class="n">z</span><span class="p">[</span><span class="n">i</span><span class="p">,</span><span class="n">j</span><span class="p">]</span><span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">mapFeature</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">atleast_1d</span><span class="p">(</span><span class="n">u</span><span class="p">[</span><span class="n">i</span><span class="p">])</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">),</span> <span class="n">np</span><span class="o">.</span><span class="n">atleast_1d</span><span class="p">(</span><span class="n">v</span><span class="p">[</span><span class="n">j</span><span class="p">])</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">),</span> <span class="mi">6</span><span class="p">),</span> <span class="n">theta</span><span class="p">)</span>
 
-    <span class="n">cs</span> <span class="o">=</span> <span class="n">ax</span><span class="o">.</span><span class="n">contour</span><span class="p">(</span><span class="n">u</span><span class="p">,</span> <span class="n">v</span><span class="p">,</span> <span class="n">z</span><span class="o">.</span><span class="n">T</span><span class="p">,</span> <span class="n">levels</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">colors</span><span class="o">=</span><span class="s1">&#39;k&#39;</span><span class="p">,</span> <span class="n">linewidths</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+    <span class="n">cs</span> <span class="o">=</span> <span class="n">ax</span><span class="o">.</span><span class="n">contour</span><span class="p">(</span><span class="n">u</span><span class="p">,</span> <span class="n">v</span><span class="p">,</span> <span class="n">z</span><span class="o">.</span><span class="n">T</span><span class="p">,</span> <span class="n">levels</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">colors</span><span class="o">=</span><span class="s1">&#39;k&#39;</span><span class="p">,</span> <span class="n">linewidths</span><span class="o">=</span><span class="mi">6</span><span class="p">)</span>
     <span class="n">plt</span><span class="o">.</span><span class="n">clabel</span><span class="p">(</span><span class="n">cs</span><span class="p">,</span>
                <span class="n">inline</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
                <span class="n">fmt</span><span class="o">=</span><span class="s1">&#39;</span><span class="si">%1.2f</span><span class="s1">&#39;</span><span class="p">,</span>
