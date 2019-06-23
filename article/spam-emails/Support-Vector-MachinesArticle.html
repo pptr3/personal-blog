@@ -11789,7 +11789,7 @@ div#notebook {
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>The first time I heard about this problem, I wondered my self how is possible to achieve this having in input a dataset of just text (the emails). Machine learning algorithms need to be fed with numbers, they do not understand strings. So we need to find a method to transform the dataset, which is basically composed by a sequence of strings, into a sequence of numbers.<br>
+<p>The first time I heard about this problem, I wondered myself how is possible to achieve this having in input a dataset of just text (the emails). Machine learning algorithms need to be fed with numbers, they do not understand strings. So we need to find a method to transform the dataset, which is basically composed by a sequence of strings, into a sequence of numbers.<br>
 Let's give a glance at one possible idea.</p>
 
 </div>
@@ -11812,12 +11812,12 @@ Let's give a glance at one possible idea.</p>
 <li>first thing we need is a dataset containing the most frequently occurring spam words (here we call it <strong>SD</strong>, Spam Dataset); <br><br>For each email within our dataset we do the following steps: <br><br></li>
 <li><p>create a list of integer with all the values set to $0$ with the same length of <em>SD</em> (here we call this list <strong>EL</strong>, Email List);</p>
 </li>
-<li><p>next, to fill the list of integer properly, we use the following idea:<br>
+<li><p>next, to fill the list of integers properly, we use the following idea:<br>
    if the first spamming word cointained in <em>SD</em> is present in the email took into account, then we assign the value $1$ in the first cell of EL. <br>Continue with this approach considering all the spamming words in <em>SD</em>.</p>
 </li>
 </ol>
 <p>Doing so, we end up with a list of ones and zeros for each email.</p>
-<p>Maybe an example would be explanatory if you are a bit confusing.</p>
+<p>Perhaps an example would be explanatory if you are a bit confusing.</p>
 
 </div>
 </div>
@@ -11842,7 +11842,7 @@ Let's give a glance at one possible idea.</p>
 $$[0, 0, 0, 0, 0, 0, 0]$$</p>
 <p>After the third step, we end up with this list:
 $$[1, 0, 0, 0, 1, 0, 0]$$</p>
-<p>If we continue by doing this for each email within our dataset, we manage to create a dataset of numbers and we  finally have something to pass to a learning algorithm.</p>
+<p>If we continue by doing this for each email within our dataset, we manage to create a numeric representation for each emails and we finally have something to pass to a learning algorithm.</p>
 
 </div>
 </div>
@@ -11853,6 +11853,14 @@ $$[1, 0, 0, 0, 1, 0, 0]$$</p>
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>Let's implement it!</p>
 
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Implementation">Implementation<a class="anchor-link" href="#Implementation">&#182;</a></h2>
 </div>
 </div>
 </div>
@@ -11874,10 +11882,10 @@ $$[1, 0, 0, 0, 1, 0, 0]$$</p>
 <span class="n">display</span><span class="p">(</span><span class="n">HTML</span><span class="p">(</span><span class="s2">&quot;&lt;style&gt;.rendered_html { font-size: 17px; }&lt;/style&gt;&quot;</span><span class="p">))</span>
 
 <span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;emails.csv&#39;</span><span class="p">)</span>
-<span class="c1">#df[&#39;spam&#39;].value_counts().plot(kind = &#39;pie&#39;, explode = [0, 0.1], figsize = (6, 6), autopct = &#39;%1.1f%%&#39;, shadow = True)</span>
-<span class="c1">#plt.ylabel(&quot;Spam vs not spam&quot;)</span>
-<span class="c1">#plt.legend([&quot;Not spam&quot;, &quot;Spam&quot;])</span>
-<span class="c1">#plt.show()</span>
+<span class="n">df[&#39;spam&#39;].value_counts().plot(kind = &#39;pie&#39;, explode = [0, 0.1], figsize = (6, 6), autopct = &#39;%1.1f%%&#39;, shadow = True)</span>
+<span class="n">plt.ylabel(&quot;Spam vs not spam&quot;)</span>
+<span class="n">plt.legend([&quot;Not spam&quot;, &quot;Spam&quot;])</span>
+<span class="n">plt.show()</span>
 </pre></div>
 
 </div>
@@ -11908,7 +11916,7 @@ $$[1, 0, 0, 0, 1, 0, 0]$$</p>
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p><img src="article/spam-email/img/1.png" alt="" style="width: 1000px;"/></p>
+<p><img src="article/spam-email/img/1.png" alt="" style="width: 500px;"/></p>
 
 </div>
 </div>
@@ -11917,7 +11925,7 @@ $$[1, 0, 0, 0, 1, 0, 0]$$</p>
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>In order to convert each email into a numeric representation, I have created the following util functions. The most interesting one is the function <code>process_email</code> that performs useful string operation. To cite an example, if the email we are processing contains some numbers, those are replaced with the word <em>number</em> (line of code 30). <br>Moreover, often the emails contains html tags. Since these tags could be tricky to manage, we simply get rid of them (line of code 24).</p>
+<p>In order to convert each email into a numeric representation, several important steps are required. These steps are perfomed by the function <code>process_email</code> underneath. Basically this function is trying to give a structure for each email. To cite an example, if the email we are processing contains some numbers, those are replaced with the word <em>number</em> (line of code 30). This because we do not care about what specific number appears in the email, we treat all the numbers in the same way. The same happens when an email contains URLs. We do not care about what precise URL is embedded in the email, we just want to know that a URL is present (line of code 33). This kind of approach is very efficient when implementing the algorithm explained earlier.</p>
 
 </div>
 </div>
@@ -12015,35 +12023,20 @@ $$[1, 0, 0, 0, 1, 0, 0]$$</p>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[2]:</div>
+<div class="prompt input_prompt">In&nbsp;[14]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">wordcloud</span> <span class="k">import</span> <span class="n">WordCloud</span>
 
-<span class="n">spam_wordcloud</span> <span class="o">=</span> <span class="n">WordCloud</span><span class="p">(</span><span class="n">width</span><span class="o">=</span><span class="mi">600</span><span class="p">,</span> <span class="n">height</span><span class="o">=</span><span class="mi">400</span><span class="p">)</span><span class="o">.</span><span class="n">generate</span><span class="p">(</span><span class="s2">&quot; &quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">vocab</span><span class="p">))</span>
-<span class="c1">#plt.figure( figsize=(10,8), facecolor=&#39;k&#39;)</span>
-<span class="c1">#plt.imshow(spam_wordcloud)</span>
-<span class="c1">#plt.axis(&quot;off&quot;)</span>
-<span class="c1">#plt.tight_layout(pad=0)</span>
-<span class="c1">#plt.show()</span>
+<span class="n">spam_wordcloud = WordCloud(width=600, height=400).generate(&quot; &quot;.join(vocab))</span>
+<span class="n">plt.figure( figsize=(10,8), facecolor=&#39;k&#39;)</span>
+<span class="n">plt.imshow(spam_wordcloud)</span>
+<span class="n">plt.axis(&quot;off&quot;)</span>
+<span class="n">plt.tight_layout(pad=0)</span>
+<span class="n">plt.show()</span>
 </pre></div>
 
 </div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area">
-
-<div class="prompt"></div>
-
-
-
-</div>
-
 </div>
 </div>
 
@@ -12105,11 +12098,6 @@ $$[1, 0, 0, 0, 1, 0, 0]$$</p>
 <div class="prompt"></div>
 
 
-<div class="output_subarea output_stream output_stderr output_text">
-<pre>/home/pptr/.conda/envs/fastai/lib/python3.6/site-packages/ipykernel_launcher.py:10: FutureWarning: read_table is deprecated, use read_csv instead, passing sep=&#39;\t&#39;.
-  # Remove the CWD from sys.path while we load stuff.
-</pre>
-</div>
 </div>
 
 </div>
@@ -12133,7 +12121,7 @@ $$[1, 0, 0, 0, 1, 0, 0]$$</p>
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Training-using-Logistic-regression-model">Training using Logistic regression model<a class="anchor-link" href="#Training-using-Logistic-regression-model">&#182;</a></h2>
+<h2 id="Training-using-Logistic-regression">Training using Logistic regression<a class="anchor-link" href="#Training-using-Logistic-regression">&#182;</a></h2>
 </div>
 </div>
 </div>
@@ -12141,7 +12129,7 @@ $$[1, 0, 0, 0, 1, 0, 0]$$</p>
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>For training and testing the model I decided to split the dataset into a <em>trainig set</em> and a <em>test set</em> (70 - 30). Actually, splitting the dataset in just two chunks (train + test) is a bad practice. It should be splitted in three different dataset: train + validation + test set. But for the purpose of this article train + test is just fine since we are not going to tune any model parameters.</p>
+<p>For training and testing the model I decided to split the dataset into a <em>trainig set</em> and a <em>test set</em> (70 - 30). Actually, splitting the dataset in just two chunks (train + test) is a bad practice. It should be splitted in three different datasets: train + validation + test set. But for the purpose of this article train + test is just fine since we are not going to tune any model parameters.</p>
 
 </div>
 </div>
@@ -12298,11 +12286,6 @@ $$[1, 0, 0, 0, 1, 0, 0]$$</p>
 
 <div class="prompt"></div>
 
-
-<div class="output_subarea output_stream output_stderr output_text">
-<pre>Using TensorFlow backend.
-</pre>
-</div>
 </div>
 
 </div>
@@ -12465,11 +12448,6 @@ Here we test the spam classifier we have just built with our emails! <br>
 <div class="prompt"></div>
 
 
-<div class="output_subarea output_stream output_stderr output_text">
-<pre>/home/pptr/.conda/envs/fastai/lib/python3.6/site-packages/ipykernel_launcher.py:10: FutureWarning: read_table is deprecated, use read_csv instead, passing sep=&#39;\t&#39;.
-  # Remove the CWD from sys.path while we load stuff.
-</pre>
-</div>
 </div>
 
 </div>
@@ -12480,8 +12458,9 @@ Here we test the spam classifier we have just built with our emails! <br>
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>The email I want to test is a spam email I recently received, let's see if the model is tough enough to recognize the spam! <br>
-The email is the following:</p>
+<p>The email I want to test is a spam email I recently received. <br>
+Let's see if the model is tough enough to recognize the spam! <br><br></p>
+<p>The email is the following:</p>
 
 </div>
 </div>
