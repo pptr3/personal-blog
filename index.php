@@ -4,6 +4,11 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 		<meta charset="UTF-8">
 		<title>Petru Potrimba's Blog</title>
+		<meta property="og:url"           content="https://petrupotrimba.altervista.org/image-post.php?id=7#img" />
+		<meta property="og:type"          content="website" />
+		<meta property="og:title" content="K-means: the first approach to unsupervised learning">
+		<meta property="og:description" content="In this article we are going to leave behind the world of supervised learning and dive into the fascinating (and much more complex!) unsupervised domain.">
+		<meta property="og:image" content="article/k-means/img/kmeans.png">
 		<link rel="icon" href="article/img/pp.png">
 		<link rel="stylesheet" href="css2.css">
 		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">

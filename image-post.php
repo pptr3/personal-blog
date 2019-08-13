@@ -5,12 +5,24 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 		<meta charset="UTF-8">
 		<title>Petru Potrimba's Blog</title>
+
+		<meta property="og:url"           content="https://petrupotrimba.altervista.org/image-post.php?id=7#img" />
+		<meta property="og:type"          content="website" />
+		<meta property="og:title" content="K-means: the first approach to unsupervised learning">
+		<meta property="og:description" content="In this article we are going to leave behind the world of supervised learning and dive into the fascinating (and much more complex!) unsupervised domain.">
+		<meta property="og:image" content="article/k-means/img/kmeans.png">
+
 		<link href="https://fonts.googleapis.com/css?family=Poppins:100,200,400,300,500,600,700" rel="stylesheet">
 		<link rel="icon" href="article/img/pp.png">
 		<link rel="stylesheet" href="css2.css">
 		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
-		<style media="screen">
+
+
+
+
+
+        <style media="screen">
 		.anav {
 			color: white !important;
 		}
@@ -101,6 +113,7 @@ echo '</div>';
 
 <?php require 'footer2.html'?>
 </body>
+
   <script async src="https://static.addtoany.com/menu/page.js"></script>
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 </html>

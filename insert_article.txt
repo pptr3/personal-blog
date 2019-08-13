@@ -22,6 +22,11 @@ INSERT INTO `Article`(`NameArticle`, `NameJupyterArticle`, `Date`, `IdBadge`, `I
 Logistic regression, as linear regression, is an algorithm that falls into the category of Supervised Learning, which means that we have the label (dependent variable) for each training example. Linear regression goal is to fit ...", "article/logistic-regression/img/logistic-regression.png", "10", "Everything you need to know about Logistic Regression");
 
 
+INSERT INTO `Article`(`NameArticle`, `NameJupyterArticle`, `Date`, `IdBadge`, `Intro`, `PhotoArticle`,  `ReadingTime`, `Title`) VALUES
+
+("article/k-means/K-Means-ClusteringArticle", "https://github.com/Pptr95/personal-blog/blob/master/article/k-means/jupyter-notebook/K-Means-Clustering.ipynb", "2019-07-21", "1", "In this article we are going to leave behind the world of supervised learning and dive into the fascinating (and much more complex!) unsupervised domain. As the name suggests, a problem is unsupervised when our dataset is not labeled ...", "article/k-means/img/kmeans.png", "5", "K-means: the first approach to unsupervised learning");
+
+
 #colors
 dark orange: #BC360A
 light orange: #EA9629

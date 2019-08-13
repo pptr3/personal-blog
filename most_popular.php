@@ -70,8 +70,8 @@
 		<div class="row">
 
 			<div class="col-sm-12 most_popular">
-					<p class="cool"><i><u>If you don't practise you don't deserve to win.</u></i></p>
-					<p class="author"><i>Andre Agassi</i></p>
+					<p class="cool"><i><u>You have to remember that it is impossible to commit a crime while reading a book.</u></i></p>
+					<p class="author"><i>John Waters</i></p>
 			</div>
 		</div>
 
