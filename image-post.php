@@ -6,11 +6,11 @@
 		<meta charset="UTF-8">
 		<title>Petru Potrimba's Blog</title>
 
-		<meta property="og:url"           content="https://petrupotrimba.altervista.org/image-post.php?id=7#img" />
+		<meta property="og:url"           content="https://petrupotrimba.altervista.org/image-post.php?id=8#img" />
 		<meta property="og:type"          content="website" />
-		<meta property="og:title" content="K-means: the first approach to unsupervised learning">
-		<meta property="og:description" content="In this article we are going to leave behind the world of supervised learning and dive into the fascinating (and much more complex!) unsupervised domain.">
-		<meta property="og:image" content="article/k-means/img/kmeans.png">
+		<meta property="og:title" content='Principal Component Analysis: "What", "When" and "How"'>
+		<meta property="og:description" content="In the following article I am going to explain what is PCA (Principal Component Analysis), when to use it and how it works implementing it from scratch.">
+		<meta property="og:image" content="article/pca/img/pca.png">
 
 		<link href="https://fonts.googleapis.com/css?family=Poppins:100,200,400,300,500,600,700" rel="stylesheet">
 		<link rel="icon" href="article/img/pp.png">

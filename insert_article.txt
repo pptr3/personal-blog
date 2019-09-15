@@ -27,6 +27,12 @@ INSERT INTO `Article`(`NameArticle`, `NameJupyterArticle`, `Date`, `IdBadge`, `I
 ("article/k-means/K-Means-ClusteringArticle", "https://github.com/Pptr95/personal-blog/blob/master/article/k-means/jupyter-notebook/K-Means-Clustering.ipynb", "2019-07-21", "1", "In this article we are going to leave behind the world of supervised learning and dive into the fascinating (and much more complex!) unsupervised domain. As the name suggests, a problem is unsupervised when our dataset is not labeled ...", "article/k-means/img/kmeans.png", "5", "K-means: the first approach to unsupervised learning");
 
 
+INSERT INTO `Article`(`NameArticle`, `NameJupyterArticle`, `Date`, `IdBadge`, `Intro`, `PhotoArticle`,  `ReadingTime`, `Title`) VALUES
+
+("article/pca/PCAArticle", "https://github.com/Pptr95/personal-blog/blob/master/article/pca/jupyter-notebook/PCA.ipynb", "2019-09-16", "1", "In the following article I am going to explain what is PCA (Principal Component Analysis), when to use it and how it works implementing it from scratch. Let's say you have a machine learning task. You are given a dataset with 500 ...", "article/pca/img/pca.png", "7", "Principal Component Analysis: \"What\", \"When\" and \"How\"");
+
+
+
 #colors
 dark orange: #BC360A
 light orange: #EA9629
