@@ -1,16 +1,60 @@
 <!DOCTYPE html>
 <html lang="en">
 	<head>
-		<!-- Mobile Specific Meta -->
+
+
+
+
+
+
+
+
+
+<?php require_once 'dbconnection.php';?>
+
+
+<?php
+		$id = $_GET["id"];
+		$query_sql="SELECT * FROM Article a, Badge b WHERE a.IdBadge = b.IdBadge AND IdArticle = $id";
+		$article = $conn->query($query_sql);
+		if ($article->num_rows > 0) {
+			while($row = $article->fetch_assoc()) {
+				echo '<meta property="og:url"           content="https://petrupotrimba.altervista.org/image-post.php?id='.$row['IdArticle'].'#img" />';
+				echo '<meta property="og:type"          content="website" />';
+				echo '<meta property="og:title" content='.$row['Title'].'>';
+				echo '<meta property="og:description" content='.$row['Intro'].'>';
+				echo '<meta property="og:image" content='.$row['PhotoArticle'].'>';
+			}
+		}
+	?>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 		<meta charset="UTF-8">
 		<title>Petru Potrimba's Blog</title>
 
-		<meta property="og:url"           content="https://petrupotrimba.altervista.org/image-post.php?id=8#img" />
+		<!-- <meta property="og:url"           content="https://petrupotrimba.altervista.org/image-post.php?id=8#img" />
 		<meta property="og:type"          content="website" />
 		<meta property="og:title" content='Principal Component Analysis: "What", "When" and "How"'>
 		<meta property="og:description" content="In the following article I am going to explain what is PCA (Principal Component Analysis), when to use it and how it works implementing it from scratch.">
-		<meta property="og:image" content="article/pca/img/pca.png">
+		<meta property="og:image" content="article/pca/img/pca.png"> -->
 
 		<link href="https://fonts.googleapis.com/css?family=Poppins:100,200,400,300,500,600,700" rel="stylesheet">
 		<link rel="icon" href="article/img/pp.png">
