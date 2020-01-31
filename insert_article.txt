@@ -36,3 +36,12 @@ INSERT INTO `Article`(`NameArticle`, `NameJupyterArticle`, `Date`, `IdBadge`, `I
 #colors
 dark orange: #BC360A
 light orange: #EA9629
+
+#to remove
+
+body {
+  overflow: visible;
+  padding: 8px;
+}
+
+search for "notebook-container"
