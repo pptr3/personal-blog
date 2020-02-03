@@ -33,6 +33,10 @@ INSERT INTO `Article`(`NameArticle`, `NameJupyterArticle`, `Date`, `IdBadge`, `I
 
 
 
+INSERT INTO `Article`(`NameArticle`, `NameJupyterArticle`, `Date`, `IdBadge`, `Intro`, `PhotoArticle`, `ReadingTime`, `Title`) VALUES ("article/connecting-rods/connecting-rodsArticle", "https://github.com/Pptr95/personal-blog/blob/master/article/connecting-rods/jupyter-notebook/connecting-rods.ipynb", "2020-01-31", "1", "The main focus of this article is how to separate touching blobs after they have been succesfully segmented. The computer vision system has to analyze the dimensions of two different types of connecting rods to allow a vision-guided...", "article/connecting-rods/img/rods.png", "4", "How to separate touching blobs")
+
+
+
 #colors
 dark orange: #BC360A
 light orange: #EA9629

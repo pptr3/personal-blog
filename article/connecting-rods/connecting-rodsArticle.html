@@ -13107,7 +13107,7 @@ Even using the best well known segmentation algorithm, we end up in the followin
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p><img src="article/connecting-rods/img/2.png" width="60%" height="60%"></p>
+<p><img src="article/connecting-rods/img/2.png" width="80%" height="80%"></p>
 
 </div>
 </div>
@@ -13201,7 +13201,7 @@ Now let's dive into it.</p>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p><img src="article/connecting-rods/img/1.png" width="60%" height="60%"></p>
+<p><img src="article/connecting-rods/img/1.png" width="80%" height="80%"></p>
 
 </div>
 </div>
@@ -13233,7 +13233,7 @@ Now let's dive into it.</p>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p><img src="article/connecting-rods/img/2.png" width="60%" height="60%"></p>
+<p><img src="article/connecting-rods/img/2.png" width="80%" height="80%"></p>
 
 </div>
 </div>
@@ -13265,8 +13265,8 @@ Below I show the plots I obtained of two test images where there are touching ro
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p><img src="article/connecting-rods/img/defect_points1.png" width="40%" height="40%">
-<img src="article/connecting-rods/img/defect_points2.png" width="40%" height="40%"></p>
+<p><img src="article/connecting-rods/img/defect_points1.png" width="80%" height="80%">
+<img src="article/connecting-rods/img/defect_points2.png" width="80%" height="80%"></p>
 
 </div>
 </div>
@@ -13277,11 +13277,13 @@ Below I show the plots I obtained of two test images where there are touching ro
 <p>Is can be clearly noticed that there are sharp variations between some points. The points that has a low value are indeed the defect points that indicate a contact point between rods.</p>
 <p>Now, in order to tell apart these points, I calculated an automatic threshold as follows:</p>
 
-<pre><code>- consider the defect points values and remove the duplicats
-- order them. Suppose the values we have so far are: [ 510,  765, 3060, 3315]
-- calculate which is the pair of values that shows the maximum variation, in this case 3060 - 765 = 2295.
-- the threshold is computed by dividing by 2 the maximum variation value, so 2295/2 = 1147 would be
-  the threshold to select.</code></pre>
+
+<ol>
+  <li>consider the defect points values and remove the duplicats</li>
+  <li>order them. Suppose the values we have so far are: [ 510,  765, 3060, 3315]</li>
+  <li>calculate which is the pair of values that shows the maximum variation, in this case 3060 - 765 = 2295.</li>
+  <li>the threshold is computed by dividing by 2 the maximum variation value, so 2295/2 = 1147 would be the threshold to select.</li>
+</ol>
 
 </div>
 </div>
@@ -13402,7 +13404,7 @@ Below I show the plots I obtained of two test images where there are touching ro
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p><img src="article/connecting-rods/img/3.png" width="60%" height="60%"></p>
+<p><img src="article/connecting-rods/img/3.png" width="80%" height="80%"></p>
 
 </div>
 </div>
@@ -13452,7 +13454,7 @@ Now, we can proceed to analyze each single blob. Below I show as example how to 
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p><img src="article/connecting-rods/img/rods.png" width="60%" height="60%"></p>
+<p><img src="article/connecting-rods/img/rods.png" width="80%" height="80%"></p>
 
 </div>
 </div>

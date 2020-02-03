@@ -42,17 +42,11 @@
 								<div style="float:left; padding-right: 4%;"><img style="padding-bottom: 10%;" width="300" height="auto" src="article/img/mee.jpg" alt="Photo article"></div>
 								<div style="float:none;">
 										<p style="font-size: 100%;" class="intro2">
-Hello there! I am Petru and I am a Computer Scientist. I live in Italy in a small city called Imola (famous for the autodrome).<br><br>
 
-My course of study took a variant of paths before find my true passion.
-Before attending the Computer Science and Engineering programme at Bologna University, I began the Biomedical Engineering programme.
-During this programme I attended an informatics course which taught me what informatics is and what its principles are which made me realize
-Computer Science's world is what definitely suits to me.
+Hello there! I am Petru and I am a Master's Degree student of Artificial Intelligence at Bologna University (Italy) with a background in Computer Science and Engineering. <br><br>
 
-I decided therefore to transfer to Compuer Science and Engineering course. Nevertheless, my informatics skills were approximately nill compared to my classmates' skills.
-This motivated me to roll up the sleeves in order to reach their level.
-At the beginning I always used to ask someone to help me when I had some problems. It was extremely rewarding when, approximately one year later,
-I was not the one who asked others but the others used to ask me to help them. All of this is thanks to my huge desire to learn more and more. <br><br>
+I am interested in AI (Deep Learning and Computer Vision especially) and I use this blog to publish my researches and experiments.
+I am use to deeply study and implement the algorithms from scratch, this helps me to really understand what actually happens under the hood and hopefully to be helpful for the others. <br><br>
 
 Recently, I have been selected to take part of <a class="leadthefuture" style="color: #BC360A;" href="https://leadthefuture.tech/" target="_blank">LeadTheFuture</a> network: a leading mentorship non-profit organization for students in STEM,
 with acceptance rate below 20%. LeadTheFuture empowers top-performing students to achieve their goals and contribute to their communities
@@ -64,8 +58,9 @@ It obliged me to give nothing for granted, roll up my sleeves and start a brand 
 
 As a result, I now love doing research and projects on Machine Learning trying always to understand what is happening under the hood. <br><br>
 
-When I am not contemplating a Jupyter Notebook you might find me swimming,
-playing basketball in some courts or visiting some cool places.
+I have a strong interest for science and therefore I am interested in pursuing a PhD and Research Scientist positions. <br><br>
+
+When I am not contemplating with a Jupyter Notebook you might find me swimming, playing basketball in some courts, visiting some cool places or playing videogames.
 
 										</p>
 
