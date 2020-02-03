@@ -13115,9 +13115,9 @@ Even using the best well known segmentation algorithm, we end up in the followin
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>In this particular case where the rods touch each others we are not able to clearly distinguish each single the rod.</p>
+<p>In this particular case, where the rods touch each others, we are not able to clearly distinguish each single rod.</p>
 <p>We have the <strong>contraint</strong> that this computer vision system should be able to work <strong>always</strong>, this means without errors. This kind of system is called also <em>in the industry system</em>. So we cannot rely on machine learning models to separate these rods since they always have a probability of doing errors.</p>
-<p>So I decide to apply pure computer vision and build a solid and reliable system that is able to succesfully separate the rods when they touch each other.</p>
+<p>So I decided to apply pure computer vision and build a solid and reliable system that is able to succesfully separate the rods when they touch each other.</p>
 
 </div>
 </div>
@@ -13125,7 +13125,7 @@ Even using the best well known segmentation algorithm, we end up in the followin
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>In the solution I propose in this article has the <strong>assumption</strong> that the rods can have contact points but <strong>do not overlap</strong> one to another.</p>
+<p>The solution I propose in this article has the <strong>assumption</strong> that the rods can have contact points but <strong>do not overlap</strong> one to another.</p>
 
 </div>
 </div>
@@ -13209,7 +13209,7 @@ Now let's dive into it.</p>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>We can easily choose manually a theshold to segments the rods. However this is not a good practice and we prefer to rely on an automatic threshold. I decided to use <em>Otsu's algorithm</em> that is able to find an automatic threshold under the assumption of a bimodal histogram (which is our case).</p>
+<p>We can easily choose manually a threshold to segment the rods. However this is not a good practice and we prefer to rely on an automatic threshold. I decided to use <em>Otsu's algorithm</em> that is able to find an automatic threshold under the assumption of a bimodal histogram (which is our case).</p>
 
 </div>
 </div>
@@ -13251,9 +13251,9 @@ One could think that using simple morphology functions like <em>erosion</em> or 
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>So how to separate them without deforming the rods structure?</p>
+<p>So how to separate them without deforming their structure?</p>
 <p>The first thing to do was to understand whether in the image there were contact points between rods.
-To do so I took several images of rods and then, after segmentation, I calculated the maximum perimeter of a rod (256 pixel) and the minimum perimeter of rods that contact each other (397 pixel) and then I calculated a threshold as $\frac{(256 + 397)}{2} = 326$. So, if a blob has a perimeter greater than or equal than that parameter, it means that there are rods that touch each other.</p>
+To do so I took several images of rods and then, after segmentation, I calculated the maximum perimeter of a rod (256 pixel) and the minimum perimeter of rods that touch each other (397 pixel) and then I calculated a threshold as $\frac{(256 + 397)}{2} = 326$. So, if a blob has a perimeter greater than or equal than that parameter, it means that there are rods that touch each other.</p>
 <p>Afterwards, I noticed that the points I am interested in are points with a <em>high convexity</em>. Therefore the idea was to find these points given the contour of the blob (which so far is just one because the rods are touching each other).
 So I used the function <code>convexityDefects</code> that finds the convexity defects of a contour.
 However, not every point that this function returns indicate a contact between rods. So, to select only the interesting points, I decided to count how many white pixels a defect point has in a $5 \times 5$ window around it and check whether there were some evident patterns between defect points that indicate a contact between rods and defect points that do not. <br>
@@ -13265,8 +13265,8 @@ Below I show the plots I obtained of two test images where there are touching ro
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p><img src="article/connecting-rods/img/defect_points1.png" width="80%" height="80%">
-<img src="article/connecting-rods/img/defect_points2.png" width="80%" height="80%"></p>
+<p><img src="article/connecting-rods/img/defect_points1.png" width="60%" height="60%">
+<img src="article/connecting-rods/img/defect_points2.png" width="60%" height="60%"></p>
 
 </div>
 </div>
@@ -13274,12 +13274,12 @@ Below I show the plots I obtained of two test images where there are touching ro
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>Is can be clearly noticed that there are sharp variations between some points. The points that has a low value are indeed the defect points that indicate a contact point between rods.</p>
+<p>It can be clearly noticed that there are sharp variations between some points. The points that has a low value are indeed the defect points that indicate a contact point between rods.</p>
 <p>Now, in order to tell apart these points, I calculated an automatic threshold as follows:</p>
 
 
 <ol>
-  <li>consider the defect points values and remove the duplicats</li>
+  <li>consider the defect points values and remove the duplicates</li>
   <li>order them. Suppose the values we have so far are: [ 510,  765, 3060, 3315]</li>
   <li>calculate which is the pair of values that shows the maximum variation, in this case 3060 - 765 = 2295.</li>
   <li>the threshold is computed by dividing by 2 the maximum variation value, so 2295/2 = 1147 would be the threshold to select.</li>
@@ -13412,7 +13412,7 @@ Below I show the plots I obtained of two test images where there are touching ro
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>As it can be seen, the algorithm succesfully separated the rods without deforming their structure.
+<p>As it can be seen, the algorithm succesfully separate the rods without deforming their structure.
 Now, we can proceed to analyze each single blob. Below I show as example how to find the position and orientation of each single blob alongside with their barycentre.</p>
 
 </div>
@@ -13469,7 +13469,7 @@ Now, we can proceed to analyze each single blob. Below I show as example how to 
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>In this article I proposed a solution to separate touching blobs based on pure computer vision algorithms. The algorithm I proposed could be optimized in time and space complexity and tuned in such a way to work with different shapes, not only rods.</p>
+<p>In this article I proposed a solution to separate touching blobs based on pure computer vision algorithms. The algorithm I proposed could be optimized in time and space complexity and tuned in such a way to work with different shapes, not just rods.</p>
 
 </div>
 </div>

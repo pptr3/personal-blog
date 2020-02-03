@@ -14,7 +14,7 @@
 
 
 <?php
-		$id = $_GET["id"];
+		/*$id = $_GET["id"];
 		$query_sql="SELECT * FROM Article a, Badge b WHERE a.IdBadge = b.IdBadge AND IdArticle = $id";
 		$article = $conn->query($query_sql);
 		if ($article->num_rows > 0) {
@@ -26,7 +26,7 @@
 				echo '<meta property="og:image" content='.$row['PhotoArticle'].'>';
 			}
 		}
-	?>
+	*/?>
 
 
 
@@ -50,11 +50,11 @@
 		<meta charset="UTF-8">
 		<title>Petru Potrimba's Blog</title>
 
-		<!-- <meta property="og:url"           content="https://petrupotrimba.altervista.org/image-post.php?id=8#img" />
+		<meta property="og:url"           content="https://petrupotrimba.altervista.org/image-post.php?id=9#img" />
 		<meta property="og:type"          content="website" />
-		<meta property="og:title" content='Principal Component Analysis: "What", "When" and "How"'>
-		<meta property="og:description" content="In the following article I am going to explain what is PCA (Principal Component Analysis), when to use it and how it works implementing it from scratch.">
-		<meta property="og:image" content="article/pca/img/pca.png"> -->
+		<meta property="og:title" content='How to separate touching blobs'>
+		<meta property="og:description" content="The main focus of this article is how to separate touching blobs after they have been succesfully segmented. The computer vision system has to analyze the dimensions of two different types of connecting rods to allow a vision-guided...">
+		<meta property="og:image" content="article/connecting-rods/img/rods.png">
 
 		<link href="https://fonts.googleapis.com/css?family=Poppins:100,200,400,300,500,600,700" rel="stylesheet">
 		<link rel="icon" href="article/img/pp.png">
@@ -113,7 +113,7 @@
 																	$dateObj   = DateTime::createFromFormat('!m', $month);
 																	$monthName = $dateObj->format('F'); // March
 																	$dateWithMonthLiteral = $monthName.' '.$explodedDate[2].', '.$explodedDate[0];
-																	echo '<p style="padding-left:2%; color: #BC360A;"><span style="color: #BC360A; padding-right:1%;" class="glyphicon glyphicon-time"></span>'.$dateWithMonthLiteral.'<span style="color: #BC360A; padding-left:4%;" class="glyphicon glyphicon-folder-open"></span> <a class="linktojupyternotebook" target="_blank" href="'.$row['NameJupyterArticle'].'" style="padding-left: 1%; color: #BC360A;">Link to Jupyter Notebook</span></a>';
+																		echo '<p style="padding-left:2%; color: #BC360A;"><span style="color: #BC360A; padding-right:1%;" class="glyphicon glyphicon-time"></span>'.$dateWithMonthLiteral.'<span style="color: #BC360A; padding-left:4%;" class="glyphicon glyphicon-folder-open"></span> <a class="linktojupyternotebook" target="_blank" href="'.$row['NameJupyterArticle'].'" style="padding-left: 1%; color: #BC360A;">Link to Jupyter Notebook</span></a><span style="color: #BC360A; padding-left:4%;" class="glyphicon glyphicon-user"></span> <a class="linktojupyternotebook" target="_blank" href="https://petrupotrimba.altervista.org/aboutme.php" style="padding-left: 1%; color: #BC360A;">Author: Petru Potrimba</a>';
 																	echo '<p style="padding-left:2%;"> <b>Reading time</b>: '.$row['ReadingTime'].' minutes</p>';
 
 echo '<div class="row">';
