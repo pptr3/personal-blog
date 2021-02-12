@@ -47,4 +47,4 @@ body {
   padding: 8px;
 }
 
-search for "notebook-container"
+search for "notebook-container" and remove the last shadow lines
